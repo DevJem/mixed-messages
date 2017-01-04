@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>MixedMessages</title>
@@ -9,12 +9,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id='page'>
-<%= render 'layouts/header' %>
+	<div id='page'>
 
-<%= yield %>
+	<%= render 'layouts/header' %>
+  <%= render 'layouts/messages' %>
 
-<%= render 'layouts/footer' %> 
-</div>
+	<%= yield %>
+	<%= render 'layouts/footer' %>
+
+	</div>
 </body>
 </html>
+

@@ -1,0 +1,111 @@
+// *****BODY***** // 
+
+h1 {
+	padding-left: 30px;
+	font-family: 'Passion One', cursive;
+	font-color: #333333;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+}
+
+#mainpic {
+	margin: auto;
+	margin-top: 80px;
+	box-shadow: -2px 2px 20px #aaaaaa;
+}
+
+#right-side-list {
+	margin: auto;
+	margin-top: 60px;
+	padding-left: 35px;
+	p {
+		font-family: 'Fjalla One', sans-serif;
+		text-transform: uppercase;
+		font-weight: bold;
+		width: 75%;
+		margin: auto;
+		padding-top: 10px;
+		font-size: 20px;
+		text-align: justify;
+		letter-spacing: 1px;
+	}
+}
+
+			 /*								*
+			  *								*
+			  *			Media			*
+			  * 	 Queries		*
+			  *								*
+			  *								*
+			  *								*/
+
+
+// @media (min-width: 1450px) {
+// 	#mainpic {
+// 		background-size: cover;
+// 		box-sizing: border-box;
+// 		position: absolute;
+// 		left: 50px;
+// 	}
+
+// 	#right-side-list {
+// 		position: absolute;
+// 		right: 100px;
+// 		width: 50vw;
+// 	}
+// }
+
+// @media (max-width: 1200px) and (min-width: 992px) {
+// 	#mainpic {
+// 		background-image: url('/images/jumbo-sm.jpg');
+// 		height: 220px;
+// 	}
+// }
+
+// #right-side-list {
+// 	height: 800px;
+// 	float: left;
+// }
+
+// #right-side-list h2 {
+// 	font-size: 40px;
+// 	margin-top: 50px;
+// 	margin-bottom: 30px;
+// }
+
+// #right-side-list p {
+// 	font-size: 20px;
+// 	margin-left: 50px;
+// 	margin-top: 20px;
+// }
+
+
+
+
+// @media (max-width: 1345px) {
+// 	#top-link-bar {
+// 		float: left;
+// 		clear: both;
+// 		margin: 0 0 15px 83px;
+// 		}
+
+// 	h1 {
+// 		padding-left: 98px;
+// 	}
+
+// }
+
+// #bottom-1 {
+// 	/*margin: 50px 100px 0 0;*/
+// 	border: 1px #aa3333;
+// 	clear: left;
+// 	height: 3px;
+// 	margin-top: 100px;
+// 	margin-bottom: 50px
+// }
+
+// #bottom-2 {
+// 	position: absolute;
+// 	bottom: 700px;
+// 	height: 40px;
+// }

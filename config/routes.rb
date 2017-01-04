@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  
-  get 'pages/home'
+  resources :blogs
 
-  get 'pages/about'
+  get 'about' 	=> 'pages#about'
+  get 'how-to'	=> 'pages#how_to'
+  get 'watch' 	=> 'pages#watch'
+  get 'contact' => 'pages#contact'
 
   root 'pages#home'
 

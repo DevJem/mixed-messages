@@ -1,0 +1,24 @@
+#submit_left {
+ 	margin-top: 50px;
+ 	p {
+		font-family: 'Fjalla One', sans-serif;
+		width: 75%;
+		margin: auto;
+		padding-top: 10px;
+		font-size: 20px;
+		text-align: justify;
+		letter-spacing: 1px;
+	}
+	a:visited, a:link {
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #555599;
+		&:hover {
+			color: #cccccc;
+		}
+	}
+ }
+
+ #submit_right {
+ 	margin-top: 200px;
+ }

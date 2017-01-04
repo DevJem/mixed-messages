@@ -3,3 +3,155 @@
 @import "bootstrap";
 
 
+#not_found {
+	width: 100%;
+	height: 550px;
+	border: 3px solid black;
+	border-radius: 8px;
+	background: #33aa44;
+	float: left;
+}
+
+html {
+	height: 100%; 
+}
+
+body {
+	font-family: helvetica, sans-serif;
+	color: #111;
+	position: relative;
+	height: 100%;
+	overflow-y: scroll;
+	margin: 0;
+	padding: 0;
+}
+
+// header .container {
+// 	width: 85%;
+// }
+
+#page {
+	min-height: 100%;
+	position: relative;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: url("logo.png") center no-repeat fixed;
+}
+
+// *****HEADER***** //
+
+// #head {
+// 	background: #922;
+// 	border-bottom:  solid #000;
+// }
+
+#mm {
+	//float: left;
+	margin: auto;
+	a:hover, a:visited, a:link {
+		text-decoration: none;
+	}
+	h1 a{
+		color: #ccc
+	}
+	img {
+		width: 50vw;
+	}
+}
+
+#top-link-bar { 
+	margin: auto;
+	width: 50%;
+	vertical-align: bottom;
+	a {
+		font-size: 1vw;
+		font-weight: bold;
+		background: #eee;
+		border: 1px solid black;
+		border-radius: 2px;
+		padding: 5px;
+		&:visited, &:link {
+			text-decoration: none;
+			color: #222;
+		}
+		&:hover {
+			background: #111111;
+			text-decoration: none;
+			color: #cccccc;
+		}
+	}
+}
+
+// *****FOOTER***** //
+
+// #foot {
+// 	background: #922;
+// 	border-top: 3px solid #000;
+// 	border-bottom: 0;
+// 	width: 100%;
+// 	height: 120px;
+// 	position: absolute;
+// 	bottom: 0;
+// }
+
+.footer {
+	width: 100%;
+	margin-top: 20px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	color: #ccc;
+	font-size: 1.1vw;
+	font-family: 'Passion One', cursive;
+	text-align: center;
+	li {
+		margin-top: 7px;
+		list-style-type: none;
+		text-align: left;
+	}
+	li > a:active, li > a:hover, li > a:visited, li > a:link {
+	text-decoration: none;
+	color: #ccc;
+	}
+}
+
+
+#comments {
+	margin-bottom: 200px;
+}
+
+
+
+/*										*
+ *										*
+ *										*
+ *    MEDIA QUERIES  	*
+ *										*
+ *										*
+ *										*/
+
+//  @media (max-width: 1300px) and (min-width: 968px) {
+//  	// #mm img {
+//  	// 	width: 35vw;
+//  	// }
+
+//  	#top-link-bar {
+//  		position: float;
+//  		a {
+//  		font-size: 2vw;
+//  		}
+//  	}
+
+//  }
+
+@media (max-width: 845px) {
+
+	#mm img {
+		width: 100%;
+	}
+
+	#top-link-bar {
+		margin: auto;
+		font-size: 1vw;
+	}
+}
