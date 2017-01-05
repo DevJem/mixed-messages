@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 20170105055500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
-    t.integer  "uploads_id"
+    t.integer  "upload_id"
   end
 
-  add_index "comments", ["uploads_id"], name: "index_comments_on_uploads_id"
+  add_index "comments", ["upload_id"], name: "index_comments_on_upload_id"
   add_index "comments", ["user_id", "title"], name: "index_comments_on_user_id_and_title", unique: true
 
   create_table "uploads", force: :cascade do |t|
