@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'watch' 	=> 'pages#watch'
   get 'contact' => 'pages#contact'
 
+  get 'signup'  => 'users#new'
+  resources :users, except: [:new]
+
   root 'pages#home'
 
 end
