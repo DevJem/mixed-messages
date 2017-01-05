@@ -4,7 +4,7 @@
 
 
 <div class="row">
-	<div class="col-xs-5 col-xs-offset-2">
+	<div class="col-md-5 col-md-offset-2">
 		<% @blogs.each do |blog| %>
 			<div class="blog-title"><h2>
 				<%= link_to blog.title, blog_path(blog) %></h2>
@@ -26,7 +26,8 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="col-sm-3">
+
+	<div class="col-md-3 col-md-offset-1">
 		<div class="about-ads">
 			<p>Ad Unit 1</p>
 		</div>

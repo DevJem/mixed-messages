@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
 	before_action :set_blog, only: [:edit, :update, :show, :destroy]
 
 	def index
-		@blogs = Blog.paginate(page: params[:page], per_page: 3)
+		@blogs = Blog.paginate(page: params[:page], per_page: 3).order('id DESC')
 	end
 
 	def new
@@ -12,11 +12,11 @@ class BlogsController < ApplicationController
 
 	def create
 		@blog = Blog.new(blog_params)
-		@blog.user = User.first
+		@blog.user = current_user
 
 		if @blog.save
 			flash[:success] = "Blog has been created."
-			redirect_to blog_path(@blog)
+			redirect_to blogs_path
 		else
 			redirect_to blogs_path
 		end
@@ -35,7 +35,7 @@ class BlogsController < ApplicationController
 	def update
 		if @blog.update(blog_params)
 			flash[:success] = "The blog #{@blog.title} was successfully updated."
-			redirect_to blog_path(@blog)
+			redirect_to blogs_path
 		else
 			render :edit
 		end
@@ -43,7 +43,7 @@ class BlogsController < ApplicationController
 
 	def destroy
 		@blog.destroy
-		flash[:danger] = "The blog #{@blog.title} was deleted."
+		flash[:danger] = "The blog \"#{@blog.title}\" was deleted."
 		redirect_to blogs_path
 	end
 
