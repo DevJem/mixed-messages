@@ -9,17 +9,15 @@
 		<nav id="top-link-bar">
 			<ul class="nav nav-justified">
 				<li><%= link_to "HOME", root_path %></li>
-			 	<li><%= link_to "HOW TO / FAQ", how_to_path %></li>
-			 	<li><%= link_to "Blogs", blogs_path %> </li>
 				<li><a href="#">Watch</a></li>
-				<li>
-					<% if !logged_in? %>
-						<%= link_to "Sign Up", signup_path %>
-					<% else %>
-						<%= link_to "Log Out", logout_path, method: :delete %>
-					<% end %>
-				</li>
-				<li><a href="#">submit</a></li>
+			 	<li><%= link_to "Blogs", blogs_path %> </li>
+				<% if !logged_in? %>
+					<li><%= link_to "Log In", login_path %></li>
+				<% else %>
+					<li><a href="#">submit</a></li>
+					<li><%= link_to "Log Out", logout_path, method: :delete %></li>
+				<% end %>
+			 	<li><%= link_to "FAQ", how_to_path %></li>
 			</ul>
 		</nav>
 	

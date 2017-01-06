@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-	before_action :set_user, only: [:edit, :update, :show]
+	before_action :set_user, only: [:edit, :update, :show, :ban, :make_admin]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
-	before_action :require_admin, only: [:destroy]
+	before_action :require_admin, only: [:destroy, :ban, :make_admin]
 
 	def index
 		@users = User.paginate(page: params[:page], per_page: 5)
@@ -16,8 +16,9 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			flash[:success] = "Welcome to the Mixed-Messages, #{@user.username}"
+			flash[:success] = "Welcome to the Mixed-Messages, #{@user.username}, zipcode: #{@user.zipcode}"
 			session[:user_id] = @user.id
+			#@user.zipcode.to_i!
 			redirect_to user_path(@user)
 		else
 			render 'new'
@@ -41,8 +42,22 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
-		flash[:danger] = "User has been deleted."
+		if @user.admin
+			flash[:danger] = "You cannot delete another admin"
+		else
+			@user.delete
+			flash[:danger] = "User has been deleted."
+		end
+		redirect_to users_path
+	end
+
+	def ban
+		@user.toggle!(:banned)
+		redirect_to users_path
+	end
+
+	def make_admin
+		@user.toggle!(:admin)
 		redirect_to users_path
 	end
 	
@@ -50,7 +65,7 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:username, :email, :password)
+		params.require(:user).permit(:username, :email, :password, :zipcode)
 	end
 
 	def set_user

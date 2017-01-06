@@ -30,6 +30,7 @@ gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'carrierwave', '~> 0.11.2'
+gem 'zip-code-info', '~> 0.2.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
