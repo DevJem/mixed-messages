@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :blogs
+  resources :blogs, :videos
 
   get 'about'			=> 'pages#about'
   get 'how-to'		=> 'pages#how_to'
@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   patch '/users/:id/make-admin(.:format)' => 'users#make_admin', as: :make_admin
 
   root 'pages#home'
-
+ 
 end

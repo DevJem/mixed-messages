@@ -1,11 +1,28 @@
+<!-- 			This is where I need a loop to display videos in the database based on the video ID I give them.
+ --> 
 <div class="container">
 	<div class="row">
-		<div class="section_title"><h1>Episodes</h1></div>
-		<div class="col-lg-4 col-md-4 col-sm-3 col-xs-2">
-<!-- 			This is where I need a loop to display videos in the database based on the video ID I give them.
- -->
-<%= render 'layouts/comments' %>
-
- 		</div>
-</div>
+		<div class="section_title col-sm-12"><h1>Episodes</h1></div>
+		<% @videos.each do |key, value| %>
+			<% if key == "items" %>
+				<% value.each do |topic| %>
+					<% topic.each do |something, here| %>
+						<% if something == "contentDetails" %>
+							<% here.each do |k, v| %>
+								<% if k == "videoId" %>
+									<% @id = v %>
+									<div class="col-lg-3 col-md-6">
+										<div id="thumbs" align="center">
+											<% source = "http://img.youtube.com/vi/#{@id}/1.jpg" %>
+											<%= link_to image_tag(source, alt: "Video #{@id}", width: "200px"), video_path(@id) %>
+										</div>	
+									</div>
+									<% end %>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
 </div>

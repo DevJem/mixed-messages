@@ -31,6 +31,8 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'carrierwave', '~> 0.11.2'
 gem 'zip-code-info', '~> 0.2.1'
+gem 'google-api-client', '>0.7'
+gem 'yt'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

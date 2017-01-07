@@ -9,7 +9,7 @@
 		<nav id="top-link-bar">
 			<ul class="nav nav-justified">
 				<li><%= link_to "HOME", root_path %></li>
-				<li><a href="#">Watch</a></li>
+				<li><%= link_to "Watch", watch_path %></li>
 			 	<li><%= link_to "Blogs", blogs_path %> </li>
 				<% if !logged_in? %>
 					<li><%= link_to "Log In", login_path %></li>
@@ -22,3 +22,4 @@
 		</nav>
 	
 </header>
+<!-- ********************************End of Header********************************** -->
