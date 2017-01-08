@@ -23,11 +23,11 @@ class PagesController < ApplicationController
     end
 
     if @PageToken.nil?
-      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=contentDetails&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=12&key=#{API_KEY}"))
+      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=snippet&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=12&key=#{API_KEY}"))
       else redirect_to root_path
       end
     elsif !@PageToken.nil?
-      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=contentDetails&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=12&key=#{API_KEY}#{@PageToken}"))
+      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=snippet&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=12&key=#{API_KEY}#{@PageToken}"))
       else redirect_to root_path
       end
     end

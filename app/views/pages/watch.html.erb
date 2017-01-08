@@ -24,16 +24,25 @@
 			<% if key == "items" %>
 				<% value.each do |topic| %>
 					<% topic.each do |something, here| %>
-						<% if something == "contentDetails" %>
+						<% if something == "snippet" %>
 							<% here.each do |k, v| %>
-								<% if k == "videoId" %>
-									<% @id = v %>
-									<div class="col-lg-3 col-md-6">
-										<div id="thumbs" align="center">
-											<% source = "http://img.youtube.com/vi/#{@id}/1.jpg" %>
-											<%= link_to image_tag(source, alt: "Video #{@id}", width: "200px"), video_path(@id) %>
-										</div>	
-									</div>
+								<% if k == "title" %>
+									<% @title = v %>
+								<% elsif k == "resourceId" %>
+									<% v.each do |kk, vv| %>
+										<% if kk == "videoId" %>
+											<% @id = vv %>
+											<div class="col-lg-3 col-md-6">
+												<div id="thumbs" align="center">
+													<% source = "http://img.youtube.com/vi/#{@id}/1.jpg" %>
+													<%= link_to image_tag(source, alt: @title, width: "200px"), video_path(@id) %>
+												</div>
+												<div id="title" align="center">
+													<%= @title %>
+												</div>
+											</div>
+										<% end %>
+									<% end %>
 								<% end %>
 							<% end %>
 						<% end %>
