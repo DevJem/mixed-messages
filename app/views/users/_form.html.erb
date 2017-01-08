@@ -29,9 +29,7 @@
 				<%= f.text_field :zipcode, class: "form-control", placeholder: "Enter zipcode" %>
 			</div>
 		</div>
-
-		<%= ZipCodeInfo.instance.state_for @user.zipcode %>
-
+		
 		<div class="form-group">
 			<div class="control-label col-sm-2">
 				<%= f.label :password %>

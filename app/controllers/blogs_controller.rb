@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
 	end
 
 	def show
-	end
+	end 
 
 	def edit
 		if Blog.find(params[:id])
@@ -60,8 +60,8 @@ class BlogsController < ApplicationController
 		end
 
 		def require_same_user
-		if current_user != @article.user and !current_user.admin?
-			flash[:danger] = "You can only edit or delete your own article"
+		if current_user != @blog.user and !current_user.admin?
+			flash[:danger] = "You can only edit or delete your own blog"
 			redirect_to root_path
 		end		
 	end
