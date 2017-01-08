@@ -1,0 +1,10 @@
+<% @video.each do |k, v| %>
+<% src = "https://www.youtube.com/embed/#{v}" %>
+<div align="center">
+	<iframe width="1280" height="720" src=<%= src %> frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div align="center">
+	<%= render 'layouts/comments' %>
+</div>
+<% end %>

@@ -13,11 +13,9 @@ class PagesController < ApplicationController
   def watch
     #if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=contentDetails&playlistId=PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An&maxResults=50&key=#{API_KEY}"))
 
-    @PageToken = slide_params
+    @PageToken = params
     @PageToken.each do |k, v|
-      puts "    k = #{k}, v = #{v}"
       if k == "format"
-        puts v
         @PageToken = v
       else
         @PageToken = nil
@@ -40,12 +38,6 @@ class PagesController < ApplicationController
 
 private
   def slide_params
-    puts params
-    
-    params.each do |k, v|
-      puts "k = #{k} "
-
-    end
   end
 end
 
