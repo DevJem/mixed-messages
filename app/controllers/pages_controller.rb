@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  API_KEY = "AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
+  
 
   def home
   end
@@ -11,7 +11,6 @@ class PagesController < ApplicationController
   end
 
   def watch
-    #if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=contentDetails&playlistId=PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An&maxResults=50&key=#{API_KEY}"))
 
     @PageToken = params
     @PageToken.each do |k, v|
@@ -23,11 +22,11 @@ class PagesController < ApplicationController
     end
 
     if @PageToken.nil?
-      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=snippet&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=12&key=#{API_KEY}"))
+      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=snippet&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=9&key=#{ENV['API_KEY']}"))
       else redirect_to root_path
       end
     elsif !@PageToken.nil?
-      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=snippet&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=12&key=#{API_KEY}#{@PageToken}"))
+      if @videos = JSON.load(open("https://www.googleapis.com/youtube/v3/playlistItems?&part=snippet&playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU&maxResults=9&key=#{ENV['API_KEY']}#{@PageToken}"))
       else redirect_to root_path
       end
     end
@@ -37,8 +36,14 @@ class PagesController < ApplicationController
   end
 
 private
+  #API_KEY = "AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
+
   def slide_params
   end
+
+  # def get_key
+  #   API_KEY
+  # end
 end
 
 # youtube data api key AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc

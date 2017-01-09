@@ -3,5 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #thumbs {
-	margin-top: 35px;
+	margin-top: 50px;
+	img {
+		border: 2px solid #E33A13;
+		border-radius: 7px;
+	}
 }
+
+#title {
+	margin-top: 20px;
+	height: 50px;
+	color: #E33A13;
+	font-weight: bold;
+} 
