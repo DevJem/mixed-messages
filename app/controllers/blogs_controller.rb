@@ -20,7 +20,7 @@ class BlogsController < ApplicationController
 			flash[:success] = "Blog has been created."
 			redirect_to blogs_path
 		else
-			redirect_to blogs_path
+			render :new
 		end
 	end
 

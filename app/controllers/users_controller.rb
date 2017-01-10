@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 			render 'new'
 		end
 	end
-
+ 
 	def edit
 	end 
 
@@ -47,8 +47,8 @@ class UsersController < ApplicationController
 		else
 			@user.delete
 			flash[:danger] = "User has been deleted."
+			redirect_to users_path
 		end
-		redirect_to users_path
 	end
 
 	def ban

@@ -9,9 +9,11 @@
 				<%= upload.title %><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
 				<%= time_ago_in_words(upload.created_at) %><br/>
-				<button class="btn btn-sm">
-					<%= link_to "Delete", upload_path(upload), method: :delete %>
-				</button>
+				<% if logged_in? && current_user.admin %>
+					<button class="btn btn-sm">
+						<%= link_to "Delete", upload_path(upload), method: :delete %>
+					</button>
+				<% end %>
 			</div>
 		</div>
 	<% end %>

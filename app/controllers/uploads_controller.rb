@@ -21,7 +21,7 @@ class UploadsController < ApplicationController
 			flash[:success] = "Your upload has been submitted. You will be notified if it is accepted."
 			redirect_to upload_path(@upload)
 		else
-			redirect_to submit_path
+			render :new
 		end
 	end
 
