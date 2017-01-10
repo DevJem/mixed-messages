@@ -5,7 +5,7 @@
 			<div align="center">
 				<% user = "Submitted by: #{upload.user.username}" %>
 				<%= link_to user, user_path(upload.user.id) %><br/>
-				<%= link_to (image_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
+				<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
 				<%= upload.title %><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
 				<%= time_ago_in_words(upload.created_at) %><br/>

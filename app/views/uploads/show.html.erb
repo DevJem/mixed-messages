@@ -2,7 +2,7 @@
 	<div align="center">
 		
 		<%= link_to @upload.user.username, user_path(@upload.user) %><br/>
-		<%= image_tag @upload.file, height: "400px" %> <br/>
+		<%= video_tag @upload.file, height: "400px", controls: true, autobuffer: true %> <br/>
 		<%= @upload.title %><br/>
 		<%= truncate(@upload.note, length: 100) %><br/>
 		<%= time_ago_in_words(@upload.created_at) %><br/>

@@ -9,7 +9,7 @@
 	<% @user.uploads.each do |upload| %>
 		<div class="col-lg-4 col-md-6">
 			<div align="center">
-				<%= link_to (image_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
+				<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
 				<%= upload.title %><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
 				<%= time_ago_in_words(upload.created_at) %><br/>
