@@ -1,0 +1,54 @@
+<%= render 'layouts/errors', obj: @upload %>  
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					
+						<%= f.label :title %>
+				</div>
+				<div class="col-sm-8">
+						<%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					
+						<%= f.label :zipcode %>
+				</div>
+				<div class="col-sm-8">
+						<%= f.text_field :zipcode, class: "form-control", placeholder: "Title" %>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					
+						<%= f.label :note %>
+				</div>
+				<div class="col-sm-8">
+						<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Write a note about this video"%>
+				</div>
+			</div>
+
+			
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					
+						<%= f.label :file %>
+				</div>
+				<div class="col-sm-8">
+						<%= f.file_field :file,  placeholder: "File" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<%= f.submit class: "btn btn-primary btn-lg" %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+

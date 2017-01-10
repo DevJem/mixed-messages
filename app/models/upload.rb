@@ -4,4 +4,6 @@ class Upload < ActiveRecord::Base
   validates :title, presence: true, length: {minimum: 3, maximum: 20}, uniqueness: true
 	validates :user_id, presence: true
 	validates :note, presence: true, length: {minimum: 10, maximum: 250}
+
+	mount_uploader :file, FileUploader
 end

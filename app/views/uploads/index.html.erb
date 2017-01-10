@@ -1,18 +1,17 @@
+
 <div class="row">
-	<div align="center">
-		<h1>User <%= @user.username.upcase %></h1>
-		<% if @user.zipcode %>
-			<h4>Zipcode: <%= @user.zipcode %></h4>
-		<% end %>
-		<h4>Uploads by this user: </h4>
-	</div>
-	<% @user.uploads.each do |upload| %>
+	<% @uploads.each do |upload| %>
 		<div class="col-lg-4 col-md-6">
 			<div align="center">
+				<% user = "Submitted by: #{upload.user.username}" %>
+				<%= link_to user, user_path(upload.user.id) %><br/>
 				<%= link_to (image_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
 				<%= upload.title %><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
 				<%= time_ago_in_words(upload.created_at) %><br/>
+				<button class="btn btn-sm">
+					<%= link_to "Delete", upload_path(upload), method: :delete %>
+				</button>
 			</div>
 		</div>
 	<% end %>

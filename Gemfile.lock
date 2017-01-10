@@ -194,8 +194,6 @@ GEM
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
     will_paginate (3.0.7)
-    yt (0.28.1)
-      activesupport
     zip-code-info (0.2.1)
 
 PLATFORMS
@@ -221,7 +219,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   will_paginate (= 3.0.7)
-  yt
   zip-code-info (~> 0.2.1)
 
 BUNDLED WITH

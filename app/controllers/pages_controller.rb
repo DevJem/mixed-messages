@@ -36,7 +36,7 @@ class PagesController < ApplicationController
   end
 
 private
-  #API_KEY = "AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
+  #API_KEY="AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
 
   def slide_params
   end
