@@ -1,6 +1,19 @@
-<!-- 			This is where I need a loop to display videos in the database based on the video ID I give them. -->
-
+<!-- 			Loop to display episodes -->
+ 
 <div class="container">
+	<div class="row">
+		<div align="center">
+			<h1>Premium Episode</h1>
+			<div id="main-episode">
+			<iframe width="1280" height="720" src="https://www.youtube.com/embed/Vj3KUc_6A4A" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 	<div class="row">
 		<div class="section_title col-sm-12"><h1>Episodes</h1></div>
 		<% @videos.each do |key, value| %>
@@ -9,17 +22,13 @@
 			<!-- Previous page button -->
 				<% if key == "prevPageToken" %>
 					<% @prevPageToken = "&pageToken=#{value}" %>
-					<button class="btn btn-xs btn-info">
-						<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch %>
-					</button>	
+					<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-xs btn-info" %>
 				<% end %>
 			
 			<!-- next page button -->
 				<% if key == "nextPageToken" %>
 					<% @nextPageToken = "&pageToken=#{value}" %>
-					<button class="btn btn-xs btn-info">
-						<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch %>
-					</button>	
+					<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-xs btn-info" %>
 				<% end %>
 			</div>
 			

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'contact'		=> 'pages#contact'
 
   get 'submit'    => 'uploads#new'
+  patch 'uploads/:id/save' => 'uploads#save_upload', as: :save_upload
 
   get 'signup'		=> 'users#new'
   resources :users, except: [:new]
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
 
   patch '/users/:id/ban(.:format)' => 'users#ban', as: :ban
   patch '/users/:id/make-admin(.:format)' => 'users#make_admin', as: :make_admin
+
+  post 'uploads/:id' => 'uploads#update'
+  resources :comments
 
   root 'pages#home'
  

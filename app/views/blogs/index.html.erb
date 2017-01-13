@@ -3,7 +3,7 @@
 </div>
 <% if logged_in? && current_user.admin %>
 	<div align="center">
-  	<button class="btn btn-md btn-info"><%= link_to "Create Blog Post", new_blog_path %></button>
+  	<%= link_to "Create Blog Post", new_blog_path, class: "btn btn-md btn-info" %>
   </div>
 <% end %>
 

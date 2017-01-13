@@ -18,3 +18,6 @@
 
 # Ignore Uploads
 /public/uploads/*
+
+# Ignore my todo list
+/to\ do\ list.txt

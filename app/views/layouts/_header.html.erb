@@ -1,16 +1,30 @@
 
 
 <header id="head" >
-	
+	<div class="container">
 		<div id="mm" class="row text-center">
 			<%= link_to image_tag("title-adjusted-again.jpg", alt: "Mixed Messages Logo", class: "img-repsonsive"), root_path %>
 		</div>
-		<%= render 'layouts/navigation' %>
+		<%# render 'layouts/navigation' %>
 		<nav id="top-link-bar">
 			<ul class="nav nav-justified">
+        <% if logged_in? %>
+          <% if current_user.admin %>
+            <li><%= link_to "#{current_user.username} | Admin", user_path(current_user) %></li>
+          <% else %>
+            <li><%= link_to current_user.username, user_path(current_user) %></li>
+          <% end %>
+        <% end %>
 				<li><%= link_to "HOME", root_path %></li>
-				<li><%= link_to "Episodes", watch_path %></li>
-				<li><%= link_to "User Submissions", uploads_path %></li>
+
+				<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Watch Now<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+	          <li><%= link_to "Episodes", watch_path %></li>
+            <li><%= link_to "User Submissions", uploads_path %></li>
+          </ul>
+        </li>
+
 			 	<li><%= link_to "Blogs", blogs_path %> </li>
 				<% if !logged_in? %>
 					<li><%= link_to "Log In", login_path %></li>
@@ -18,9 +32,18 @@
 					<li><%= link_to "Submit", submit_path %></li>
 					<li><%= link_to "Log Out", logout_path, method: :delete %></li>
 				<% end %>
-			 	<li><%= link_to "FAQ", how_to_path %></li>
+				<% if logged_in? && current_user.admin %>
+					<li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Admin Tools<span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+<!-- 	            <li role="separator" class="divider"></li>
+ -->	            <li><%= link_to "All Users", users_path %></li>
+	            <li><%= link_to "All Uploads", uploads_path %></li>
+	          </ul>
+	        </li>
+				<% end %>
 			</ul>
 		</nav>
-	
+	</div>
 </header>
 <!-- ********************************End of Header********************************** -->

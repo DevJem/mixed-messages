@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109214732) do
+ActiveRecord::Schema.define(version: 20170112082157) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "user_id"
@@ -35,29 +35,39 @@ ActiveRecord::Schema.define(version: 20170109214732) do
   add_index "comments", ["upload_id"], name: "index_comments_on_upload_id"
   add_index "comments", ["user_id", "title"], name: "index_comments_on_user_id_and_title", unique: true
 
+  create_table "comments_uploads", id: false, force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "upload_id"
+  end
+
   create_table "uploads", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "zipcode"
     t.string   "title"
     t.text     "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "file"
+    t.boolean  "save_upload", default: false
   end
 
   add_index "uploads", ["user_id", "title"], name: "index_uploads_on_user_id_and_title", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                        null: false
-    t.string   "email",                           null: false
+    t.string   "username",                              null: false
+    t.string   "email",                                 null: false
     t.integer  "zipcode"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                 default: false
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.boolean  "banned",          default: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.boolean  "banned",                default: false
+    t.text     "bio"
+    t.string   "password_confirmation"
+    t.integer  "uploads_id"
   end
 
   add_index "users", ["id"], name: "index_users_on_id", unique: true
+  add_index "users", ["uploads_id"], name: "index_users_on_uploads_id"
 
 end

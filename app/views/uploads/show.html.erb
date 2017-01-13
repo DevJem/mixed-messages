@@ -1,10 +1,48 @@
+
+<%= render 'layouts/errors', obj: @upload %>
+
 <div class="row">
-	<div align="center">
-		
-		<%= link_to @upload.user.username, user_path(@upload.user) %><br/>
-		<%= video_tag @upload.file, height: "400px", controls: true, autobuffer: true %> <br/>
-		<%= @upload.title %><br/>
-		<%= truncate(@upload.note, length: 100) %><br/>
-		<%= time_ago_in_words(@upload.created_at) %><br/>
+	<div class="col-xs-12">
+		<div align="center">
+			<h1><%= link_to @upload.user.username, user_path(@upload.user) %></h1><br/>
+			<%= video_tag @upload.file, height: "400px", controls: true, autobuffer: true %> <br/>
+		</div>
+	</div>
+	<div class="col-md-4">
+
+		<% if logged_in? && current_user.admin %>
+			<% if !@upload.save_upload %>
+				<div align="right">
+						<%= link_to "Save File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
+				</div>
+			<% else %>
+
+				<div align="right">
+						<%= link_to "Remove File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
+				</div>
+			<% end %>
+		<% end %>
+
+	</div>
+	<div class="col-md-4">
+		<div align="center">
+				<%= @upload.title %><br/>
+				<%= @upload.note %><br/>
+				<%= time_ago_in_words(@upload.created_at).capitalize %> ago.<br/>
+			</div>	
+	</div>
+	<div class="col-md-4">
+		<% if logged_in? && current_user.admin %>
+			<div align="left">
+					<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg" %>
+			</div>
+		<% end %>
 	</div>
 </div>
+<div class="row">
+	<div align="center">
+		<h1>Comments</h1>
+		<%= render 'layouts/comments', obj: @upload %>
+	</div>
+</div>
+ 
