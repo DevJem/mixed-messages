@@ -32,6 +32,10 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'carrierwave', '~> 1.0'
 gem 'zip-code-info', '~> 0.2.1'
 gem 'google-api-client', '>0.7'
+gem 'shopify_api', '~> 4.3'
+gem 'file_validators'
+gem 'httparty'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

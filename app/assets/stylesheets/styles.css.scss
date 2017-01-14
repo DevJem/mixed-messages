@@ -125,6 +125,31 @@ body {
 	margin-bottom: 200px;
 }
 
+.comment-hr {
+	border-bottom: 1px solid #920202;
+	height: 2px;
+	color: #920202;
+	margin: 10px 0 15px 0;
+}
+
+.each-comment {
+	background-color: rgba(200, 200, 200, .4);
+}
+
+.fix-link {
+	a {
+		text-decoration: none;
+		&:visited, &:link {
+			text-decoration: none;
+			color: #222;
+		}
+		&:hover {
+			text-decoration: none;
+			color: #920202;
+		}
+	}
+}
+
 
 
 /*										*

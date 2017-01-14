@@ -29,7 +29,7 @@ class UploadsController < ApplicationController
 	def edit
 	end
 
-	def update
+	def update 
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
 		@comment.upload_id = @upload.id

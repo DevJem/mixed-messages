@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
 
-	before_action :set_blog, only: [:edit, :update, :show, :destroy]
+	before_action :set_blog, only: [:edit, :update, :show, :destroy, :add_comment]
 	before_action :require_user, except: [:index, :show]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 
@@ -43,6 +43,20 @@ class BlogsController < ApplicationController
 		end
 	end
 
+	def add_comment
+		@comment = Comment.new(comment_params)
+		@comment.user_id = current_user.id
+		@comment.blog_id = @blog.id
+		if @comment.save
+			@blog.comments << @comment
+			#debugger
+			redirect_to blog_path(@blog)
+		else
+			flash[:danger] = "#{@comment.errors.full_messages}"
+			render :show
+		end
+	end
+
 	def destroy
 		@blog.destroy
 		flash[:danger] = "The blog \"#{@blog.title}\" was deleted."
@@ -57,6 +71,10 @@ class BlogsController < ApplicationController
 
 		def set_blog
 			@blog = Blog.find(params[:id])
+		end
+
+		def comment_params
+			params.require(:comment).permit(:title, :comment, :blog_id, :user_id)
 		end
 
 		def require_same_user

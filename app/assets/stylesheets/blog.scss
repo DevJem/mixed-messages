@@ -1,3 +1,24 @@
 // Place all the styles related to the blog controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.blog-title {
+	margin-left: 25px;
+	a {
+		text-decoration: none;
+		text-transform: uppercase;
+		color: #222;
+		&:visited, &:link {
+			text-decoration: none;
+
+		}
+		&:hover {
+			text-decoration: none;
+			color: #920202;
+		}
+	}
+}
+
+.blog-body {
+	margin: 25px;
+}

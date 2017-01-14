@@ -1,0 +1,35 @@
+<div align="center">
+	<h1>Market</h1>
+</div>
+<div class="container">
+	<div class="row">
+		<%# @products.each do |product| %>
+			<% product.each do |key, value| %>
+				<% if key == "id" %>
+					<% @id = value %>
+				<% end %>
+				<% if key == "title" %>
+					<% @title = value %>
+				<% end %>
+				<% if key == "images" %>
+					<% value.each do |k, v| %>
+						<% if k == "src" %>
+							<% @picture = v %>
+							<div class="col-lg-4 col-sm-12">
+								<%= image_tag url("#{@picture}") %>
+								<h4><%= @title %></h4>
+								<% @id %>
+							</div>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<%# end %>
+	</div>
+</div>
+
+
+
+
+
+

@@ -1,4 +1,6 @@
 class Upload < ActiveRecord::Base
+	include ActiveModel::Validations
+
   belongs_to :user
   has_and_belongs_to_many :comments
 
@@ -8,5 +10,6 @@ class Upload < ActiveRecord::Base
 
 	mount_uploader :file, FileUploader
 	validates :file, presence: true, on: :create
+	validates :file, file_size: {less_than: 500.megabytes}
 
 end

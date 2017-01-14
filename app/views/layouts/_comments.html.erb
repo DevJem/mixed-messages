@@ -11,7 +11,7 @@
 			<%= form_for(:comment, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 				<div class="form-group">
 					<div class="control-label col-md-2">
-						<%= f.label :title %>
+						<% f.label :title %>
 					</div>
 					<div class="col-md-8">
 						<%= f.text_field :title, class: "form-control", placeholder: "Title", autocomplete: false %>
@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group">
 					<div class="control-label col-md-2">
-						<%= f.label :comment %>
+						<% f.label :comment %>
 					</div>
 					<div class="col-md-8">
 						<%= f.text_area :comment, rows: 4, class: "form-control", placeholder: "Your Comment", autocomplete: false %>
@@ -34,26 +34,66 @@
 		<% end %>
 	</div>
 </div>
-<hr>
-<% obj.comments.order("id DESC").each do |comment| %>
-	<div class="row">
-		<div class="well">
-			<div class="col-md-2 col-md-offset-1">
-			
-			<%= comment.user.username %> <br/>
-			<%= comment.created_at.localtime.to_date %> <br/>
-			<%= "#{comment.created_at.localtime.hour}:#{comment.created_at.localtime.min}" %> <br/>
-			</div>
-			<div class="col-md-6">
-				<div align="left">
-					<h4><%= comment.title.upcase %></h4><br/>
-					<%= comment.comment %>
-				</div>
-			</div>
-			<div align="right">
 
+<div class="container">
+	<div class="row each-comment">
+		<div class="col-sm-9">
+			<% if !obj.is_a? String %>
+
+				<!-- Regular comments for blogs and user submissions -->
+				<% obj.comments.order("id DESC").each do |comment| %>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="comment-hr"/></div>
+						</div>
+						<div class="col-md-3" align="center">
+							<strong><%= comment.user.username %></strong> <br/>
+							<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
+							<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
+						</div>
+						<div class="col-md-9">
+							<div align="left">
+								<h4><strong><%= comment.title.upcase %></strong></h4><br/>
+								<%= comment.comment %>
+							</div>
+						</div>
+						<div align="right">
+
+						</div>
+					</div> 
+				<% end %>
+			<% else %>
+
+			<!-- Special comments for linked youtube videos -->
+				<% comments = Comment.where(video_id: obj) %>
+				<% comments.order("id DESC").each do |comment| %>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="comment-hr"/></div>
+						</div>
+						<div class="col-md-3" align="center">
+							<strong><%= comment.user.username %></strong> <br/>
+							<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
+							<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
+						</div>
+						<div class="col-md-9">
+							<div align="left">
+								<h4><strong><%= comment.title.upcase %></strong></h4><br/>
+								<%= comment.comment %>
+							</div>
+						</div>
+						<div align="right">
+
+						</div>
+					</div> 
+				<% end %>
+			<% end %>
+			<div class="col-sm-12">
+				<div class="comment-hr"/></div>
 			</div>
 		</div>
-	</div> 
-<% end %>
-	
+		<div class="col-sm-3">
+			<%= render 'layouts/ads' %>
+		</div>
+	</div>
+</div>

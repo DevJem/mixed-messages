@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :blogs, :videos
+  resources :blogs
   resources :uploads
 
   get 'about'			=> 'pages#about'
@@ -23,6 +23,16 @@ Rails.application.routes.draw do
 
   post 'uploads/:id' => 'uploads#update'
   resources :comments
+
+  post 'blogs/:id' => 'blogs#add_comment'
+
+  resources :videos
+  post 'videos/new' => 'videos#create'
+  post 'videos/:id' => 'videos#add_comment'
+
+  get 'premium' => 'videos#premium'
+
+  get 'market' => 'market#index'
 
   root 'pages#home'
  

@@ -23,7 +23,7 @@
 				</div>
 			</div>
 			<% if logged_in? && (current_user.admin || blog.user == current_user) %>
-				<div class="blog-actions">
+				<div class="blog-actions" align="right">
 					<%= link_to "Edit this blog", edit_blog_path(blog),
 							class: "btn btn-xs btn-primary" %>
 
@@ -33,18 +33,10 @@
 				<% end %>
 		<% end %>
 	</div>
-
-	<div class="col-md-3 col-md-offset-1">
-		<div class="about-ads">
-			<p>Ad Unit 1</p>
-		</div>
-		<div class="about-ads">
-			<p>Ad Unit 2</p>
-		</div>
-		<div class="about-ads">
-			<p>Ad Unit 3</p>
-		</div>
+	<div class="col-md-2 col-md-offset-1">
+		<%= render 'layouts/ads' %>
 	</div>
+
 </div>
 
 
