@@ -1,18 +1,20 @@
 <!-- Display errors with bootstrap and irb -->
 
 <% if obj.errors.any? %>
-<div class="row">
-	<div class="col-xs-8 col-xs-offset-2">
-		<div class="panel panel-danger">
-			<div class="panel-heading"><%= pluralize(obj.errors.count, "Error") %></div>
-			<div class="panel-body">
-				<ul style="list-style-type: none;">
-					<% obj.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-				</ul>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<div class="panel panel-danger">
+					<div class="panel-heading"><%= pluralize(obj.errors.count, "Error") %></div>
+					<div class="panel-body">
+						<ul style="list-style-type: none;">
+							<% obj.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
-</div>
 <% end %> 

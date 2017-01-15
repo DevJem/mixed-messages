@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :blogs
   resources :uploads
+  resources :notifications
+
 
   get 'about'			=> 'pages#about'
   get 'how-to'		=> 'pages#how_to'
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
   get 'premium' => 'videos#premium'
 
   get 'market' => 'market#index'
+
+  
 
   root 'pages#home'
  

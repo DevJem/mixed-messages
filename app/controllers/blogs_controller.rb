@@ -47,9 +47,10 @@ class BlogsController < ApplicationController
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
 		@comment.blog_id = @blog.id
+		title = Blog.find(@comment.blog_id).title
 		if @comment.save
 			@blog.comments << @comment
-			#debugger
+			#mark_video :comment, @comment.user_id, title
 			redirect_to blog_path(@blog)
 		else
 			flash[:danger] = "#{@comment.errors.full_messages}"

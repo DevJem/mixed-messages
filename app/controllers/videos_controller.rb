@@ -30,10 +30,9 @@ class VideosController < ApplicationController
 		@video = video_params
 		@video.each do |k, v|
 			@comment.video_id = v
-			
 			@comment.user_id = current_user.id
 			if @comment.save
-
+				#mark_video :comment, @comment.user_id, @comment.video_id
 				redirect_to video_path(v)
 			else
 				flash[:danger] = "#{@comment.errors.full_messages}"

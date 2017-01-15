@@ -10,7 +10,12 @@
 			<ul class="nav nav-justified">
         <% if logged_in? %>
           <% if current_user.admin %>
-            <li><%= link_to "#{current_user.username} | Admin", user_path(current_user) %></li>
+            <li>
+            	<%= link_to "#{current_user.username} | Admin", user_path(current_user) %>
+            		<% if current_user.notifications.count > 0 %>
+            			<span class="badge"><%= current_user.notifications.count %></span>
+            		<% end %>
+            </li>
           <% else %>
             <li><%= link_to current_user.username, user_path(current_user) %></li>
           <% end %>

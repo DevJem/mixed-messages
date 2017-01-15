@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 	has_many :comments, dependent: :destroy
 	has_many :uploads, dependent: :destroy 
 	has_many :blogs
+	has_many :notifications
 	has_secure_password
 
 	before_save {self.email = email.downcase}
