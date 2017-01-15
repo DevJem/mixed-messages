@@ -38,6 +38,8 @@ Rails.application.routes.draw do
 
   get 'market' => 'market#index'
 
+  get 'review' => 'uploads#review'
+
   
 
   root 'pages#home'

@@ -1,9 +1,14 @@
 class UploadsController < ApplicationController
 	before_action :set_upload, only: [:show, :edit, :update, :save_upload, :destroy]
+	before_action :require_admin, only: [:review, :save_upload]
 
  
 	def index
 		@uploads = Upload.all
+	end
+
+	def review
+		@uploads = Upload.where(save_upload: false)
 	end
 
 	def show
@@ -72,6 +77,13 @@ class UploadsController < ApplicationController
 
 		def set_upload
 			@upload = Upload.find(params[:id])
+		end
+
+		def require_admin
+			if !logged_in? || !current_user.admin 
+				flash[:danger] = "Administrator access required for that action"
+				redirect_to root_path
+			end
 		end
 
 # submit_playlist_id = "PLDEgt5YKZjd7gLN4iUFnDm9xX6GGAWD0k"
