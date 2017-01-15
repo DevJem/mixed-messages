@@ -35,9 +35,8 @@ class UploadsController < ApplicationController
 		@comment.upload_id = @upload.id
 		if @comment.save
 			@upload.comments << @comment
-			title = Upload.find(@comment.upload_id).title
-			#mark_video :comment, @comment.user_id, title
-			redirect_to upload_path(@upload)
+			upload_title = Upload.find(@comment.upload_id).title
+			mark_video :comment, @comment.user_id, upload_title, "member", @upload.id
 		else
 			flash[:danger] = "Did not work. #{@comment.errors.full_messages}"
 			render :show
@@ -46,22 +45,20 @@ class UploadsController < ApplicationController
 
 	def save_upload
 		@upload.toggle!(:save_upload)
-		# if @upload.save_upload
-		# 	mark_video :success, @upload.user_id, @upload.title
-		# else
-		# 	mark_video :denied, @upload.user_id, @upload.title
-		# end
-			redirect_to uploads_path
+		if @upload.save_upload
+			mark_video :success, @upload.user_id, @upload.title, "admin"
+		else
+			mark_video :denied, @upload.user_id, @upload.title, "admin"
+		end
 	end
 
 
 	def destroy
-		#mark_video :denied, @upload.user_id
+		mark_video :denied, @upload.user_id, @upload.title, "admin"
 		@upload.remove_file!
 		@upload.save
 		@upload.destroy
 		flash[:info] = "The upload #{@upload.title} has been deleted."
-		redirect_to uploads_path
 	end
 
 	private

@@ -4,19 +4,29 @@ function submitform()
 	document.forms["note_form"].submit();
 }
 
+window.onload = submitform;
 </script>
 
 
 <div align="center">
-	<h1 class="fix-link"><%= link_to "Please wait while we redirect you\nor click here to continue.", "#" %></h1>
+	<h1 class="fix-link">
+		Please wait while we redirect you <br/>
+		<%= link_to "or click here to continue.", "#" %>
+	</h1>
 </div>
-<%= form_for :notification, html: {id: "note_form", role: "form"} do |f| %>
-	<%= f.hidden_field :user_id, value: @params["user_id"] %>
-	<%= f.hidden_field :notice, value: @params["notice"] %>
-	<%= f.hidden_field :id, value: @params["id"] %>
-	<%= f.hidden_field :notice_type, value: @params["notice_type"] %>
-	<%= f.hidden_field :source, value: @params["source"] %>
-	<%= f.submit %>
-<% end %>
-
-<a href="javascript: submitform()">s</a>
+<div align="center">
+	<% image_tag "loading.gif" %>
+</div>
+<div style="visibility: hidden;">
+	<%= form_for @notification, as: :notification, url: notify_path, html: {id: "note_form", role: "form"} do |f| %>
+		<%= f.hidden_field :user_id, value: @params["user_id"] %>
+		<%= f.hidden_field :notice, value: @params["notice"] %>
+		<%= f.hidden_field :id, value: @params["id"] %>
+		<%= f.hidden_field :notice_type, value: @params["notice_type"] %>
+		<%= f.hidden_field :source, value: @params["source"] %>
+		<%= f.hidden_field :source_location, value: @params["source_location"] %>
+		<%= f.hidden_field :source_id, value: @params["source_id"] %>
+		<%= f.submit %>
+	<% end %>
+</div>
+<!-- <iframe onload="submitform()"></iframe> -->

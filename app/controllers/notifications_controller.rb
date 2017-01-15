@@ -13,13 +13,17 @@ class NotificationsController < ApplicationController
 
 	def create
 		@notification = Notification.new(notice_params)
-		debugger
+
+		#debugger
 		if @notification.save
-			flash[:success] = "Notification successful"
-			
+			if @notification.source_location == "member"
+				redirect_to upload_path(Upload.find(@notification.source_id))
+			elsif @notification.source_location == "admin"
+				redirect_to uploads_path
+			end
 		else
-			flash[:danger] = "Notification failed"
-			
+			flash[:danger] = "Something went wrong, please try again later."
+			redirect_to root_path
 		end
 	end
 
@@ -28,11 +32,22 @@ class NotificationsController < ApplicationController
 		redirect_to user_path(current_user.id)
 	end
 
+	def delete_all
+		
+		kill = params[:id].split("/")
+		puts "kill = #{kill}"
+		kill.each do |x|
+			note = Notification.find(x)
+			note.destroy
+		end
+		redirect_to :back
+	end
+
 
 	private
 
 		def notice_params
-			params.permit(:id, :notice, :active, :notice_type, :user_id, :source)
+			params.require(:notification).permit(:id, :notice, :active, :notice_type, :user_id, :source, :source_location, :source_id)
 		end
 
 		def set_notice

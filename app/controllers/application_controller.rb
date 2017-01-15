@@ -31,21 +31,21 @@ class ApplicationController < ActionController::Base
     File.open("public/location", "w") { |io| io.puts new_location }
   end
 
-  # def mark_video(result, user, source = nil) # mark video success, denied, or comment
+  def mark_video(result, user, source, location = nil, id = nil) # mark video success, denied, or comment
 
-  #   if result == :success
-  #     notice = "Your video has been approved"
-  #     type = "success"
-  #   elsif result == :denied
-  #     notice = "Your upload has been deleted"
-  #     type = "danger"
-  #   elsif result == :comment
-  #     notice = "You have a new comment on your upload"
-  #     type = "info"
-  #   end
+    if result == :success
+      notice = "Your video \"#{source}\" has been approved"
+      type = "success"
+    elsif result == :denied
+      notice = "Your upload \"#{source}\" has been denied"
+      type = "danger"
+    elsif result == :comment
+      notice = "You have a new comment on your upload \"#{source}\""
+      type = "info"
+    end
 
-  #     notification = {user_id: user, notice: notice, notice_type: type, source: source}
-  #     redirect_to new_notification_path(notification)
-  # end
+      notification = {user_id: user, notice: notice, notice_type: type, source: source, source_location: location, source_id: id}
+      redirect_to new_notification_path(notification)
+  end
 
 end

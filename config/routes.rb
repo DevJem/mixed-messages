@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :blogs
   resources :uploads
-  resources :notifications
+  resources :notifications, except: [:create]
 
+  post 'notify(.:format)' => 'notifications#create', as: :notify
+  post 'delete-notifications/:id' => 'notifications#delete_all', as: :delete_notices
 
   get 'about'			=> 'pages#about'
   get 'how-to'		=> 'pages#how_to'

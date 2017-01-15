@@ -55,24 +55,37 @@
 		</div>
 	</div>
 
-
+<% @delete_notice = Array.new %>
 <!-- User Notifications -->
 	<div class="col-lg-3">
-		<% if !@user.notifications.empty? %>
+		<% if logged_in? && !@user.notifications.empty? && @user == current_user %>
+
+			<!-- Delete all button -->
+			<div align="center">
+				<% @user.notifications.each do |notice| %>
+					<% @delete_notice.push(notice) %>
+				<% end %>
+				<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info" %>
+			</div>
+
+			<!-- The list -->
 			<ul class="list-group">
 				<% @user.notifications.each do |notice| %>
-					<% if notice.active %>
-						<% if notice.notice_type == "success" %>
-							<li class="list-group-item list-group-item-success">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success" %>
-								<%= notice.notice %>
-							</li>
-						<% elsif notice.notice_type == "danger" %>
-							<li class="list-group-item list-group-item-danger">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger" %>
-								<%= notice.notice %>
-							</li>
-						<% end %>
+					<% if notice.notice_type == "success" %>
+						<li class="list-group-item list-group-item-success">
+							<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success" %>
+							<%= notice.notice %>
+						</li>
+					<% elsif notice.notice_type == "danger" %>
+						<li class="list-group-item list-group-item-danger">
+							<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger" %>
+							<%= notice.notice %>
+						</li>
+					<% elsif notice.notice_type == "info" %>
+						<li class="list-group-item list-group-item-info">
+							<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info" %>
+							<%= notice.notice %>
+						</li>
 					<% end %>
 				<% end %>
 			</ul>
