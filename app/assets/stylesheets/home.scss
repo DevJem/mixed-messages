@@ -1,11 +1,12 @@
 // *****BODY***** // 
 
 h1 {
-	padding-left: 30px;
+	//padding-left: 30px;
 	font-family: 'Passion One', cursive;
 	font-color: #333333;
 	letter-spacing: 5px;
 	text-transform: uppercase;
+	font-weight: bold;
 }
 
 #mainpic {
@@ -20,16 +21,15 @@ h1 {
 	padding: 35px;
 	p {
 		// font-family: 'Fjalla One', sans-serif;
-		font-family: 'PT Sans', sans-serif;
+		font-family: 'Hammersmith One', sans-serif;
 
-		text-transform: uppercase;
-		font-weight: bold;
+		//text-transform: uppercase;
 		width: 75%;
 		margin: auto;
 		padding-top: 10px;
-		font-size: 20px;
+		font-size: 22px;
 		text-align: justify;
-		letter-spacing: 1px;
+		//letter-spacing: 1px;
 	}
 }
 
@@ -88,7 +88,7 @@ h1 {
 // 	#top-link-bar {
 // 		float: left;
 // 		clear: both;
-// 		margin: 0 0 15px 83px;
+// 		margin: 0 0 83px;
 // 		}
 
 // 	h1 {

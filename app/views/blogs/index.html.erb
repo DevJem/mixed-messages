@@ -14,7 +14,7 @@
 				<%= link_to blog.title, blog_path(blog) %></h2>
 			</div>
 			<div class="blog-body">
-				<%= truncate(simple_format(blog.content), length: 850) %>
+				<%= truncate(simple_format(blog.content), length: 400) %>
 				<div class="blog-meta-details">
 					<h4>Created By: <%= blog.user.username if blog.user %>,
 						<%= time_ago_in_words(blog.created_at) %> ago,
