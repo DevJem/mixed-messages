@@ -1,15 +1,27 @@
-<h2 align="center"><%= @blog.title %></h2>
+<div align="center">
+	<% if logged_in? && current_user.admin %>
+		<%= link_to "Edit this Blog", edit_blog_path(@blog), class: "btn btn-md btn-warning" %>
+	<% end %>
+	<h1 class="blog-title"><%= @blog.title.upcase %></h1>
+</div>
 
-<div class="container">
 	<div class="row">
-		<div class="col-sm-8 col-sm-offset-1">
-			<%= simple_format(@blog.content) %>
+		<div class="col-sm-6 col-sm-offset-2 ">
+			<div class="blog-body good-background">
+				<%= simple_format(@blog.content) %>
+			</div>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-2 col-sm-offset-1">
 		<%= render 'layouts/ads' %>
 		</div>
+		<div class="col-lg-2 col-lg-offset-5">
+			<div align="center" style="margin-bottom: 20px;">
+				<%= link_to "Return to blogs", blogs_path, class: "btn btn-md btn-primary" %>
+			</div>
+		</div>
 	</div>
-	<div class="row">
-		<%= render 'layouts/comments', obj: @blog %>
+	<div class="container">
+		<div class="row">
+			<%= render 'layouts/comments', obj: @blog %>
+		</div>
 	</div>
-</div>

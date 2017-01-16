@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   resources :blogs
   resources :uploads
   resources :notifications, except: [:create]
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   post 'delete-notifications/:id' => 'notifications#delete_all', as: :delete_notices
 
   get 'about'			=> 'pages#about'
-  get 'how-to'		=> 'pages#how_to'
+  get 'faq'	    	=> 'pages#faq'
   get 'watch'			=> 'pages#watch'
   patch 'watch'   => 'pages#watch'
   get 'contact'		=> 'pages#contact'
@@ -39,9 +40,7 @@ Rails.application.routes.draw do
   get 'market' => 'market#index'
 
   get 'review' => 'uploads#review'
-
   
-
   root 'pages#home'
  
 end

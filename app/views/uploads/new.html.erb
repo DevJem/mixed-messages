@@ -1,75 +1,83 @@
 <%= render 'layouts/errors', obj: @upload %>  
-<div class="container">
+
+
+<div class="container good-background">
 	<div class="row" style="margin-bottom: 30px;">
+		<h1 align="center">Get involved!</h1>
+
+		<div class="col-md-6 faq">
+	“Against the assault of laughter, nothing can stand.  You are always fussing and fighting with your other weapons.  Do you ever use that one?  No; you leave it lying and rusting.  As a race, do you ever use it at all?  No; you lack the sense and the courage.”  - Mark Twain
+
+	Here’s your chance to do something good without having to do anything great!  If you are tired of seeing smart phone zombies half-heartedly manipulating the controls of their rolling death carriages, this is your chance to fight back.  The threat of death and damage may not convince people to wait until later to play on their phones, but we have noticed that catching them on camera does.
+
+	Helping is simple.  Drive wherever you normally would drive, and don’t change your routine.  Just make a conscious effort to keep an eye on the drivers around you in traffic.  If you notice someone endangering others because they are not paying attention to the road, try to catch them on camera.  
+
+<strong>**DO NOT attempt to drive your car and film the other person . . . </strong>you do not help the situation by becoming as much or more of a danger than the person you are trying to film**  Check out our video on safe filming techniques, and read our blog for ideas and instructions for how to get quality footage and create good submission material.
+
+	Once you have obtained a clip of a distracted driver, just submit it here on the website under the 
+“Submit” link, along with the zip code where it was filmed, and any jokes or comments you would make about the video.  We will review the submissions and post the clips to the website so that everyone they know can see them (and hopefully convince them to change their ways . . . ).
+
+	You can also put other drivers on notice to keep focused by ordering a Mixed-Messages bumper sticker.  The sticker is an inexpensive way to remind drivers near you in traffic that you are paying attention, and if they are not, they may receive the celebrity treatment!  That little extra incentive could be the difference that convinces someone to be responsible.
+
+	It is our hope that when enough people have joined in the movement, the number of cameras and bumper stickers on the road will convince drivers everywhere to pay attention to their surroundings, rather than worrying about whatever message or social media update they have coming in at the time.  So join in, help us, and have some fun with a car pool buddy.  You never know whose life you may save by shaming someone into waiting until they are parked to check their phone!
+		</div>
 		<div class="col-md-5">
-			<iframe width="500px" height="350"></iframe>	
+		<iframe width="500px" height="350"></iframe>
+			<div align="center">
+				<h4>Submit your content here!</h4>
+			</div>
+			<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+				<div class="form-group">
+					<div class="control-label col-sm-2">
+						
+							<%= f.label :title %>
+					</div>
+					<div class="col-sm-10">
+							<%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="control-label col-sm-2">
+						
+							<%= f.label :zipcode %>
+					</div>
+					<div class="col-sm-10">
+							<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode", value: current_user.zipcode %>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="control-label col-sm-2">
+						
+							<%= f.label :note %>
+					</div>
+					<div class="col-sm-10">
+							<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Tell us about this video"%>
+					</div>
+				</div>
+
+				
+				<div class="form-group">
+					<div class="control-label col-sm-2">
+						
+							<%= f.label :file %>
+					</div>
+					<div class="col-sm-2">
+							<%= f.file_field :file,  placeholder: "File" %>
+					</div>
+					<div id="loading">
+						<%= image_tag "loading.gif" %>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<%= f.submit class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "toggleLoadingIcon" %>
+					</div>
+				</div>
+			<% end %>
 		</div>
-		<div class="col-md-5 col-md-offset-2">
-		<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3>
 		</div>
-
-	</div>
-</div>
-
-
-<!-- Form -->
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
-		<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-			<div class="form-group">
-				<div class="control-label col-sm-2">
-					
-						<%= f.label :title %>
-				</div>
-				<div class="col-sm-8">
-						<%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="control-label col-sm-2">
-					
-						<%= f.label :zipcode %>
-				</div>
-				<div class="col-sm-8">
-						<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<div class="control-label col-sm-2">
-					
-						<%= f.label :note %>
-				</div>
-				<div class="col-sm-8">
-						<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Write a note about this video"%>
-				</div>
-			</div>
-
-			
-			<div class="form-group">
-				<div class="control-label col-sm-2">
-					
-						<%= f.label :file %>
-				</div>
-				<div class="col-sm-2">
-						<%= f.file_field :file,  placeholder: "File" %>
-				</div>
-				<div id="loading">
-					<%= image_tag "loading.gif" %>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<%= f.submit class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "toggleLoadingIcon" %>
-				</div>
-			</div>
-		<% end %>
 	</div>
 </div>
 

@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   def about
   end
 
-  def how_to
+  def faq
   end
 
   def watch

@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
+		@user_uploads = @user.uploads.order("id DESC").paginate(page: params[:page], per_page: 6)
 	end
 
 	def destroy

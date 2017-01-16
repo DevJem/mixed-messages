@@ -16,10 +16,12 @@ h1 {
 
 #right-side-list {
 	margin: auto;
-	margin-top: 60px;
-	padding-left: 35px;
+	margin-top: 30px;
+	padding: 35px;
 	p {
-		font-family: 'Fjalla One', sans-serif;
+		// font-family: 'Fjalla One', sans-serif;
+		font-family: 'PT Sans', sans-serif;
+
 		text-transform: uppercase;
 		font-weight: bold;
 		width: 75%;
@@ -28,7 +30,6 @@ h1 {
 		font-size: 20px;
 		text-align: justify;
 		letter-spacing: 1px;
-		background-color: rgba(180, 50, 50, .25);
 	}
 }
 

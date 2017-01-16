@@ -2,11 +2,11 @@
 	<div class="row">
 		<% @uploads.each do |upload| %>
 			<% if upload.save_upload || (logged_in? && current_user.admin) %>
-				<div class="col-lg-4 col-md-6">
-					<div align="center">
+				<div class="col-lg-4 col-md-6 style-upload-index">
+					<div align="center" class="single-upload">
 						<% user = "Submitted by: #{upload.user.username}" %>
 						<h4 class="fix-link"><%= link_to user, user_path(upload.user.id) %></h4><br/>
-						<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
+						<%= link_to (video_tag upload.file, height: "200px", preload: "metadata"), upload_path(upload) %> <br/>
 						<h3><%= upload.title %></h3><br/> 
 						<%= truncate(upload.note, length: 100) %><br/>
 						<%= time_ago_in_words(upload.created_at) %><br/>

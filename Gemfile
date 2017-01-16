@@ -35,6 +35,9 @@ gem 'google-api-client', '>0.7'
 gem 'shopify_api', '~> 4.3'
 gem 'file_validators'
 gem 'httparty'
+gem 'ckeditor'
+gem 'image_magick'
+gem 'mini_magick'
 
 
 # Use Unicorn as the app server

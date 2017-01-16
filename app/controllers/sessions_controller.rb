@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+	before_action :verify_login, only: [:new]
+
 	def new
 
 	end
@@ -22,5 +24,15 @@ class SessionsController < ApplicationController
 		flash[:success] = "You have logged out."
 		redirect_to :back
 	end
+
+	private
+
+		def verify_login
+			if logged_in?
+				flash[:success] = "You are already logged in."
+				redirect_to root_path
+			end
+			
+		end
 
 end

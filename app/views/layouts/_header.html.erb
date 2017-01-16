@@ -7,27 +7,17 @@
 		</div>
 		<%# render 'layouts/navigation' %>
 		<nav id="top-link-bar" class="navbar navbar-static-top">
-			<ul class="nav nav-justified">
+			<ul class="nav nav-justified good-background">
         <% if logged_in? %>
-          <% if current_user.admin %>
-            <li>
-            	<div>
-            		<%= link_to "#{current_user.username} | Admin", user_path(current_user) %>
-            		<% if current_user.notifications.count > 0 %>
-            			<span class="badge"><%= current_user.notifications.count %></span>
-            		<% end %>
-            	</div>
-            </li>
-          <% else %>
-            <li>
-            	<div>
-            		<%= link_to current_user.username, user_path(current_user) %>
-            		<% if current_user.notifications.count > 0 %>
-          				<span align="" class="badge"><%= current_user.notifications.count %></span>
-          			<% end %>
-          		</div>
-            </li>
-          <% end %>
+          <li>
+        		<a href="<%= user_path(current_user) %>">
+        			<%= current_user.username %>
+        		<%# link_to "#{current_user.username} | Admin", user_path(current_user) %>
+        		<% if current_user.notifications.count > 0 %>
+        			<span class="badge"><%= current_user.notifications.count %></span>
+        		<% end %>
+        		</a>
+          </li>
         <% end %>
 				<li><%= link_to "HOME", root_path %></li>
 

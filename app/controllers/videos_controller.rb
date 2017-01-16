@@ -1,4 +1,6 @@
 class VideosController < ApplicationController
+
+	before_action :require_user, only: [:premium]
  
 	def show
 		@video = video_params
@@ -47,6 +49,13 @@ class VideosController < ApplicationController
 
 		def comment_params
 			params.require(:comment).permit(:title, :comment, :user_id)
+		end
+
+		def require_user
+			if !logged_in?
+				flash[:danger] = "You must be logged in to do that."
+				redirect_to :back
+			end
 		end
 
 end

@@ -4,11 +4,12 @@ class UploadsController < ApplicationController
 	before_action :require_user, only: [:new]
  
 	def index
-		@uploads = Upload.all
+		#@uploads = Upload.where(save_upload: true).order("id DESC")
+		@uploads = Upload.paginate(page: params[:page], per_page: 12).where(save_upload: true).order("id DESC")
 	end
 
 	def review
-		@uploads = Upload.where(save_upload: false)
+		@uploads = Upload.paginate(page: params[:page], per_page: 12).where(save_upload: false).order("id ASC")
 	end
 
 	def show

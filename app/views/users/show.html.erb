@@ -99,33 +99,36 @@
 </div>
 
 <!-- User Uploads -->
-<div class="container">
-	<div class="row">
-		<div align="center">
-			<h3><strong>Uploads by <%= @user.username.upcase %>:</strong></h3>
-			
-			<% @user.uploads.order("id DESC").each do |upload| %>
-				<% if (logged_in? && (current_user.admin || current_user == @user)) || upload.save_upload %>
-					<div class="col-lg-4 col-md-6">
-						<div align="center">
-							<% if upload.save_upload %>
-								<div class="greentext">
-									This video is available.
+	<div class="container good-background">
+		<div class="row">
+			<div align="center">
+				<div class="col-sm-12">
+					<h3><strong>Uploads by <%= @user.username.upcase %>:</strong></h3>
+					 
+					<% @user_uploads.each do |upload| %>
+						<% if (logged_in? && (current_user.admin || current_user == @user)) || upload.save_upload %>
+							<div class="col-lg-4 col-md-6 style-upload-index">
+								<div align="center" class="single-upload">
+									<% if upload.save_upload %>
+										<div class="greentext">
+											This video is available.
+										</div>
+									<% else %>
+										<div class="redtext">
+											This video has not yet been approved.
+										</div>
+									<% end %>
+									<br/>
+									<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
+									<h4><%= upload.title.upcase %></h4><br/> 
+									<%= truncate(upload.note, length: 100) %><br/>
+									<%= time_ago_in_words(upload.created_at) %><br/>
 								</div>
-							<% else %>
-								<div class="redtext">
-									This video has not yet been approved.
-								</div>
-							<% end %>
-							<br/>
-							<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
-							<%= upload.title %><br/> 
-							<%= truncate(upload.note, length: 100) %><br/>
-							<%= time_ago_in_words(upload.created_at) %><br/>
-						</div>
-					</div>
-				<% end %>
-			<% end %>
-		</div> 
+							</div>
+						<% end %>
+					<% end %>
+				</div>
+				<%= will_paginate @user_uploads %>
+			</div> 
+		</div>
 	</div>
-</div>
