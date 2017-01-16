@@ -11,13 +11,22 @@
         <% if logged_in? %>
           <% if current_user.admin %>
             <li>
-            	<%= link_to "#{current_user.username} | Admin", user_path(current_user) %>
+            	<div>
+            		<%= link_to "#{current_user.username} | Admin", user_path(current_user) %>
             		<% if current_user.notifications.count > 0 %>
             			<span class="badge"><%= current_user.notifications.count %></span>
             		<% end %>
+            	</div>
             </li>
           <% else %>
-            <li><%= link_to current_user.username, user_path(current_user) %></li>
+            <li>
+            	<div>
+            		<%= link_to current_user.username, user_path(current_user) %>
+            		<% if current_user.notifications.count > 0 %>
+          				<span align="" class="badge"><%= current_user.notifications.count %></span>
+          			<% end %>
+          		</div>
+            </li>
           <% end %>
         <% end %>
 				<li><%= link_to "HOME", root_path %></li>
@@ -37,7 +46,7 @@
 				<% if !logged_in? %>
 					<li><%= link_to "Log In", login_path %></li>
 				<% else %>
-					<li><%= link_to "Submit", submit_path %></li>
+					<li><%= link_to "Get Involved", submit_path %></li>
 					<li><%= link_to "Log Out", logout_path, method: :delete %></li>
 				<% end %>
 				<li><%= link_to "Get Gear", "#" %></li>

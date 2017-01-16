@@ -16,7 +16,6 @@
 						<%= link_to "Save File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
 				</div>
 			<% else %>
-
 				<div align="right">
 						<%= link_to "Remove File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
 				</div>
@@ -44,10 +43,11 @@
 		<span class="glyphicon glyphicon-flag"></span>
 	</div>
 </div> -->
-<div class="row">
-	<div align="center">
-		<h1>Comments</h1>
-		<%= render 'layouts/comments', obj: @upload %>
+<% if @upload.save_upload %>
+	<div class="row">
+		<div align="center">
+			<h1>Comments</h1>
+			<%= render 'layouts/comments', obj: @upload %>
+		</div>
 	</div>
-</div>
- 
+<% end %>

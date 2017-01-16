@@ -1,5 +1,5 @@
 <% @video.each do |k, v| %>
-<% src = "https://www.youtube.com/embed/#{v}" %>
+<% src = "https://www.youtube.com/embed/#{v}?rel=0" %>
 <div align="center">
 	<iframe width="1280" height="720" src=<%= src %> frameborder="0" allowfullscreen></iframe>
 	<% "Source is: #{src}" %>

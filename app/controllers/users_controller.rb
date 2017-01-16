@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 		@user = User.new(user_params)
 
 		if @user.save
-			flash[:success] = "Welcome to the Mixed-Messages, #{@user.username}, zipcode: #{@user.zipcode}"
+			flash[:success] = "Welcome to the Mixed-Messages, #{@user.username}!"
 			session[:user_id] = @user.id
 			redirect_to user_path(@user)
 		else

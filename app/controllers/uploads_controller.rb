@@ -1,7 +1,7 @@
 class UploadsController < ApplicationController
 	before_action :set_upload, only: [:show, :edit, :update, :save_upload, :destroy]
 	before_action :require_admin, only: [:review, :save_upload]
-
+	before_action :require_user, only: [:new]
  
 	def index
 		@uploads = Upload.all
@@ -82,6 +82,12 @@ class UploadsController < ApplicationController
 		def require_admin
 			if !logged_in? || !current_user.admin 
 				flash[:danger] = "Administrator access required for that action"
+				redirect_to root_path
+			end
+		end
+
+		def require_user
+			if !logged_in?
 				redirect_to root_path
 			end
 		end

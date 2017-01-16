@@ -23,11 +23,11 @@ class ApplicationController < ActionController::Base
   def get_location
     last_known = String
     File.open("public/location", "r") { |io| last_known = io.gets  }
-    @@location ||= "https://www.youtube.com/embed/#{last_known}"
+    @@location ||= "https://www.youtube.com/embed/#{last_known}?rel=0"
   end
 
   def set_location(new_location)
-    @@location = "https://www.youtube.com/embed/#{new_location}"
+    @@location = "https://www.youtube.com/embed/#{new_location}?rel=0"
     File.open("public/location", "w") { |io| io.puts new_location }
   end
 
