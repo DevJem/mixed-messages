@@ -1,1 +1,9 @@
+<% if @uploads.empty? %>
+	<div class="col-sm-8 col-sm-offset-2">
+		<div align="center">
+			<h1>THERE IS NOTHING TO REVIEW</h1>
+		</div>
+	</div>
+<% end %>
+<!-- Review Que -->
 <%= render 'submission_list', obj: @uploads %>
