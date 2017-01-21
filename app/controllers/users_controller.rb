@@ -4,31 +4,44 @@ class UsersController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 	before_action :require_admin, only: [:destroy, :ban, :make_admin, :index]
 
+	# def index
+	# 	@users = User.paginate(page: params[:page], per_page: 10)
+	# 	@results = User.where(username: ["username LIKE ?", "%#{search}"])
+	# end
+
 	def index
-		@users = User.paginate(page: params[:page], per_page: 10)
+		@users = User.search(params[:search])
 	end
 
 	def new
-		@user = User.new
+		if !logged_in?
+			@user = User.new
+		else
+			flash[:success] = "You are already logged in."
+			redirect_to root_path
+		end
 	end
 
 	def create
 		@user = User.new(user_params)
 
-		if @user.save
-			flash[:success] = "Welcome to the Mixed-Messages, #{@user.username}!"
-			session[:user_id] = @user.id
-			redirect_to user_path(@user)
-		else
-			render 'new'
-		end
+		# Add Recaptcha to signup
+		# respond_to do |format|
+
+			if verify_recaptcha(model: @user) && @user.save
+				flash[:success] = "Welcome to Mixed-Messages, #{@user.username}!"
+				session[:user_id] = @user.id
+				redirect_to user_path(@user)
+			else
+				render 'new'
+			end
 	end
  
 	def edit
 	end 
 
 	def update
-		if @user.update(user_params)
+		if verify_recaptcha(model: @user) && @user.update(user_params)
 			flash[:success] = "Your account was successfully updated."
 			redirect_to user_path(@user)
 		else
@@ -84,4 +97,6 @@ class UsersController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+
 end

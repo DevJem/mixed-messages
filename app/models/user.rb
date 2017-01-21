@@ -19,4 +19,13 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password
 
 	validates :bio, length: { maximum: 3000}
+
+	def self.search(search)
+	  if search
+	    where(['username LIKE ?', "%#{search}%"])
+	  else
+	    all
+	  end
+	end
+
 end

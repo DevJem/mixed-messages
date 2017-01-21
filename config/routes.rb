@@ -26,6 +26,8 @@ Rails.application.routes.draw do
   patch '/users/:id/ban(.:format)' => 'users#ban', as: :ban
   patch '/users/:id/make-admin(.:format)' => 'users#make_admin', as: :make_admin
 
+  get 'terms'     => 'uploads#terms'
+  get 'privacy'   => 'uploads#privacy_policy'
   post 'uploads/:id' => 'uploads#update'
   resources :comments
 

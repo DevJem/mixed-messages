@@ -1,4 +1,4 @@
-<%= render 'layouts/errors', obj: @upload %>  
+<%= render 'layouts/errors', obj: @upload %>   
 
 
 <div class="row" style="margin-bottom: 30px;">
@@ -10,12 +10,11 @@
 
 	Here’s your chance to do something good without having to do anything great!  If you are tired of seeing smart phone zombies half-heartedly manipulating the controls of their rolling death carriages, this is your chance to fight back.  The threat of death and damage may not convince people to wait until later to play on their phones, but we have noticed that catching them on camera does.<br/><br/>
 
-	Helping is simple.  Drive wherever you normally would drive, and don’t change your routine.  Just make a conscious effort to keep an eye on the drivers around you in traffic.  If you notice someone endangering others because they are not paying attention to the road, try to catch them on camera.  <br/><br/>
+	Helping is simple.  Drive wherever you normally would drive, and don’t change your routine.  Just make a conscious effort to keep an eye on the drivers around you in traffic.  If you notice someone endangering others because they are not paying attention to the You can't get cancer if you die of cyanide poisoning.road, try to catch them on camera.  <br/><br/>
 
 <strong>**DO NOT attempt to drive your car and film the other person . . . </strong>you do not help the situation by becoming as much or more of a danger than the person you are trying to film**  Check out our video on safe filming techniques, and read our blog for ideas and instructions for how to get quality footage and create good submission material.<br/><br/>
 
-	Once you have obtained a clip of a distracted driver, just submit it here on the website under the 
-“Submit” link, along with the zip code where it was filmed, and any jokes or comments you would make about the video.  We will review the submissions and post the clips to the website so that everyone they know can see them (and hopefully convince them to change their ways . . . ).<br/><br/>
+	Once you have obtained a clip of a distracted driver, just submit it here on the website along with the zip code where it was filmed, and any jokes or comments you would make about the video.  We will review the submissions and post the clips to the website so that everyone they know can see them (and hopefully convince them to change their ways . . . ).<br/><br/>
 
 	You can also put other drivers on notice to keep focused by ordering a Mixed-Messages bumper sticker.  The sticker is an inexpensive way to remind drivers near you in traffic that you are paying attention, and if they are not, they may receive the celebrity treatment!  That little extra incentive could be the difference that convinces someone to be responsible.<br/><br/>
 
@@ -24,56 +23,69 @@
 		<div class="col-md-5">
 			<iframe id="get-involved-video" width="560px" height="350"></iframe>
 			<br/><br/><br/>
-			<div align="center">
-				<h4>Submit your content here!</h4>
-			</div>
-			<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-				<div class="form-group">
-					<div class="control-label col-sm-2">
-						
-							<%= f.label :title %>
-					</div>
-					<div class="col-sm-10">
-							<%= f.text_field :title, class: "form-control", placeholder: "Title", autofocus: true %>
+			<% if logged_in? %>
+				<div class="col-lg-10 col-lg-offset-2">
+					<div align="center">
+						<h4>Submit your content here!</h4>
 					</div>
 				</div>
+				<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							
+								<%= f.label :title %>
+						</div>
+						<div class="col-sm-10">
+								<%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+						</div>
+					</div>
 
-				<div class="form-group">
-					<div class="control-label col-sm-2">
-						
-							<%= f.label :zipcode %>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							
+								<%= f.label :zipcode %>
+						</div>
+						<div class="col-sm-10">
+								<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode", value: current_user.zipcode %>
+						</div>
 					</div>
-					<div class="col-sm-10">
-							<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode", value: current_user.zipcode %>
+					
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							
+								<%= f.label :note %>
+						</div>
+						<div class="col-sm-10">
+								<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Tell us about this video"%>
+						</div>
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="control-label col-sm-2">
-						
-							<%= f.label :note %>
-					</div>
-					<div class="col-sm-10">
-							<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Tell us about this video"%>
-					</div>
-				</div>
 
-				
-				<div class="form-group">
-					<div class="control-label col-sm-2">
-						
-							<%= f.label :file %>
+					
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							
+								<%= f.label :file %>
+						</div>
+						<div class="col-sm-2">
+								<%= f.file_field :file,  placeholder: "File" %>
+						</div>
+						<div id="loading" class="col-sm-3">
+							<%= image_tag "loading.gif" %>
+						</div>
+						<div class="col-sm-5">
+							<%= f.check_box :terms_and_conditions, {id: "terms", checked: "false", onclick: "document.getElementById('submit_upload').disabled = false" }%> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
+						</div>
 					</div>
-					<div class="col-sm-2">
-							<%= f.file_field :file,  placeholder: "File" %>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<%= f.submit class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "toggleLoadingIcon", disabled: true %>
+						</div>
 					</div>
-					<div id="loading">
-						<%= image_tag "loading.gif" %>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<%= f.submit class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "toggleLoadingIcon" %>
+				<% end %>
+			<% else %>
+				<div class="col-lg-10 col-lg-offset-2">
+					<div align="center">
+						<h4 class="fix-link"><%= link_to "Log in to submit your own!", login_path %></h4>
 					</div>
 				</div>
 			<% end %>
@@ -81,4 +93,3 @@
 		</div>
 	</div>
 </div>
-

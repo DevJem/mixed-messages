@@ -1,7 +1,7 @@
 class UploadsController < ApplicationController
 	before_action :set_upload, only: [:show, :edit, :update, :save_upload, :destroy]
 	before_action :require_admin, only: [:review, :save_upload]
-	before_action :require_user, only: [:new]
+	#before_action :require_user, only: [:new]
  
 	def index
 		#@uploads = Upload.where(save_upload: true).order("id DESC")

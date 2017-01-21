@@ -39,6 +39,10 @@ gem 'ckeditor'
 gem 'image_magick'
 gem 'mini_magick'
 
+#for recaptcha
+gem 'dotenv-rails', require: 'dotenv/rails-now'
+gem 'recaptcha', require: 'recaptcha/rails'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

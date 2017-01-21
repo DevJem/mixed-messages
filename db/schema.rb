@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116035048) do
+ActiveRecord::Schema.define(version: 20170116140149) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "user_id"
@@ -79,10 +79,11 @@ ActiveRecord::Schema.define(version: 20170116035048) do
     t.integer  "zipcode"
     t.string   "title"
     t.text     "note"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "file"
-    t.boolean  "save_upload", default: false
+    t.boolean  "save_upload",          default: false
+    t.integer  "terms_and_conditions", default: 0
   end
 
   add_index "uploads", ["user_id", "title"], name: "index_uploads_on_user_id_and_title", unique: true

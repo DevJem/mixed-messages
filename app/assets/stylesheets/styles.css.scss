@@ -36,6 +36,7 @@ body {
 	border: 0;
 	padding: 0;
 	margin: 0;
+
 	background: image-url("logo.png") center no-repeat fixed;
 }
 
@@ -75,15 +76,18 @@ body {
 		//border-left: 1px solid black;
 		//border-right: 1px solid black;
 		border-radius: 7px;
-		padding: 1px;
+		padding: 0;
+		border: 0;
 		&:visited, &:link {
 			text-decoration: none;
 			color: #222;
 		}
 		&:hover {
-			background: #992222;
+			//background: #920202;
+			border: 0px solid #920202;
 			text-decoration: none;
-			color: #cccccc;
+			color: #920202;
+			box-shadow: -2px 2px 10px #920202;
 		}
 	}
 }
@@ -103,6 +107,7 @@ body {
 .footer {
 	width: 100%;
 	margin-top: 20px;
+	margin-bottom: 50px;
 	letter-spacing: 5px;
 	text-transform: uppercase;
 	color: #ccc;
@@ -136,9 +141,15 @@ body {
 }
 
 .good-background {
-	background-color: rgba(200, 200, 200, .4);
+	background-color: rgba(75, 2, 2, .1);
 	border-radius: 15px;
-	border: 2px solid rgba(200, 20, 20, .4);
+	border: 2px solid rgba(142, 2, 2, .4);
+
+	box-shadow: -2px 2px 10px #920202;
+}
+
+.underline {
+	text-decoration: underline;
 }
 
 
