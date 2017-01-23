@@ -4,6 +4,6 @@ class ContactUs < ApplicationMailer
 
 	def contact(user)
 		@user = user
-		mail (to: "jdehay@yahoo.com", title: :title, subject: :content)
+		#mail (to: "jdehay@yahoo.com", title: :title, subject: :content)
 	end
 end
