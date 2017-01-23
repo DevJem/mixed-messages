@@ -4,7 +4,7 @@
 	<% end %>
 	<h1 class="blog-title"><%= @blog.title.upcase %></h1>
 </div>
-
+<div class="blog-fix">
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-2 ">
 			<div class="blog-body good-background">
@@ -25,3 +25,4 @@
 			<%= render 'layouts/comments', obj: @blog %>
 		</div>
 	</div>
+</div>

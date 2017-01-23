@@ -35,7 +35,6 @@ class NotificationsController < ApplicationController
 	def delete_all
 		
 		kill = params[:id].split("/")
-		puts "kill = #{kill}"
 		kill.each do |x|
 			note = Notification.find(x)
 			note.destroy

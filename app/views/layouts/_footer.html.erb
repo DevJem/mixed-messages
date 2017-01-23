@@ -1,6 +1,17 @@
-<footer id="foot" class="footer">
-	<div class="container">
-		<div class="col-md-3 col-md-offset-9" align="right">
+<div id="foot" class="blog-fix">
+	<div class="row">
+		<div align="right">
+			<div class="col-md-1 col-md-offset-1 move-top">
+				<%= link_to image_tag("facebook.png", width: "50px", class: "good-background"), "http://facebook.com" %>
+			</div>
+			<div class="col-md-1 move-top">
+				<%= link_to image_tag("twitter.png", width: "50px", class: "good-background"), "http://twitter.com" %>
+			</div>
+			<div class="col-md-1 move-top">
+				<%= link_to image_tag("youtube.png", width: "50px", class: "good-background"), "http://youtube.com" %>
+			</div>
+		</div>
+		<div class="col-md-3 col-md-offset-4" align="right">
 			<nav>
 				<ul>
 					<li><%= link_to "ABOUT US", about_path %></li>
@@ -10,4 +21,4 @@
 			</nav>
 		</div>
 	</div>
-</footer>
+</div>

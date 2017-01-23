@@ -1,53 +1,56 @@
 
 <%= render 'layouts/errors', obj: @upload %>
-
-<div class="row">
-	<div class="col-xs-12">
-		<div align="center">
-			<h1 class="fix-link"><%= link_to @upload.user.username, user_path(@upload.user) %></h1><br/>
-			<%= video_tag @upload.file, height: "400px", controls: true, autobuffer: true %> <br/>
+<div class="blog-fix">
+	<div class="row">
+		<div class="col-xs-12">
+			<div align="center">
+				<h1 class="fix-link"><%= link_to @upload.user.username, user_path(@upload.user) %></h1><br/>
+				<%= video_tag @upload.file, height: "400px", controls: true, autobuffer: true %> <br/>
+			</div>
 		</div>
-	</div>
-	<div class="col-md-4">
+		<div class="col-md-4">
 
-		<% if logged_in? && current_user.admin %>
-			<% if !@upload.save_upload %>
-				<div align="right">
-						<%= link_to "Save File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
-				</div>
-			<% else %>
-				<div align="right">
-						<%= link_to "Remove File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
+			<% if logged_in? && current_user.admin %>
+				<% if !@upload.save_upload %>
+					<div align="right">
+							<%= link_to "Save File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
+					</div>
+				<% else %>
+					<div align="right">
+							<%= link_to "Remove File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
+					</div>
+				<% end %>
+			<% end %>
+
+		</div>
+		<div class="col-md-4">
+			<div align="center">
+				<h4><strong><%= @upload.title %></strong></h4><br/>
+				<%= @upload.note %><br/>
+				<%= time_ago_in_words(@upload.created_at).capitalize %> ago.<br/>
+			</div>	
+		</div>
+		<div class="col-md-4">
+			<% if logged_in? && current_user.admin %>
+				<div align="left">
+						<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg" %>
 				</div>
 			<% end %>
-		<% end %>
-
-	</div>
-	<div class="col-md-4">
-		<div align="center">
-			<h4><strong><%= @upload.title %></strong></h4><br/>
-			<%= @upload.note %><br/>
-			<%= time_ago_in_words(@upload.created_at).capitalize %> ago.<br/>
-		</div>	
-	</div>
-	<div class="col-md-4">
-		<% if logged_in? && current_user.admin %>
-			<div align="left">
-					<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg" %>
-			</div>
-		<% end %>
-	</div>
-</div>
-<!-- <div class="col-sm-1 col-sm-offset-7">
-	<div align="right">
-		<span class="glyphicon glyphicon-flag"></span>
-	</div>
-</div> -->
-<% if @upload.save_upload %>
-	<div class="row">
-		<div align="center">
-			<h1>Comments</h1>
-			<%= render 'layouts/comments', obj: @upload %>
 		</div>
 	</div>
-<% end %>
+	<!-- <div class="col-sm-1 col-sm-offset-7">
+		<div align="right">
+			<span class="glyphicon glyphicon-flag"></span>
+		</div>
+	</div> -->
+	<% if @upload.save_upload %>
+		<div class="container">
+			<div class="row">
+				<div align="center">
+					<h1>Comments</h1>
+					<%= render 'layouts/comments', obj: @upload %>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

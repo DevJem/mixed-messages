@@ -1,6 +1,6 @@
 
 <!-- Premium video at top -->
-<div class="container good-background">
+<div class="container good-background"> 
 		<div class="row">
 			<div align="center">
 				<h1>New Episode</h1>
@@ -54,9 +54,9 @@
 										<% if kk == "videoId" %>
 											<% @id = vv %>
 											<div class="col-lg-4 col-md-6">
-												<div id="thumbs" align="center" class="good-background">
+												<div id="thumbs" align="center">
 													<% source = "http://img.youtube.com/vi/#{@id}/1.jpg" %>
-													<%= link_to image_tag(source, alt: @title, width: "275px"), video_path(@id) %>
+													<%= link_to image_tag(source, alt: @title, width: "275px", class: "good-background"), video_path(@id) %>
 												</div>
 												<div id="title" align="center">
 													<%= @title.upcase %>

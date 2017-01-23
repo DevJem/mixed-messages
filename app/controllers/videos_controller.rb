@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
 
 	before_action :require_user, only: [:premium]
+	before_action :require_admin, only: [:new]
  
 	def show
 		@video = video_params
@@ -55,6 +56,13 @@ class VideosController < ApplicationController
 			if !logged_in?
 				flash[:danger] = "You must be logged in to do that."
 				redirect_to :back
+			end
+		end
+
+		def require_admin
+			if !logged_in? or !current_user.admin
+				flash[:danger] = "You need administrator access to do that."
+				redirect_to root_path
 			end
 		end
 

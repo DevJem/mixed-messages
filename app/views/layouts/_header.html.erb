@@ -1,13 +1,13 @@
 
 
 <header id="head" >
-	<div class="container">
-		<div id="mm" class="row text-center">
-			<%= link_to image_tag("title-adjusted-again.jpg", alt: "Mixed Messages Logo", class: "img-repsonsive"), root_path %>
+	<div class="row">
+		<div id="mm" class="col-md-4 col-md-offset-1" align="center">
+			<%= link_to image_tag("mainpic-3.png", alt: "Mixed Messages Logo"), root_path %>
 		</div>
 		<%# render 'layouts/navigation' %>
-		<nav id="top-link-bar" class="navbar navbar-static-top">
-			<ul class="nav nav-justified good-background">
+		<nav id="top-link-bar" class="navbar col-md-7">
+			<ul class="nav nav-justified">
         <% if logged_in? %>
           <li>
         		<a href="<%= user_path(current_user) %>">
@@ -19,33 +19,37 @@
         		</a>
           </li>
         <% end %>
-				<li><%= link_to "HOME", root_path %></li>
 
 				<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Watch Now<span class="caret"></span></a>
           <ul class="dropdown-menu">
           	<% if logged_in? %>
           		<li><%= link_to "Premium Content", premium_path %></li>
+          		<li role="separator" class="divider"></li>
           	<% end %>
 	          <li><%= link_to "Our Episodes", watch_path %></li>
+          	<li role="separator" class="divider"></li>
             <li><%= link_to "User Submissions", uploads_path %></li>
           </ul>
         </li>
-				<li><%= link_to "Get Involved", submit_path %></li>
 
 			 	<li><%= link_to "Blogs", blogs_path %> </li>
-				<% if !logged_in? %>
-					<li><%= link_to "Log In", login_path %></li>
-				<% else %>
-					<li><%= link_to "Log Out", logout_path, method: :delete %></li>
-				<% end %>
+				<li><%= link_to "Get Involved", submit_path %></li>
+
 				<li><%= link_to "Get Gear", "#" %></li>
+				<% if !logged_in? %>
+					<li class="br"><%= link_to "Log In", login_path %></li>
+				<% else %>
+					<li class="br"><%= link_to "Log Out", logout_path, method: :delete %></li>
+				<% end %>
 				<% if logged_in? && current_user.admin %>
 					<li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Admin Tools<span class="caret"></span></a>
 	          <ul class="dropdown-menu">
 	            <li><%= link_to "All Users", users_path %></li>
+          		<li role="separator" class="divider"></li>
 	            <li><%= link_to "Set Premium Video", new_video_path %></li>
+          		<li role="separator" class="divider"></li>
 	            <li><%= link_to "Review List", review_path %></li>
 	          </ul>
 	        </li>

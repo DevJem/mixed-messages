@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  # Get and set the url for the premium video
   def get_location
     last_known = String
     File.open("public/location", "r") { |io| last_known = io.gets  }
@@ -31,10 +32,12 @@ class ApplicationController < ActionController::Base
     File.open("public/location", "w") { |io| io.puts new_location }
   end
 
-  def mark_video(result, user, source, location = nil, id = nil) # mark video success, denied, or comment
+
+  # Set up notifications mark video success, denied, or comment
+  def mark_video(result, user, source, location = nil, id = nil) # 
 
     if result == :success
-      notice = "Your video \"#{source}\" has been approved"
+      notice = "Your video \"#{source}\" has been approved."
       type = "success"
     elsif result == :denied
       notice = "Your upload \"#{source}\" has been denied"

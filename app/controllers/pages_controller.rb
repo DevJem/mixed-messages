@@ -10,10 +10,12 @@ class PagesController < ApplicationController
   def faq
   end
 
-  def watch
+  def watch    #   PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An
     playlist_id = "PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An"
-    # playlist_id = "playlistId=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU"
-    json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=#{playlist_id}&part=snippet&&maxResults=9&key=#{ENV['API_KEY']}"
+    key = ENV["API_KEY"]
+    # playlist_id = "PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU"
+    # json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=#{playlist_id}&part=snippet&maxResults=9&key=#{key}"
+    json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An&part=snippet&maxResults=9&key=AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
 
     @PageToken = params
     @PageToken.each do |k, v|
@@ -25,6 +27,7 @@ class PagesController < ApplicationController
     end
 
     if @PageToken.nil?
+      
       if @videos = JSON.load(open(json_url))
       else redirect_to root_path
       end

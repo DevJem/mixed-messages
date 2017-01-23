@@ -1,11 +1,15 @@
-<div class="col-lg-10 col-lg-offset-1 good-background">
+<div class="blog-fix">
+	<div class="row">	
+		<div class="col-lg-8 col-lg-offset-2 good-background">
 
-	<div align="center">
-		<h1>User Contributions</h1><br/>
-		<%= will_paginate %>
+			<div align="center">
+				<h1>User Contributions</h1><br/>
+				<%= will_paginate %>
+			</div>
+			<%= render 'submission_list', obj: @uploads %>
+			<div align="center">
+				<%= will_paginate %>
+			</div>
+		</div> 
 	</div>
-	<%= render 'submission_list', obj: @uploads %>
-	<div align="center">
-		<%= will_paginate %>
-	</div>
-</div> 
+</div>

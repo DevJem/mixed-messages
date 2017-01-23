@@ -68,7 +68,7 @@
 					<%= recaptcha_tags %>
 				</div>
 				<% if !logged_in? %>
-					<div class="col-sm-6">
+					<div class="col-sm-5 tos">
 						<%= f.check_box :terms_and_conditions, {checked: "false", onclick: "document.getElementById('terms').disabled = false" }%> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
 					</div>
 				<% end %>
