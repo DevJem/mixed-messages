@@ -37,7 +37,7 @@ class BlogsController < ApplicationController
 	def update
 		if @blog.update(blog_params)
 			flash[:success] = "The blog #{@blog.title} was successfully updated."
-			redirect_to blogs_path
+			redirect_to blog_path(@blog)
 		else
 			render :edit
 		end

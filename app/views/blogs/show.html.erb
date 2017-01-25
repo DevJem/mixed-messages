@@ -8,7 +8,12 @@
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-2 ">
 			<div class="blog-body good-background">
-				<%= simple_format(@blog.content) %>
+				<h3><%= @blog.user.username %></h3>
+				<h5>Created: <%= @blog.created_at.localtime.strftime("%B %d, %Y") %></h5>
+				<div class="comment-hr"></div>
+				<div class="blog-content">
+					<%= simple_format(@blog.content) %>
+				</div>
 			</div>
 		</div>
 		<div class="col-sm-2 col-sm-offset-1">

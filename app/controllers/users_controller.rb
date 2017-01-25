@@ -17,8 +17,8 @@ class UsersController < ApplicationController
 		if !logged_in?
 			@user = User.new
 		else
-			flash[:success] = "You are already logged in."
-			redirect_to root_path
+			
+			redirect_to root_path, flash[:success] = "You are already logged in."
 		end
 	end
 

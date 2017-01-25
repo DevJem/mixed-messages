@@ -1,25 +1,30 @@
-<div align="center">
-	<%= will_paginate %>
+<div class="container">
+	<div align="center">
+		<h1>Blogs</h1>
+	</div>
 </div>
+
+<!-- <div align="center">
+	<%# will_paginate %>
+</div> -->
 <% if logged_in? && current_user.admin %>
-	<div align="center" style="margin-bottom: 25px;">
-  	<%= link_to "Create Blog Post", new_blog_path, class: "btn btn-md btn-info" %>
-  </div>
+<!-- 	<div align="center" style="margin-bottom: 25px;">
+  	<%# link_to "Create Blog Post", new_blog_path, class: "btn btn-md btn-info" %>
+  </div> -->
 <% end %>
 <div class="blog-fix">
 	<div class="row">
 		<div class="col-md-5 col-md-offset-2 good-background">
 			<% @blogs.each do |blog| %>
-				<div class="blog-title"><h2>
-					<%= link_to blog.title, blog_path(blog) %></h2>
+				<div class="fix-link blog-title"><h3>
+					<%= link_to blog.title, blog_path(blog) %></h3>
 				</div>
 				<div class="blog-body">
-					<%= truncate(simple_format(blog.content), length: 400) %>
+					<h4><%= truncate(simple_format(blog.content), length: 250) %></h4>
 					<div class="blog-meta-details">
-						<h4>Created By: <%= blog.user.username if blog.user %>,
-							<%= time_ago_in_words(blog.created_at) %> ago,
-							Last updated: <%= time_ago_in_words(blog.updated_at) %> ago.
-						</h4>
+						<h5>Created By: <%= blog.user.username if blog.user %>,
+							<%= time_ago_in_words(blog.created_at) %> ago 
+						</h5>
 					</div>
 				</div>
 

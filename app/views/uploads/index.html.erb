@@ -1,15 +1,15 @@
-<div class="blog-fix">
-	<div class="row">	
-		<div class="col-lg-8 col-lg-offset-2 good-background">
+<div class="container">
+	<div class="row good-background">
+		<div align="center">
+			<h1>User Submissions</h1><br/>
+			<iframe width="800" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=united%20states&q=37190&key=AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc" allowfullscreen></iframe>
 
-			<div align="center">
-				<h1>User Contributions</h1><br/>
-				<%= will_paginate %>
-			</div>
-			<%= render 'submission_list', obj: @uploads %>
-			<div align="center">
-				<%= will_paginate %>
-			</div>
-		</div> 
+
+			<%= will_paginate %>
+		</div>
+		<%= render 'submission_list', obj: @uploads %>
+		<div align="center">
+			<%= will_paginate %>
+		</div>
 	</div>
 </div>

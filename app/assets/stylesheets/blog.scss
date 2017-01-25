@@ -3,28 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .blog-title {
-	margin-left: 25px;
-	a {
-		text-decoration: none;
-		text-transform: uppercase;
-		color: #222;
-		&:visited, &:link {
-			text-decoration: none;
-		}
-		&:hover {
-			text-decoration: none;
-			color: #920202;
-		}
-	}
+	margin-right: 25px;
+	margin-bottom: 20px;
 }
 
 .blog-body {
-	padding: 25px;
+	padding: 10px 25px 10px 40px;
 	font-size: 23px;
 	// font-spacing: 2px;
 	// font-weight: bold;
 	font-family: 'Doppio One', sans-serif;
 	margin-bottom: 20px;
+}
+
+.blog-content {
+	margin-top: 20px;
 }
 
 .blog-fix > .row {

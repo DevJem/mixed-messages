@@ -1,24 +1,23 @@
-<div id="foot" class="blog-fix">
-	<div class="row">
-		<div align="right">
-			<div class="col-md-1 col-md-offset-1 move-top">
-				<%= link_to image_tag("facebook.png", width: "50px", class: "good-background"), "http://facebook.com" %>
+<div class="foot"> <!-- class="navbar navbar-fixed-bottom"> -->
+	
+	<div id="foot" class="blog-fix">
+		<div class="row">
+			<div align="left">
+				<div class="col-md-3 col-md-offset-1 move-top brighten">
+					<%= link_to image_tag("facebook.png", width: "50px", class: "good-background puffed"), "http://facebook.com" %>
+					<%= link_to image_tag("twitter.png", width: "50px", class: "good-background puffed"), "http://twitter.com" %>
+					<%= link_to image_tag("youtube.png", width: "50px", class: "good-background puffed"), "http://youtube.com" %>
+				</div>
 			</div>
-			<div class="col-md-1 move-top">
-				<%= link_to image_tag("twitter.png", width: "50px", class: "good-background"), "http://twitter.com" %>
+			<div class="col-md-3 col-md-offset-4" align="right">
+				<nav>
+					<ul>
+						<li><%= link_to "FAQ", faq_path %></li>
+						<li><%= link_to "ABOUT US", about_path %></li>
+						<li><%= link_to "CONTACT US", contact_path %></li>
+					</ul>
+				</nav>
 			</div>
-			<div class="col-md-1 move-top">
-				<%= link_to image_tag("youtube.png", width: "50px", class: "good-background"), "http://youtube.com" %>
-			</div>
-		</div>
-		<div class="col-md-3 col-md-offset-4" align="right">
-			<nav>
-				<ul>
-					<li><%= link_to "ABOUT US", about_path %></li>
-					<li><%= link_to "CONTACT US", contact_path %></li>
-					<li><%= link_to "FAQ", faq_path %></li>
-				</ul>
-			</nav>
 		</div>
 	</div>
 </div>

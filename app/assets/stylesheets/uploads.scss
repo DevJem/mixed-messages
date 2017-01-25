@@ -7,16 +7,21 @@
 }
 
 .style-upload-index {
+	margin: 0;
 	.single-upload {
 		margin-bottom: 20px;
+		h4 {
+			font-family: 'Fjalla One', sans-serif;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
 	}
 
-	h4 { 
-		font-weight: bold;
-	}
+	 
 
 }
 
 .terms {
 	padding: 40px;
-}
+} 

@@ -1,17 +1,19 @@
-<div class="row">
-	<%= form_for :video do |video| %>
-		<div class="form-group">
-			<div class="control-label col-sm-2">
-				<%= video.label @label %>
+<div class="container">	
+	<div class="row">
+		<%= form_for :video do |video| %>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= video.label @label %>
+				</div>
+				<div class="col-sm-5 col-sm-offset-1">
+					<%= video.text_field @location, class: "form-control", placeholder: "Enter video id", autofocus: true %>
+				</div>
 			</div>
-			<div class="col-sm-4 col-sm-offset-2">
-				<%= video.text_field @location, class: "form-control", placeholder: "Enter video id", autofocus: true %>
+			<div class="form-group">
+				<div class=" col-sm-2">
+					<%= video.submit "Enter", class: "btn btn-primary btn-md" %>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<div class=" col-sm-2">
-				<%= video.submit "Enter", class: "btn btn-primary btn-md" %>
-			</div>
-		</div>
-	<% end %>
+		<% end %>
+	</div>
 </div>

@@ -9,10 +9,10 @@
 						<%= link_to (image_tag "members-only.jpg", height: "450px"), signup_path %>
 					<% else %>
 						<%= render 'premium' %>
+						<div align="center">
+							<h3 class="fix-link"><%= link_to "Click for more!", premium_path %></h3>
+						</div>
 					<% end %>
-				</div>
-				<div align="center">
-					<h4 class="fix-link"><%= link_to "Click for more!", premium_path %><h4>
 				</div>
 			</div>
 		</div>

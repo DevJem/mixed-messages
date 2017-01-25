@@ -1,17 +1,18 @@
+$mm-color: #920202;
 
 
 .tos {
 	background: #fff;
 	border-radius: 7px;
-	border: 1px solid #920202;
-	box-shadow: -2px 2px 10px #920202;
+	border: 1px solid $mm-color;
+	box-shadow: -2px 2px 10px $mm-color;
 	margin-bottom: 5px;
 }
 .btn-primary {
 	-webkit-transition-duration: 0.3s; /* Safari */
   transition-duration: 0.3s;
-	background: #920202;
-	border: 1px solid #920202;
+	background: $mm-color;
+	border: 1px solid $mm-color;
 	&:hover {
 		background: #333;
 	}
@@ -26,8 +27,8 @@
 	-webkit-transition-duration: 0.3s; /* Safari */
   transition-duration: 0.3s;	
 // 	background: #ccc;
-// 	color: #920202;
-// 	border: 1px solid #920202;
+// 	color: $mm-color;
+// 	border: 1px solid $mm-color;
 // 	&:hover {
 // 		color: #fff;
 // 		background: #333;
@@ -41,8 +42,41 @@
 
 .form-horizontal {
 	.form-control {
-		border: 1px solid #920202;
+		border: 1px solid $mm-color;
 		border-radius: 2px;
+	}
+
+}
+
+// custom Will Paginate
+.pagination {
+	ul {
+		.active a {
+			border: 1px solid $mm-color;
+			background: $mm-color;
+			color: #ccc;
+			opacity: .7;
+			&:hover {
+				opacity: 1;
+				background: $mm-color;
+				border: 1px solid $mm-color;
+			}
+		}
+	}
+	
+ li {
+		a {
+			border: 1px solid $mm-color;
+			color: $mm-color;
+			&:hover {
+				background: #333;
+				color: #ccc;
+				border: 1px solid $mm-color;
+			}
+		}
+		.prev > .previous_page > .disabled {
+			border: 1px solid $mm-color;
+		}
 	}
 
 }

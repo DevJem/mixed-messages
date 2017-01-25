@@ -36,3 +36,96 @@
 		</ul>
 	<% end %>
 </div>
+
+*************************************************************************
+<div class="container">
+	<div>
+		<% flash.each do |name, msg| %>
+			<div class='alert alert-<%="#{name}" %>'>
+				<a href="#" class="close" data-dismiss="alert">&#215;</a>
+				<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+***********************************************************************
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Notice:</h4>
+      </div>
+      <div class="modal-body">
+        <% flash.each do |name, msg| %>
+					<div class='alert alert-<%="#{name}" %>'>
+						<a href="#" class="close" data-dismiss="alert">&#215;</a>
+						<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+					</div>
+				<% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Okay!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+******************************************************************************
+
+<script onload="document.getElementById('modal').style.display = "block"></script>
+
+<div class="container" >
+	<div id="modal" class="modal" tabindex="-1" role="dialog">
+		<% flash.each do |name, msg| %>
+			<div class='alert alert-<%= "#{name}" %>'>
+				<div class="modal-content">
+				  <div class="modal-body">
+						<a href="#" class="close" data-dismiss="modal" onclick="document.getElementById('modal').style.display = "none">&#215;</a>
+						<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+***********************************************************************
+<div class="hidden">
+	<button id="modalbutton" type="button" data-toggle="modal" data-target="#modal" onclick="document.getElementById('modal').style.display = 'block'"></button>
+</div>
+
+<div class="container" >
+	<div id="modal" class="modal" tabindex="-1" role="dialog">
+		<% flash.each do |name, msg| %>
+			<div class='alert alert-<%= "#{name}" %>'>
+				<div class="modal-content">
+				  <div class="modal-body">
+						<a href="#" class="close" data-dismiss="modal" onclick="hide_modal()">&#215;</a>
+						<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<script onload="document.getElementById('modal').style.display = 'block'"></script>
+<script type="text/javascript">
+	
+	function show_modal() {
+		window.onload = document.getElementById('modalbutton').click();
+	}
+	function hide_modal() {
+		document.getElementById('modal').style.display = 'none';
+	}
+</script>
+
+<% if !flash[:success].blank? or !flash[:danger].blank? or !flash[:info].blank? %>
+  <script onload="('#modal').modal('show')"></script>
+<% end %>

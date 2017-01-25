@@ -1,136 +1,136 @@
-<div class="row">
-	<div align="center">
-		<% if logged_in? && current_user.admin && !@user.admin %>
-			<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl" %>
-			<% if !@user.banned && !@user.admin %>
-				<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl" %>
-			<% elsif !@user.admin %>
-				<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl" %>
+<div class="blog-fix">
+	<div class="row">
+		<div align="center">
+			<% if logged_in? && current_user.admin && !@user.admin %>
+				<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl" %>
+				<% if !@user.banned && !@user.admin %>
+					<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl" %>
+				<% elsif !@user.admin %>
+					<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl" %>
+				<% end %>
 			<% end %>
-		<% end %>
-		<h1><%= @user.username.upcase %></h1>
+			<h1><%= @user.username.upcase %></h1>
+		</div>
 	</div>
-</div>
 
-<!-- Left side -->
-<div class="row">
-	<div class="col-lg-8">	
+	<div id="profile" class="container good-background">
+	<!-- Left side -->
 		<div class="row">
-			<div class="col-sm-3 col-sm-offset-2">
-				<div>
-					<% if @user.zipcode %>
-						
-						<h4><span class="glyphicon glyphicon-globe"></span> Zipcode: <%= @user.zipcode %></h4>
-					<% elsif logged_in? && current_user == @user %>
-						<h4 class="fix-link">
-							<span class="glyphicon glyphicon-globe"></span>
-							<%= link_to "Add a zipcode", edit_user_path(@user) %>
-						</h4>
-					<% end %>
-				</div>
-				<% if logged_in? && current_user == @user %>
+			<div class="col-lg-7">	
+				<div id="info" class="row">
 					<div>
-						<h4 class="fix-link">
-							<span class="glyphicon glyphicon-pencil"></span>
-							<%= link_to "Edit your account", edit_user_path(@user) %>
-						</h4>
+					<h3>info:</h3>
+						<% if @user.zipcode %>
+							
+							<h4><span class="glyphicon glyphicon-globe"></span> Zipcode: <%= @user.zipcode %></h4>
+						<% elsif logged_in? && current_user == @user %>
+							<h4 class="fix-link">
+								<span class="glyphicon glyphicon-globe"></span>
+								<%= link_to "Add a zipcode", edit_user_path(@user) %>
+							</h4>
+						<% end %>
 					</div>
-				<% end %>
-				<br/>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12 col-lg-9 col-lg-offset-2">
-				
-				<div>
-					<% if @user.bio && !@user.bio.empty? %>
+					<% if logged_in? && current_user == @user %>
 						<div>
-							<h4>Bio:</h4>
+							<h4 class="fix-link">
+								<span class="glyphicon glyphicon-pencil"></span>
+								<%= link_to "Edit your account", edit_user_path(@user) %>
+							</h4>
 						</div>
-						<h4><%= @user.bio %></h4>
-					<% elsif logged_in? && (current_user.admin || current_user == @user) %><br/>
-						<%= link_to "Edit your Bio", edit_user_path(@user), class: "h4" %>
 					<% end %>
+					<br/>
+				</div>
+				<div class="row">
+					<div id="bio" class="col-sm-12">
+						<div>
+							<% if @user.bio && !@user.bio.empty? %>
+								<div>
+									<h3>Bio:</h3>
+								</div>
+								<h4><%= @user.bio %></h4>
+							<% elsif logged_in? && (current_user.admin || current_user == @user) %><br/>
+								<%= link_to "Edit your Bio", edit_user_path(@user), class: "h4" %>
+							<% end %>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
 
-<!-- Right Side -->
-<% @delete_notice = Array.new %>
-<!-- User Notifications -->
-	<div class="col-lg-3">
-		<% if logged_in? && !@user.notifications.empty? && @user == current_user %>
+		<!-- Right Side -->
+		<% @delete_notice = Array.new %>
+		<!-- User Notifications -->
+		<div id="user-notifications" class="col-lg-5">
+			<% if logged_in? && !@user.notifications.empty? && @user == current_user %>
 
-			<!-- Delete all button -->
-			<div align="center">
-				<% @user.notifications.each do |notice| %>
-					<% @delete_notice.push(notice) %>
-				<% end %>
-				<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info" %>
-			</div>
-
-			<!-- The list -->
-			<ul class="list-group">
-				<% @user.notifications.each do |notice| %>
-					<% if notice.notice_type == "success" %>
-						<li class="list-group-item list-group-item-success">
-							<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success" %>
-							<%= notice.notice %>
-						</li>
-					<% elsif notice.notice_type == "danger" %>
-						<li class="list-group-item list-group-item-danger">
-							<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger" %>
-							<%= notice.notice %>
-						</li>
-					<% elsif notice.notice_type == "info" %>
-						<li class="list-group-item list-group-item-info">
-							<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info" %>
-							<%= notice.notice %>
-						</li>
+				<!-- Delete all button -->
+				<div align="center">
+					<% @user.notifications.each do |notice| %>
+						<% @delete_notice.push(notice) %>
 					<% end %>
-				<% end %>
-			</ul>
-		<% end %>
-	</div>
+					<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info" %>
+				</div>
 
-
-
-</div>
-
-<!-- User Uploads -->
-<% if !@user_uploads.empty? %>
-	<div class="container good-background">
-		<div class="row">
-			<div align="center">
-				<div class="col-sm-12">
-					<h3><strong>Uploads by <%= @user.username.upcase %>:</strong></h3>
-					 
-					<% @user_uploads.each do |upload| %>
-						<% if (logged_in? && (current_user.admin || current_user == @user)) || upload.save_upload %>
-							<div class="col-lg-4 col-md-6 style-upload-index">
-								<div align="center" class="single-upload">
-									<% if upload.save_upload %>
-										<div class="greentext">
-											This video is available.
-										</div>
-									<% else %>
-										<div class="redtext">
-											This video has not yet been approved.
-										</div>
-									<% end %>
-									<br/>
-									<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
-									<h4><%= upload.title.upcase %></h4><br/> 
-									<%= truncate(upload.note, length: 100) %><br/>
-									<%= time_ago_in_words(upload.created_at) %><br/>
-								</div>
-							</div>
+				<!-- The list -->
+				<ul class="list-group">
+					<% @user.notifications.each do |notice| %>
+						<% if notice.notice_type == "success" %>
+							<li class="list-group-item list-group-item-success">
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success" %>
+								<%= notice.notice %>
+							</li>
+						<% elsif notice.notice_type == "danger" %>
+							<li class="list-group-item list-group-item-danger">
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger" %>
+								<%= notice.notice %>
+							</li>
+						<% elsif notice.notice_type == "info" %>
+							<li class="list-group-item list-group-item-info">
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info" %>
+								<%= notice.notice %>
+							</li>
 						<% end %>
 					<% end %>
-				</div>
-				<%= will_paginate @user_uploads %>
-			</div> 
+				</ul>
+			<% end %>
+		</div>
 		</div>
 	</div>
-<% end %>
+
+
+	<!-- User Uploads -->
+	<% if !@user_uploads.empty? %>
+		<div class="container good-background">
+			<div class="row">
+				<div align="center">
+					<div class="col-sm-12">
+						<h3><strong>Uploads by <%= @user.username.upcase %>:</strong></h3>
+						 
+						<% @user_uploads.each do |upload| %>
+							<% if (logged_in? && (current_user.admin || current_user == @user)) || upload.save_upload %>
+								<div class="col-lg-4 col-md-6 style-upload-index">
+									<div align="center" class="single-upload">
+										<% if upload.save_upload %>
+											<div class="greentext">
+												This video is available.
+											</div>
+										<% else %>
+											<div class="redtext">
+												This video has not yet been approved.
+											</div>
+										<% end %>
+										<br/>
+										<%= link_to (video_tag upload.file, height: "200px"), upload_path(upload) %> <br/>
+										<h4><%= upload.title.upcase %></h4><br/> 
+										<%= truncate(upload.note, length: 100) %><br/>
+										<%= time_ago_in_words(upload.created_at) %><br/>
+									</div>
+								</div>
+							<% end %>
+						<% end %>
+					</div>
+					<%= will_paginate @user_uploads %>
+				</div> 
+			</div>
+		</div>
+	<% end %>
+</div>
