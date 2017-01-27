@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 	# def index
 	# 	@users = User.paginate(page: params[:page], per_page: 10)
 	# 	@results = User.where(username: ["username LIKE ?", "%#{search}"])
-	# end
+	# end 
 
 	def index
 		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 9)
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:username, :email, :password, :zipcode, :bio, :password_confirmation)
+		params.require(:user).permit(:username, :email, :password, :zipcode, :bio, :password_confirmation, :allow_emails)
 	end
 
 	def set_user

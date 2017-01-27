@@ -16,14 +16,14 @@
 	<div class="row">
 		<div class="col-md-5 col-md-offset-2 good-background">
 			<% @blogs.each do |blog| %>
-				<div class="fix-link blog-title"><h3>
-					<%= link_to blog.title, blog_path(blog) %></h3>
+				<div class="fix-link blog-title">
+					<h3><%= link_to blog.title, blog_path(blog) %></h3>
 				</div>
 				<div class="blog-body">
-					<h4><%= truncate(simple_format(blog.content), length: 250) %></h4>
+					<h4><%= truncate(simple_format(blog.content), length: 250, escape: false) %></h4>  <!-- Escape: false stops html tags from showing up -->
 					<div class="blog-meta-details">
-						<h5>Created By: <%= blog.user.username if blog.user %>,
-							<%= time_ago_in_words(blog.created_at) %> ago 
+						<h5><strong>Created By: <%= blog.user.username if blog.user %>,
+							<%= time_ago_in_words(blog.created_at) %> ago.</strong> 
 						</h5>
 					</div>
 				</div>

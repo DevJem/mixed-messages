@@ -15,6 +15,11 @@
 			font-weight: bold;
 			text-transform: uppercase;
 			letter-spacing: 1px;
+			a:hover {
+				letter-spacing: 3px;
+				-webkit-transition-duration: 0.2s; /* Safari */
+	  		transition-duration: 0.2s;
+	  	}
 		}
 	}
 

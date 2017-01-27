@@ -5,13 +5,21 @@ $mm-color: #920202;
 
 // ****** Global Styles ****** //
 
-h1, h3 {
+h1, h3  {
 	//padding-left: 30px;
 	font-family: 'Fjalla One', sans-serif;
 	font-color: #333333;
-	letter-spacing: 7px;
+	letter-spacing: 6px;
 	text-transform: uppercase;
 	font-weight: bold;
+	-webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;
+		a:hover {
+			-webkit-transition-duration: 0.2s; /* Safari */
+  		transition-duration: 0.2s;
+			letter-spacing: 7px;			
+		}
+	
 }
 
 .fix-link {
@@ -22,7 +30,8 @@ h1, h3 {
 			color: $mm-color;
 		}
 		&:hover {
-			text-decoration: underline;
+			color: #333;
+			//text-decoration: underline;
 		}
 	}
 }
@@ -87,7 +96,7 @@ body {
 	overflow-y: scroll;
 	margin: 0;
 	padding: 0;
-	background: image-url("bg3.png") center fixed;
+	background: image-url("bg6.jpg") center fixed;
 }
 
 #page {
@@ -98,7 +107,7 @@ body {
 	padding: 0;
 	margin: 0;
 	display: block;
-	padding-bottom: 200px;
+	padding-bottom: 250px;
 }
 
 // *****HEADER***** //
@@ -213,7 +222,7 @@ body {
 		
 	}
 	ul {
-		margin-top: 25px;
+		margin-top: 15px;
 	}
 	// move social media icons down
 	.move-top {

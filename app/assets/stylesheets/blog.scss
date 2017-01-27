@@ -5,6 +5,7 @@
 .blog-title {
 	margin-right: 25px;
 	margin-bottom: 20px;
+	text-align: center;
 }
 
 .blog-body {
@@ -22,4 +23,8 @@
 
 .blog-fix > .row {
 	margin: auto;
+}
+
+.blog-meta-details {
+	margin-top: 20px;
 }

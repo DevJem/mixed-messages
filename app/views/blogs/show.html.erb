@@ -7,8 +7,8 @@
 <div class="blog-fix">
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-2 ">
-			<div class="blog-body good-background">
-				<h3><%= @blog.user.username %></h3>
+			<div class="blog-body good-background fix-link">
+				<h3><%= link_to @blog.user.username, user_path(@blog.user) %></h3>
 				<h5>Created: <%= @blog.created_at.localtime.strftime("%B %d, %Y") %></h5>
 				<div class="comment-hr"></div>
 				<div class="blog-content">
