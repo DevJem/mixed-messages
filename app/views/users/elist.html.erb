@@ -1,0 +1,46 @@
+<h3 align="center">Users that allow emails</h3>
+<h4 align="center"><%= pluralize(@users.count, "User").upcase %></h4>
+
+<div class="container">
+	<div class="row">
+		<div align="center">
+			<%# will_paginate @users %>
+			<% @users.each do |user| %>
+				<ul class="user">
+					<div class="well col-md-4">
+						<li>
+							<%=  user.email.upcase %>
+						</li>
+					</div>
+				</ul>
+			<% end %>
+		</div>
+	</div>
+	<div align="center">
+		<%= will_paginate @users %>
+	</div>
+
+	<%= form_for(:email_users, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<div class="form-group">
+			<div class="control-label col-md-2">
+				<% f.label :title %>
+			</div>
+			<div class="col-md-8">
+				<%= f.text_field :title, class: "form-control", placeholder: "Title", autocomplete: false %>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="control-label col-md-2">
+				<% f.label :content %>
+			</div>
+			<div class="col-md-8">
+				<%= f.cktext_area :content, rows: 10, class: "form-control", placeholder: "Your Comment", autocomplete: false %>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-2 col-md-offset-2">
+				<%= f.submit "Send Email", class: "btn btn-primary btn-lg", disabled: true %>
+			</div>
+		</div>
+	<% end %>
+</div>

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 	before_action :set_user, only: [:edit, :update, :show, :ban, :make_admin]
 	before_action :require_same_user, only: [:edit, :update, :destroy]
-	before_action :require_admin, only: [:destroy, :ban, :make_admin, :index]
+	before_action :require_admin, only: [:destroy, :ban, :make_admin, :index, :elist]
 
 	# def index
 	# 	@users = User.paginate(page: params[:page], per_page: 10)
@@ -74,6 +74,10 @@ class UsersController < ApplicationController
 		redirect_to users_path
 	end
 
+	def elist
+		@users = User.where(:allow_emails == true).paginate(page: params[:page], per_page: 12)
+	end
+
 
 	private
 	def user_params
@@ -85,7 +89,7 @@ class UsersController < ApplicationController
 	end
 
 	def require_same_user
-		if current_user != @user && !current_user.admin?
+		if logged_in? && current_user != @user && !current_user.admin?
 			flash[:danger] = "You can only edit your own account"
 			redirect_to root_path
 		end		
