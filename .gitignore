@@ -24,3 +24,7 @@
 
 # Ignore recaptcha
 /.env
+
+# Ignore under construction page
+/public/index*
+/public/dispatch*
