@@ -45,7 +45,13 @@ $mm-color: #920202;
 		border: 1px solid $mm-color;
 		border-radius: 2px;
 	}
+}
 
+.btn-grand {
+	width: 150px;
+	height: 50px;
+	text-align: middle;
+	line-height: 50px;
 }
 
 // custom Will Paginate

@@ -2,7 +2,7 @@
 <!-- Premium video at top -->
 <div class="container good-background"> 
 		<div class="row">
-			<div align="center">
+			<div align="center" class="section-title">
 				<h1>New Episode</h1>
 				<div id="main-episode">
 					<% if !logged_in? %>
@@ -30,13 +30,13 @@
 			<!-- Previous page button -->
 				<% if key == "prevPageToken" %>
 					<% @prevPageToken = "&pageToken=#{value}" %>
-					<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-xs btn-info" %>
+					<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-grand btn-warning" %>
 				<% end %>
 			
 			<!-- next page button -->
 				<% if key == "nextPageToken" %>
 					<% @nextPageToken = "&pageToken=#{value}" %>
-					<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-xs btn-info" %>
+					<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-warning" %>
 				<% end %>
 			</div>
 			

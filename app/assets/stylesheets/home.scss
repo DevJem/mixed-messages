@@ -2,27 +2,32 @@ $mm-color: #920202;
 
 // *****BODY***** // 
 
-#mainpic {
-	margin: auto;
-	margin-top: 80px;
-	box-shadow: -2px 2px 20px #aaaaaa;
+#home-video {
+	margin: 80px 30px 40px 0;
+	border: 2px solid $mm-color;
 }
 
-#right-side-list {
-	margin: auto;
-	margin-top: 30px;
-	padding: 35px;
-	p {
-		// font-family: 'Fjalla One', sans-serif;
-		font-family: 'Hammersmith One', sans-serif;
+#home-picture {
+	margin: 55px 20px 0 30px;
+	img {
+		width: 100%;
+		border: 2px solid $mm-color;
+	}
+}
 
-		//text-transform: uppercase;
-		width: 75%;
+.home-text-right {
+	margin-top: 35px;
+	padding: 0 30px 30px 30px;
+	p {
+		font-family: 'Doppio One', sans-serif;
 		margin: auto;
 		padding-top: 10px;
-		font-size: 22px;
+		font-size: 20px;
 		text-align: justify;
-		//letter-spacing: 1px;
 	}
+}
+
+.section-title {
+	margin-top: 40px;
 }
 

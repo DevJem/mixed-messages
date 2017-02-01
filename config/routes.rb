@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :blogs
   resources :uploads
   resources :notifications, except: [:create]
+  resources :contacts, only: [:new, :create]
 
   post 'notify(.:format)' => 'notifications#create', as: :notify
   post 'delete-notifications/:id' => 'notifications#delete_all', as: :delete_notices
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   get 'faq'	    	=> 'pages#faq'
   get 'watch'			=> 'pages#watch'
   patch 'watch'   => 'pages#watch'
-  get 'contact'		=> 'pages#contact'
 
   get 'submit'    => 'uploads#new'
   patch 'uploads/:id/save' => 'uploads#save_upload', as: :save_upload
