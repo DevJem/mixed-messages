@@ -12,7 +12,7 @@
 				<h5>Created: <%= @blog.created_at.localtime.strftime("%B %d, %Y") %></h5>
 				<div class="comment-hr"></div>
 				<div class="blog-content">
-					<%= simple_format(@blog.content) %>
+					<%= raw(@blog.content) %>
 				</div>
 			</div>
 		</div>

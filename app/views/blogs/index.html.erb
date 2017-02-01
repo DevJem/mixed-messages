@@ -14,7 +14,7 @@
 				</div>
 				<div class="blog-body">
 					<h4>
-						<%= truncate(simple_format(blog.content), length: 250, escape: false) %>
+						<%= truncate(simple_format(blog.content, sanitize: false), length: 250, escape: false) %>
 					</h4>  <!-- Escape: false stops html tags from showing up -->
 					<div class="blog-meta-details">
 						<h5><strong>Created By: <%= blog.user.username if blog.user %>,
