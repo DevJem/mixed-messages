@@ -9,3 +9,4 @@
 user1 = User.create(username: "DevJem", email: "android.devjem@gmail.com", admin: true, password: "password")
 user2 = User.create(username: "Matt", email: "mattd@mixed-messages.org", admin: true, password: "password")
 user3 = User.create(username: "Kevin", email: "kevin@mixed-messages.org", admin: true, password: "password")
+blog = Blog.create(user_id: 1, title: "Temporary first blog", content: "Temporary first blog")
