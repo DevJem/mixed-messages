@@ -1,7 +1,7 @@
 
 
 <header id="head" >
-	<div class="row">
+	<div id="#top" class="row">
 		<div id="mm" class="col-md-3" align="right">
 			<%= link_to image_tag("mm-header.png", alt: "Mixed Messages Logo"), root_path %>
 		</div>
@@ -37,7 +37,7 @@
 			 	<li><%= link_to "Blogs", blogs_path %> </li><li>|</li>
 				<li><%= link_to "Get Involved", submit_path %></li><li>|</li>
 
-				<li><%= link_to "Get Gear", "#" %></li><li>|</li>
+				<li><%= link_to "Get Gear", logo_path %></li><li>|</li>
 				<% if !logged_in? %>
 					<li class="br"><%= link_to "Log In", login_path %></li>
 				<% else %>
@@ -55,11 +55,23 @@
           		<li role="separator" class="divider"></li>
           		<li><%= link_to "Create Blog Post", new_blog_path %></li>
           		<li role="separator" class="divider"></li>
+          		<li>
+          			<a href="<%= reports_path %>">
+		        			Reported Content
+		        			<% reports = Report.all.count %>
+		        			<% if reports > 0 %>
+		        				<span class="badge"><%= reports %></span>
+		        		<% end %>
+		        		</a>
+          				
+          		</li>
+          		<li role="separator" class="divider"></li>
 	            <li>
 		        		<a href="<%= review_path %>">
 		        			Review List
-		        			<% if Upload.where(save_upload: false).count > 0 %>
-		        				<span class="badge"><%= Upload.where(save_upload: false).count %></span>
+		        			<% uploads = Upload.where(save_upload: false).count %>
+		        			<% if uploads > 0 %>
+		        				<span class="badge"><%= uploads %></span>
 		        		<% end %>
 		        		</a>
 		          </li>

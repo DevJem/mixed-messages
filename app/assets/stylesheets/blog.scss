@@ -1,6 +1,8 @@
 // Place all the styles related to the blog controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$mm-color: #920202;
+
 
 .blog-title {
 	margin-right: 25px;
@@ -15,6 +17,19 @@
 	// font-weight: bold;
 	font-family: 'Doppio One', sans-serif;
 	margin-bottom: 20px;
+	img {
+		border-left: 2px solid rgba(142, 2, 2, .4);
+		border-right: 2px solid rgba(142, 2, 2, .4);
+		box-shadow: -2px 2px 12px -1px $mm-color;
+	}
+	opacity: 100%;
+}
+
+.hide-img {
+	img {
+		width: 50px;
+		height: 50px;	
+	}
 }
 
 .blog-content {

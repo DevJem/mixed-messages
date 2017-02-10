@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :uploads, dependent: :destroy 
 	has_many :blogs
 	has_many :notifications
+	has_and_belongs_to_many :reports
 	has_secure_password
 
 	before_save {self.email = email.downcase}

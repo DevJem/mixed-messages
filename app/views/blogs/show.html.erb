@@ -2,27 +2,31 @@
 	<% if logged_in? && current_user.admin %>
 		<%= link_to "Edit this Blog", edit_blog_path(@blog), class: "btn btn-md btn-warning" %>
 	<% end %>
-	<h1 class="blog-title"><%= @blog.title.upcase %></h1>
+	
 </div>
 <div class="blog-fix">
 	<div class="row">
 		<div class="col-sm-6 col-sm-offset-2 ">
-			<div class="blog-body good-background fix-link">
-				<h3><%= link_to @blog.user.username, user_path(@blog.user) %></h3>
+			<div class="blog-body good-background">
+				<h1 class="blog-title"><%= @blog.title.upcase %></h1>
+				<h3 class="fix-link"><%= link_to @blog.user.username, user_path(@blog.user) %></h3>
 				<h5>Created: <%= @blog.created_at.localtime.strftime("%B %d, %Y") %></h5>
 				<div class="comment-hr"></div>
-				<div class="blog-content">
+				<div class="blog-content fix-link">
 					<%= raw(@blog.content) %>
+				</div>
+				<div align="right">
+					<%= link_to "Back to Top", "#top", class: "btn btn-md btn-primary" %>
+				</div>
+			</div>
+			<div class="col-lg-2 col-lg-offset-5">
+				<div align="center" style="margin-bottom: 20px;">
+					<%= link_to "Return to blogs", blogs_path, class: "btn btn-md btn-primary" %>
 				</div>
 			</div>
 		</div>
 		<div class="col-sm-2 col-sm-offset-1">
-		<%= render 'layouts/ads' %>
-		</div>
-		<div class="col-lg-2 col-lg-offset-5">
-			<div align="center" style="margin-bottom: 20px;">
-				<%= link_to "Return to blogs", blogs_path, class: "btn btn-md btn-primary" %>
-			</div>
+			<%= render 'layouts/ads' %>
 		</div>
 	</div>
 	<div class="container">

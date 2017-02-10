@@ -5,6 +5,9 @@ class VideosController < ApplicationController
  
 	def show
 		@video = video_params
+		@video.each do |k, v|
+			flags(v, "video-comment")
+		end
 	end
 
 	def new

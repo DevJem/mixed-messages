@@ -15,8 +15,8 @@
 			<%# will_paginate @users %>
 			<% @users.each do |user| %>
 				<ul class="listing">
-					<div class="well col-md-4">
-						<li class="user">
+					<div class="well col-md-4 clearfix">
+						<li class="user clearfix">
 							<%= link_to user.username.upcase, user_path(user) %>
 						</li>
 						<% if logged_in? && current_user.admin && !user.admin %>

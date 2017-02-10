@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
   get 'terms'     => 'uploads#terms'
   get 'privacy'   => 'uploads#privacy_policy'
+
   post 'uploads/:id' => 'uploads#update'
   resources :comments
 
@@ -38,11 +39,16 @@ Rails.application.routes.draw do
   post 'videos/new' => 'videos#create'
   post 'videos/:id' => 'videos#add_comment'
 
+  resources :reports
+  post 'unflag' => 'reports#unflag'
+
   get 'premium' => 'videos#premium'
 
   get 'market' => 'market#index'
 
   get 'review' => 'uploads#review'
+
+  get 'logo'   => 'pages#logo'
   
   root 'pages#home'
  

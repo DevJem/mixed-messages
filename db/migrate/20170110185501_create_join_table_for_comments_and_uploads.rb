@@ -6,3 +6,4 @@ class CreateJoinTableForCommentsAndUploads < ActiveRecord::Migration
   	end
   end
 end
+ 

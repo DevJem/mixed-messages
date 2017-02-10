@@ -39,12 +39,12 @@
 
 <div class="container">
 	<div class="row each-comment good-background">
-		<div class="col-sm-9">
+		<div class="col-sm-9"> 
 			<% if !obj.is_a? String %>
 
 				<!-- Regular comments for blogs and user submissions -->
 				<% obj.comments.order("id DESC").each do |comment| %>
-					<div class="row">
+					<div id=<%= "#{comment.id}" %> class="row">
 						<div class="col-sm-12">
 							<div class="comment-hr"/></div>
 						</div>
@@ -52,15 +52,63 @@
 							<strong><%= comment.user.username %></strong> <br/>
 							<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
 							<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
+							Comment: <%= comment.id %> <br/>
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-8">
 							<div align="left">
 								<h4><strong><%= comment.title.upcase %></strong></h4><br/>
 								<%= comment.comment %>
 							</div>
 						</div>
-						<div align="right">
+						<div class="col-md-1">
 
+							<!-- flag button -->
+							<% if logged_in? %>
+								<% if !@flags.nil? and !@flags.empty? %>
+									<% flag = @flags.where(comment_id: comment.id).where(user_id: current_user.id) %>
+										<% if logged_in? && !flag.empty? %>
+											<%= form_for(:report, url: report_path(flag.first.id), method: :delete, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+												<%= f.hidden_field :user_id, value: current_user.id %>
+												<% if !comment.blog_id.nil? %>
+													<%= f.hidden_field :blog_id, value: obj.id %>
+												<% elsif !comment.upload_id.nil? %>
+													<%= f.hidden_field :upload_id, value: obj.id %>
+												<% end %>
+												<%= f.hidden_field :comment_id, value: comment.id %>
+												<%= f.submit "Unflag", class: "btn btn-sm btn-primary" %>
+											<% end %>
+										<% else %>
+									
+											<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+												<%= f.hidden_field :user_id, value: current_user.id %>
+												<% if !comment.blog_id.nil? %>
+													<%= f.hidden_field :blog_id, value: obj.id %>
+												<% elsif !comment.upload_id.nil? %>
+													<%= f.hidden_field :upload_id, value: obj.id %>
+												<% end %>
+												<%= f.hidden_field :comment_id, value: comment.id %>
+												<%= f.submit "Flag  ", class: "btn btn-sm btn-primary" %>
+											<% end %>
+										<% end %>
+								<% else %>
+									<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+										<%= f.hidden_field :user_id, value: current_user.id %>
+										<% if !comment.blog_id.nil? %>
+											<%= f.hidden_field :blog_id, value: obj.id %>
+										<% elsif !comment.upload_id.nil? %>
+											<%= f.hidden_field :upload_id, value: obj.id %>
+										<% end %>
+										<%= f.hidden_field :comment_id, value: comment.id %>
+										<%= f.submit "Flag  ", class: "btn btn-sm btn-primary" %>
+									<% end %>
+								<% end %>
+							
+
+								<!-- Delete button -->
+								<% if comment.user_id == current_user.id or current_user.admin? %>
+									<%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-sm btn-info" %>
+								<% end %>
+							<% end %>
 						</div>
 					</div> 
 				<% end %>
@@ -69,7 +117,7 @@
 			<!-- Special comments for linked youtube videos -->
 				<% comments = Comment.where(video_id: obj) %>
 				<% comments.order("id DESC").each do |comment| %>
-					<div class="row">
+					<div id=<%= "#{comment.id}" %> class="row">
 						<div class="col-sm-12">
 							<div class="comment-hr"/></div>
 						</div>
@@ -77,15 +125,50 @@
 							<strong><%= comment.user.username %></strong> <br/>
 							<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
 							<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
+							Comment: <%= comment.id %> <br/>
 						</div>
-						<div class="col-md-9">
+						<div class="col-md-8">
 							<div align="left">
 								<h4><strong><%= comment.title.upcase %></strong></h4><br/>
 								<%= comment.comment %>
 							</div>
 						</div>
-						<div align="right">
+						<div class="col-md-1">
+							<% if logged_in? %>
 
+								<!-- Flag button -->
+								<% if !@flags.nil? and !@flags.empty? %>
+									<% flag = @flags.where(comment_id: comment.id).where(user_id: current_user.id) %>
+										<% if logged_in? && !flag.empty? %>
+											<%= form_for(:report, url: report_path(flag.first.id), method: :delete, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+												<%= f.hidden_field :user_id, value: current_user.id %>
+												<%= f.hidden_field :video_id, value: obj %>
+												<%= f.hidden_field :comment_id, value: comment.id %>
+												<%= f.submit "Unflag", class: "btn btn-sm btn-primary" %>
+											<% end %>
+										<% else %>
+									
+											<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+												<%= f.hidden_field :user_id, value: current_user.id %>
+												<%= f.hidden_field :video_id, value: obj %>
+												<%= f.hidden_field :comment_id, value: comment.id %>
+												<%= f.submit "Flag", class: "btn btn-sm btn-primary" %>
+											<% end %>
+										<% end %>
+								<% else %>
+									<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+										<%= f.hidden_field :user_id, value: current_user.id %>
+										<%= f.hidden_field :video_id, value: obj %>
+										<%= f.hidden_field :comment_id, value: comment.id %>
+										<%= f.submit "Flag", class: "btn btn-sm btn-primary" %>
+									<% end %>
+								<% end %>
+
+								<!-- Delete button -->
+								<% if comment.user_id == current_user.id or current_user.admin? %>
+									<%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-sm btn-info" %>
+								<% end %>
+							<% end %>
 						</div>
 					</div> 
 				<% end %>

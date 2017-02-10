@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row good-background">
+		<% if !@reports.nil? && !@reports.empty? %>
+			<div align="center">
+				<h1>Flags in que: <%= @reports.count %></h1>
+			</div>
+			<% @reports.each do |report| %>
+				<div class="col-sm-3 fix-link flag-list clearfix">
+					<% if !report.blog_id.nil? %>
+						<%= link_to "Comment #{report.comment_id}, blog #{report.blog_id}", "/blogs/#{report.blog_id}/##{report.comment_id}" %>
+					<% elsif !report.upload_id.nil? %>
+						<%= link_to "Comment #{report.comment_id}, upload #{report.upload_id}", "/uploads/#{report.upload_id}/##{report.comment_id}" %>
+					<% elsif !report.video_id.nil? %>
+						<%= link_to "Comment #{report.comment_id}, video #{report.video_id}", "/videos/#{report.video_id}/##{report.comment_id}" %>
+					<% end %> <br/>
+					Report count: <%= report.count %> <br/>
+					Reported by: <%= User.find(report.user_id).username %> <br/>
+					<% comment = Comment.find(report.comment_id) %>
+					<%= comment.title %> <br/>
+					<%= comment.comment %> <br/>
+					<div class="row">
+						<div class="col-sm-6">
+							<%= form_for :report, url: unflag_path do |f| %>
+								<%= f.hidden_field :comment_id, value: report.comment_id %>
+								<%= f.submit "Unflag", class: "btn btn-sm btn-primary" %>
+							<% end %>
+						</div>
+						<div class="col-sm-6">
+							<%= link_to "Delete", comment_path(comment), class: "btn btn-sm btn-success", method: :delete %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% else %>
+			<div align="center">
+				<h1>nothing to review!</h1>
+			</div>
+		<% end %>
+	</div>
+</div>

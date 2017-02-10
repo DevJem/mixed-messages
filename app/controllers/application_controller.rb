@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :get_location, :set_location, :mark_video
+  helper_method :current_user, :logged_in?, :get_location, :set_location, :mark_video, :flags
 
   def current_user
   	@current_user ||= User.find session[:user_id] if session[:user_id]
@@ -49,6 +49,19 @@ class ApplicationController < ActionController::Base
 
       notification = {user_id: user, notice: notice, notice_type: type, source: source, source_location: location, source_id: id}
       redirect_to new_notification_path(notification)
+  end
+
+
+  # Set up global flags for uploads and comments
+
+  def flags(id, type)
+    if type == "blog-comment"
+      @flags = Report.where(blog_id: id)
+    elsif type == "upload-comment"
+      @flags = Report.where(upload_id: id)
+    elsif type == "video-comment"
+      @flags = Report.where(video_id: id)
+    end
   end
 
 end

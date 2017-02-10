@@ -13,6 +13,7 @@ class UploadsController < ApplicationController
 	end
 
 	def show
+		flags(params[:id], "upload-comment")
 	end
 
 	def new 
@@ -39,6 +40,7 @@ class UploadsController < ApplicationController
 		@comment = Comment.new(comment_params)
 		@comment.user_id = current_user.id
 		@comment.upload_id = @upload.id
+
 		if @comment.save
 			@upload.comments << @comment
 			upload_title = Upload.find(@comment.upload_id).title
@@ -63,8 +65,18 @@ class UploadsController < ApplicationController
 		mark_video :denied, @upload.user_id, @upload.title, "admin"
 		@upload.remove_file!
 		@upload.save
+		@comments = Comment.where(upload_id: @upload.id)
+		@comments.each do |comment|
+			@flags = Report.where(comment_id: comment.id)
+			@flags.each {|f| f.destroy}
+			comment.destroy
+		end
 		@upload.destroy
 		flash[:info] = "The upload #{@upload.title} has been deleted."
+	end
+
+	def upload_report
+		#@comment = Comment.find
 	end
 
 	private

@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @blog = Blog.last
   end
 
+  def logo
+  end
+
   def about
   end
 

@@ -12,7 +12,7 @@
 				<div class="fix-link blog-title">
 					<h3><%= link_to blog.title, blog_path(blog) %></h3>
 				</div>
-				<div class="blog-body">
+				<div class="blog-body hide-img fix-link">
 					<h4>
 						<%= truncate(simple_format(blog.content, sanitize: false), length: 250, escape: false) %>
 					</h4>  <!-- Escape: false stops html tags from showing up -->

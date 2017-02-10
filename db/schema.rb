@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131113307) do
+ActiveRecord::Schema.define(version: 20170209095745) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "user_id"
@@ -82,6 +82,24 @@ ActiveRecord::Schema.define(version: 20170131113307) do
   end
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "comment_id"
+    t.integer  "upload_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "blog_id"
+    t.string   "video_id"
+    t.integer  "count",      default: 0
+  end
+
+  add_index "reports", ["user_id"], name: "index_reports_on_user_id"
+
+  create_table "reports_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "report_id"
+  end
 
   create_table "uploads", force: :cascade do |t|
     t.integer  "user_id"

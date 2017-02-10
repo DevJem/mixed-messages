@@ -25,6 +25,7 @@ class BlogsController < ApplicationController
 	end
 
 	def show
+		flags(params[:id], "blog-comment")
 	end 
 
 	def edit
@@ -59,10 +60,18 @@ class BlogsController < ApplicationController
 	end
 
 	def destroy
+		@comments = Comment.where(blog_id: @blog.id)
+		@comments.each do |comment|
+			@flags = Report.where(comment_id: comment.id)
+			@flags.each {|f| f.destroy}
+			comment.destroy
+		end
 		@blog.destroy
 		flash[:danger] = "The blog \"#{@blog.title}\" was deleted."
 		redirect_to blogs_path
 	end
+
+	
 
 	private
 
