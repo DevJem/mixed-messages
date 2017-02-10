@@ -20,6 +20,8 @@ class NotificationsController < ApplicationController
 				redirect_to upload_path(Upload.find(@notification.source_id))
 			elsif @notification.source_location == "admin"
 				redirect_to review_path
+			elsif @notification.source_location == "delete"
+				redirect_to user_path(@notification.user_id)
 			end
 		else
 			flash[:danger] = "Something went wrong, please try again later."

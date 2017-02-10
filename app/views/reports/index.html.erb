@@ -13,6 +13,10 @@
 					<% elsif !report.video_id.nil? %>
 						<%= link_to "Comment #{report.comment_id}, video #{report.video_id}", "/videos/#{report.video_id}/##{report.comment_id}" %>
 					<% end %> <br/>
+					<% user = Comment.find(report.comment_id).user_id %>
+					<% baduser = User.find(user) %>
+					<%= link_to "Bad User: #{baduser.username}, Warn Level: #{baduser.warn_level}", user_path(user) %> <br/>
+
 					Report count: <%= report.count %> <br/>
 					Reported by: <%= User.find(report.user_id).username %> <br/>
 					<% comment = Comment.find(report.comment_id) %>

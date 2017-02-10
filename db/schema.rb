@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170209095745) do
+ActiveRecord::Schema.define(version: 20170210023928) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "user_id"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170209095745) do
     t.string   "password_confirmation"
     t.integer  "uploads_id"
     t.boolean  "allow_emails"
+    t.integer  "warn_level",            default: 0
   end
 
   add_index "users", ["id"], name: "index_users_on_id", unique: true

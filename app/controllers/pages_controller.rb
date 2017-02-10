@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   def logo
   end
 
+  def safe
+  end
+
   def about
   end
 

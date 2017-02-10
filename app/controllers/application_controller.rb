@@ -41,10 +41,13 @@ class ApplicationController < ActionController::Base
       type = "success"
     elsif result == :denied
       notice = "Your upload \"#{source}\" has been denied"
-      type = "danger"
+      type = "warning"
     elsif result == :comment
       notice = "You have a new comment on your upload \"#{source}\""
       type = "info"
+    elsif result == :report
+      notice = "A comment you made has been deleted for violating our TOS. Repeated offenses will result in a ban."
+      type = "danger"
     end
 
       notification = {user_id: user, notice: notice, notice_type: type, source: source, source_location: location, source_id: id}

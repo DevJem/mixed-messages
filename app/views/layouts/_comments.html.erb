@@ -105,7 +105,7 @@
 							
 
 								<!-- Delete button -->
-								<% if comment.user_id == current_user.id or current_user.admin? %>
+								<% if current_user.admin? %>
 									<%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-sm btn-info" %>
 								<% end %>
 							<% end %>
@@ -165,7 +165,7 @@
 								<% end %>
 
 								<!-- Delete button -->
-								<% if comment.user_id == current_user.id or current_user.admin? %>
+								<% if current_user.admin? %>
 									<%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-sm btn-info" %>
 								<% end %>
 							<% end %>

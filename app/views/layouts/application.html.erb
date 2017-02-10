@@ -14,8 +14,11 @@
   	<%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
 
-  	<%= yield %>
-    
+    <% if logged_in? and current_user.banned? %>
+      <%= render 'layouts/banned' %>
+    <% else %>
+      <%= yield %>
+    <% end %>
     <% debug(params) if Rails.env.development? %>
     <%= render 'layouts/footer' %>
 

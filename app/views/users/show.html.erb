@@ -2,12 +2,16 @@
 	<div class="row">
 		<div align="center">
 			<% if logged_in? && current_user.admin && !@user.admin %>
+				<div class="row">
 				<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl" %>
 				<% if !@user.banned && !@user.admin %>
 					<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl" %>
 				<% elsif !@user.admin %>
 					<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl" %>
 				<% end %>
+				</div>
+				<div class="row">
+					<h3>Warn Level: <%= @user.warn_level %> </h3>
 			<% end %>
 			<h1><%= @user.username.upcase %></h1>
 		</div>
@@ -103,8 +107,7 @@
 			<div class="row">
 				<div align="center">
 					<div class="col-sm-12">
-						<h3><strong>Uploads by <%= @user.username.upcase %>:</strong></h3>
-						 
+						<h3><strong><%= @user_uploads.count %> Uploads by <%= @user.username.upcase %>:</strong></h3>
 						<% @user_uploads.each do |upload| %>
 							<% if (logged_in? && (current_user.admin || current_user == @user)) || upload.save_upload %>
 								<div class="col-lg-4 col-md-6 style-upload-index">
