@@ -37,6 +37,8 @@ class ReportsController < ApplicationController
 
 	def destroy
 		@comment = Comment.find(unflag_params[:comment_id])
+		@flags = Report.where(comment_id: unflag_params[:comment_id])
+		@flags.each {|flag| flag.destroy}
 		@comment.destroy
 		redirect_to :back
 	end
@@ -44,7 +46,7 @@ class ReportsController < ApplicationController
 	def unflag 
 		@flags = Report.where(comment_id: unflag_params[:comment_id])
 		@flags.each {|f| f.destroy}
-		redirect_to reports_path
+		redirect_to reports_path 
 	end
 
 	private
