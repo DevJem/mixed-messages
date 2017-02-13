@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'watch'			=> 'pages#watch'
   patch 'watch'   => 'pages#watch'
   get 'safe'      => 'pages#safe'
+  get 'contact_us' => 'pages#contact_us'
 
   get 'submit'    => 'uploads#new'
   patch 'uploads/:id/save' => 'uploads#save_upload', as: :save_upload

@@ -40,13 +40,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
+  # SMTP settings
   config.action_mailer.smtp_settings = {
-    :address              => "mail.mixed-messages.org",
+    :address              => "sub5.mail.dreamhost.com",
     :port                 => 587,
-    :user                 => "from_contact@mixed-messages.org",
-    :password             => "XJ2VF-58",
-    :authentication       => "plain",
+    :user_name            => "producers@mixed-messages.org",
+    :password             => "J75ImarP*^gno",
+    :authentication       => "login",
     :enable_starttls_auto => true
   }
   

@@ -51,8 +51,7 @@ class PagesController < ApplicationController
 
   end
 
-  def contact 
-
+  def contact_us
   end
 
 private

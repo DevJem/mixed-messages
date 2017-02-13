@@ -1,11 +1,11 @@
-
+<%= javascript_include_tag 'swfobject' %>
 <%= render 'layouts/errors', obj: @upload %>
-<div class="blog-fix">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-xs-12">
-			<div align="center">
+		<div class="col-xs-6 col-xs-offset-3">
+			<div align="center" class="embed-responsive embed-responsive-16by9">
 				<h1 class="fix-link"><%= link_to @upload.user.username, user_path(@upload.user) %></h1><br/>
-				<%= video_tag @upload.file, height: "400px", controls: true, autobuffer: true %> <br/>
+				<%= video_tag @upload.file, controls: true, autobuffer: true, preload: "auto" %><br/>
 			</div>
 		</div>
 		<div class="col-md-4">

@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 		# respond_to do |format|
 
 			if verify_recaptcha(model: @user) && @user.save
+				Welcome.welcome(@user).deliver_now
 				flash[:success] = "Welcome to Mixed-Messages, #{@user.username}!"
 				session[:user_id] = @user.id
 				redirect_to user_path(@user)

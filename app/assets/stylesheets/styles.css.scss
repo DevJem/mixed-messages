@@ -22,6 +22,15 @@ h1, h3  {
 	
 }
 
+.lobster {
+	font-family: 'Dancing Script', cursive;
+	box-shadow: -3px 3px 5px 0px $mm-color;
+	padding: 20px 0 20px 50px;
+	margin-left: 40px;
+	font-size: 2vw;
+	margin-bottom: 30px;
+}
+
 .social-media {
 	.fb-share-button {
 		display: inline-block;

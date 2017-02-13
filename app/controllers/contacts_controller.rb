@@ -10,10 +10,11 @@ class ContactsController < ApplicationController
 			@contact.user = current_user.username
 			@contact.email = current_user.email
 			if @contact.valid?
-				ContactUs.contact(@contact).deliver
+				ContactUs.contact(@contact).deliver_now
 				flash[:success] = "Email sent, we'll respond as soon as we can."
 				redirect_to root_path
 			else
+				flash[:danger] = "Failed to send email."
 				render :new
 			end
 		end
