@@ -1,12 +1,63 @@
+<!-- Load Facebook SDK and Twitter for JavaScript -->
+<div id="fb-root"></div>
+<script>
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+
 <% @video.each do |k, v| %>
+ <meta itemprop="U" property="og:url" content=<%= "http://mixed-messages.org/videos/#{v}" %> />
+ <meta itemprop="T" property="og:type" content="website" />
+ <meta itemprop="i" property="og:image" content="http://img.youtube.com/vi/#{v}/1.jpg" />
+
+
 <% src = "https://www.youtube.com/embed/#{v}?rel=0" %>
-<div align="center">
-	<iframe width="1280" height="720" src=<%= src %> frameborder="0" allowfullscreen></iframe>
-	<% "Source is: #{src}" %>
+<div class="container-fluid">
+	<div class="col-sm-10 col-sm-offset-1">
+		<div align="center" class="embed-responsive embed-responsive-16by9">
+			<iframe  src=<%= src %> frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
 </div>
+
 <div class="container">
+	<div class="col-xs-12 social-media">
+		<div>
+		<div class="fb-share-button" data-href=<%= "http://mixed-messages.org/videos/#{v}" %> data-layout="button" data-size="small" data-mobile-iframe="	true"><a class="fb-xfbml-parse-ignore" target="_blank" href=<%="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmixed-messages.org%2Fvideos%2F#{v}&amp;src=sdkpreparse" %>>Share</a>
+		</div>
+
+			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Mixed-Messages&hashtags=mixedmessagesmovement">
+				Tweet</a>
+		</div>
+
+	</div>
+
 	<div align="center">
 		<%= render 'layouts/comments', obj: v %>
 	</div>
 </div>
 <% end %>
+

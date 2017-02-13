@@ -52,7 +52,12 @@
 							<strong><%= comment.user.username %></strong> <br/>
 							<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
 							<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
-							Comment: <%= comment.id %> <br/>
+							<% if logged_in? && current_user.admin? %>
+								Comment: <%= comment.id %> <br/>
+							<% end %>
+							<% if comment.user.admin? %>
+								<h3>admin</h3>
+							<% end %>
 						</div>
 						<div class="col-md-8">
 							<div align="left">
@@ -125,7 +130,12 @@
 							<strong><%= comment.user.username %></strong> <br/>
 							<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
 							<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
-							Comment: <%= comment.id %> <br/>
+							<% if logged_in? && current_user.admin? %>
+								Comment: <%= comment.id %> <br/>
+							<% end %>
+							<% if comment.user.admin? %>
+								<h3>admin</h3>
+							<% end %>
 						</div>
 						<div class="col-md-8">
 							<div align="left">

@@ -75,7 +75,7 @@ class UsersController < ApplicationController
 	end
 
 	def elist
-		@users = User.where(:allow_emails == true).paginate(page: params[:page], per_page: 12)
+		@users = User.where(allow_emails: true).paginate(page: params[:page], per_page: 12)
 	end
 
 

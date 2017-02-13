@@ -1,41 +1,46 @@
-<div class="container">
-	<div align="center">
-		<h1>Blogs</h1>
-	</div>
-</div>
 
 
-<div class="blog-fix">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-5 col-md-offset-2 good-background">
-			<% @blogs.each do |blog| %>
-				<div class="fix-link blog-title">
-					<h3><%= link_to blog.title, blog_path(blog) %></h3>
-				</div>
-				<div class="blog-body hide-img fix-link">
-					<h4>
-						<%= truncate(simple_format(blog.content, sanitize: false), length: 250, escape: false) %>
-					</h4>  <!-- Escape: false stops html tags from showing up -->
-					<div class="blog-meta-details">
-						<h5><strong>Created By: <%= blog.user.username if blog.user %>,
-							<%= time_ago_in_words(blog.created_at) %> ago.</strong> 
-						</h5>
+		<div class="col-md-8 col-md-offset-2 good-background">
+			<div align="center">
+				<h1>Blogs</h1>
+			</div>
+			<div class="col-sm-8">
+				<% @blogs.each do |blog| %>
+					<div class="fix-link blog-title">
+						<h3><%= link_to blog.title, blog_path(blog) %></h3>
 					</div>
-				</div>
-
-				<% if logged_in? && (current_user.admin || blog.user == current_user) %>
-					<div class="blog-actions" align="right">
-						<%= link_to "Edit this blog", edit_blog_path(blog),
-								class: "btn btn-xs btn-primary" %>
-
-						<%= link_to "Delete this blog", blog_path(blog),
-								method: :delete, data: {confirm: "Are you sure you want to delete this blog?"}, class: "btn btn-xs btn-danger" %>
+					<div class="blog-body hide-img fix-link">
+						<h4>
+							<%= truncate(simple_format(blog.content, sanitize: false), length: 250, escape: false) %>
+						</h4>  <!-- Escape: false stops html tags from showing up -->
+						<div class="blog-meta-details">
+							<h5><strong>Created By: <%= blog.user.username if blog.user %>,
+								<%= time_ago_in_words(blog.created_at) %> ago.</strong> 
+							</h5>
+						</div>
 					</div>
+
+					<% if logged_in? && (current_user.admin || blog.user == current_user) %>
+						<div class="blog-actions" align="right">
+							<%= link_to "Edit this blog", edit_blog_path(blog),
+									class: "btn btn-xs btn-primary" %>
+
+							<%= link_to "Delete this blog", blog_path(blog),
+									method: :delete, data: {confirm: "Are you sure you want to delete this blog?"}, class: "btn btn-xs btn-danger" %>
+						</div>
+					<% end %>
+					<div class="comment-hr"></div>
 				<% end %>
-				<div class="comment-hr"></div>
-			<% end %>
+			</div>
+			<div class="col-sm-4">
+				<div align="center">
+					
+				</div>
+			</div>
 		</div>
-		<div class="col-md-2 col-md-offset-1">
+		<div class="col-md-2">
 			<%= render 'layouts/ads' %>
 		</div>
 	</div>

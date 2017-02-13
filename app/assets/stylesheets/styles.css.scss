@@ -22,6 +22,19 @@ h1, h3  {
 	
 }
 
+.social-media {
+	.fb-share-button {
+		display: inline-block;
+		height: 20px;
+		
+	}
+	.twitter-share-button {
+		display: inline-block;
+		height: 25px;
+		vertical-align: bottom;
+	}
+}
+
 .fix-link {
 	a {
 		text-decoration: none;

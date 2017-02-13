@@ -33,16 +33,22 @@ class PagesController < ApplicationController
       end
     end
 
-    if @PageToken.nil?
-      
-      if @videos = JSON.load(open(json_url))
-      else redirect_to root_path
+    begin
+      if @PageToken.nil?
+        
+        if @videos = JSON.load(open(json_url))
+        else redirect_to root_path
+        end
+      elsif !@PageToken.nil?
+        if @videos = JSON.load(open("#{json_url}#{@PageToken}"))
+        else redirect_to root_path
+        end
       end
-    elsif !@PageToken.nil?
-      if @videos = JSON.load(open("#{json_url}#{@PageToken}"))
-      else redirect_to root_path
-      end
+    rescue
+      flash[:warning] = "An error has occured trying to get the videos."
+      redirect_to root_path
     end
+
   end
 
   def contact 
