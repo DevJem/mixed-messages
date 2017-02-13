@@ -8,6 +8,23 @@ class PagesController < ApplicationController
   def logo
   end
 
+  def unsubscribe
+  end
+
+  def remove_email
+    @email = Subscribe.where(subscribes: remove_email_params).first
+    if !@email.nil?
+      @user = User.where(email: @email.email).first
+      @email.destroy
+      @user.toggle!(:allow_emails)
+      flash[:success] = "Your email has been removed from our mailing list."
+      redirect_to root_path
+    else
+      flash[:warning] = "The email address entered does not exist in our database. Make sure you entered the correct email information and try again or contact us."
+      redirect_to unsubscribe_path
+    end
+  end
+
   def safe
   end
 
@@ -58,6 +75,10 @@ private
   #API_KEY="AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
 
   def slide_params
+  end
+
+  def remove_email_params
+    params.require(:unsubscribe).permit(:email)
   end
 
 end

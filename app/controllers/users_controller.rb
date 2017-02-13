@@ -29,6 +29,9 @@ class UsersController < ApplicationController
 		# respond_to do |format|
 
 			if verify_recaptcha(model: @user) && @user.save
+				if @user.allow_emails
+					Subscribe.create(email: @user.email)
+				end
 				Welcome.welcome(@user).deliver_now
 				flash[:success] = "Welcome to Mixed-Messages, #{@user.username}!"
 				session[:user_id] = @user.id
@@ -43,6 +46,9 @@ class UsersController < ApplicationController
 
 	def update
 		if verify_recaptcha(model: @user) && @user.update(user_params)
+			if @user.allow_emails
+				Subscribe.create(email: @user.email)
+			end
 			flash[:success] = "Your account was successfully updated."
 			redirect_to user_path(@user)
 		else
@@ -76,7 +82,18 @@ class UsersController < ApplicationController
 	end
 
 	def elist
-		@users = User.where(allow_emails: true).paginate(page: params[:page], per_page: 12)
+		@users = Subscribe.all.paginate(page: params[:page], per_page: 12)
+	end
+
+	def send_mass_email
+		@message = Hash.new
+		Subscribe.all.each do |subscriber|
+			@message = {email: subscriber.email,
+									subject: params[:subject],
+									content: params[:content]}
+			EmailList.list(@message).deliver_later
+		end
+		redirect_to :back
 	end
 
 
@@ -101,6 +118,10 @@ class UsersController < ApplicationController
 			flash[:danger] = "Only admin users can perform that action"
 			redirect_to root_path
 		end
+	end
+
+	def send_email_params
+		params.require(:send_email).permit(:subject, :content)
 	end
 
 

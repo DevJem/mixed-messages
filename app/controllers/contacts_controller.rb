@@ -17,6 +17,7 @@ class ContactsController < ApplicationController
 				flash[:danger] = "Failed to send email."
 				render :new
 			end
+			@contact.destroy
 		end
 	end
 

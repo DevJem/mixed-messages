@@ -8,12 +8,17 @@ Rails.application.routes.draw do
   post 'notify(.:format)' => 'notifications#create', as: :notify
   post 'delete-notifications/:id' => 'notifications#delete_all', as: :delete_notices
 
-  get 'about'			=> 'pages#about'
-  get 'faq'	    	=> 'pages#faq'
-  get 'watch'			=> 'pages#watch'
-  patch 'watch'   => 'pages#watch'
-  get 'safe'      => 'pages#safe'
-  get 'contact_us' => 'pages#contact_us'
+  get 'about'			  => 'pages#about'
+  get 'faq'	    	  => 'pages#faq'
+  get 'watch'		  	=> 'pages#watch'
+  patch 'watch'     => 'pages#watch'
+  get 'safe'        => 'pages#safe'
+  get 'contact_us'  => 'pages#contact_us'
+  get 'unsubscribe' => 'pages#unsubscribe'
+
+  post 'remove_email' => 'pages#remove_email'
+
+  post 'send_email'  => 'users#send_mass_email'
 
   get 'submit'    => 'uploads#new'
   patch 'uploads/:id/save' => 'uploads#save_upload', as: :save_upload

@@ -13,4 +13,3 @@ class ContactUs < ApplicationMailer
 		mail(subject: @message.title, delivery_method_options: options)
 	end
 end
-# XJ2VF-58
