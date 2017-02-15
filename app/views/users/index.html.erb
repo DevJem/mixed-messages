@@ -19,7 +19,8 @@
 						<li class="user clearfix">
 							<%= link_to user.username.upcase, user_path(user) %>
 						</li>
-						<li>Warn Level: <%= user.warn_level %></li>
+						<li><h4>Warn Level: <%= user.warn_level %></h4></li>
+						<li><h6><%= user.email %></h6></li>
 						<% if logged_in? && current_user.admin && !user.admin %>
 							<li>
 									<%= link_to "Make Administrator", make_admin_path(user), method: :patch, remote: :true, class: "btn btn-xs btn-info",

@@ -1,0 +1,41 @@
+<% if logged_in? and current_user.require_password_reset? %>
+	<% flash[:success] = "You must change your password." %>
+<% end %>
+<div class="container">
+	<div class="row good-background">
+		<div align="center">
+			<h1 class="section-title">change password</h1>
+		</div>
+
+		<%= form_for :password_reset, url: password_reset_path, html: {class: "form-horizontal", role: "form"} do |f| %>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= f.label :old_password %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.password_field :old_password, class: "form-control" %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= f.label :new_password %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.password_field :new_password, class: "form-control" %>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="control-label col-sm-2">
+					<%= f.label :confirm_new_password %>
+				</div>
+				<div class="col-sm-8">
+					<%= f.password_field :confirm_new_password, class: "form-control" %>
+				</div>
+			</div>
+			<div class="col-sm-2 col-sm-offset-2 move-bottom">
+				<%= f.submit "Change Password", class: "btn btn-lg btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</div>

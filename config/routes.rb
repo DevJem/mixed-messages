@@ -8,13 +8,18 @@ Rails.application.routes.draw do
   post 'notify(.:format)' => 'notifications#create', as: :notify
   post 'delete-notifications/:id' => 'notifications#delete_all', as: :delete_notices
 
-  get 'about'			  => 'pages#about'
-  get 'faq'	    	  => 'pages#faq'
-  get 'watch'		  	=> 'pages#watch'
-  patch 'watch'     => 'pages#watch'
-  get 'safe'        => 'pages#safe'
-  get 'contact_us'  => 'pages#contact_us'
-  get 'unsubscribe' => 'pages#unsubscribe'
+  get 'about'			      => 'pages#about'
+  get 'faq'	    	      => 'pages#faq'
+  get 'watch'		       	=> 'pages#watch'
+  patch 'watch'         => 'pages#watch'
+  get 'safe'            => 'pages#safe'
+  get 'contact_us'      => 'pages#contact_us'
+  get 'unsubscribe'     => 'pages#unsubscribe'
+  get 'change_password' => 'pages#change_password', as: :change_password
+
+  post 'reset'          => 'pages#password_reset', as: :password_reset
+  get 'pw-reset'        => 'pages#send_pw_reset', as: :pw_reset
+  post 'new_pw_by_email'    => 'pages#new_pw_by_email'
 
   post 'remove_email' => 'pages#remove_email'
 
@@ -51,7 +56,8 @@ Rails.application.routes.draw do
 
   get 'premium' => 'videos#premium'
 
-  get 'market' => 'market#index'
+  get 'market'     => 'market#index'
+  get 'market/:id' => 'market#show'
 
   get 'review' => 'uploads#review'
 

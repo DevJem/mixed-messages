@@ -14,7 +14,9 @@
   	<%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
 
-    <% if logged_in? and current_user.banned? %>
+    <% if logged_in? and current_user.require_password_reset? %>
+      <%= render 'pages/pw_change_form' %>
+    <% elsif logged_in? and current_user.banned? %>
       <%= render 'layouts/banned' %>
     <% else %>
       <%= yield %>

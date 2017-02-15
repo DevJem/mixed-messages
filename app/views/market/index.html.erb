@@ -1,30 +1,30 @@
-<div align="center">
-	<h1>Market</h1>
-</div>
+
 <div class="container">
-	<div class="row">
-		<%# @products.each do |product| %>
-			<% product.each do |key, value| %>
-				<% if key == "id" %>
-					<% @id = value %>
-				<% end %>
-				<% if key == "title" %>
-					<% @title = value %>
-				<% end %>
-				<% if key == "images" %>
-					<% value.each do |k, v| %>
-						<% if k == "src" %>
-							<% @picture = v %>
-							<div class="col-lg-4 col-sm-12">
-								<%= image_tag url("#{@picture}") %>
-								<h4><%= @title %></h4>
-								<% @id %>
-							</div>
-						<% end %>
+	<div class="row good-background">
+		<div align="center">
+			<h1 class="section-title">Our gear</h1>
+		</div>
+
+		<% @products.as_json.each do |product| %>
+			<div class="col-lg-4 col-sm-12">
+				<div align="center">
+					<h3><%= product["title"] %></h3><br/>
+					<% link = product["handle"] %>
+					<% product["images"].as_json.each do |value| %>
+						<% image = value["src"] %>
+						<%= link_to (image_tag image, alt: "product['id'] picture", width: "80%"), "https://trial-for-mm.myshopify.com/products/#{link}", target: "_blank" %>
 					<% end %>
-				<% end %>
-			<% end %>
-		<%# end %>
+					<% price = "" %>
+					<% product["variants"].as_json.each do |value| %>
+						<% price = value["price"] %>
+					<% end %>
+					<h4>$<%= price %></h4>
+
+				</div>
+			</div>
+		<% end %>
+
+
 	</div>
 </div>
 
@@ -33,3 +33,4 @@
 
 
 
+ 

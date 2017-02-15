@@ -129,3 +129,29 @@
 <% if !flash[:success].blank? or !flash[:danger].blank? or !flash[:info].blank? %>
   <script onload="('#modal').modal('show')"></script>
 <% end %>
+____________________________________________________________
+watch pagination
+
+
+
+	<!-- Navigation -->
+	<div class="row">
+		<div align="center">
+			<div class="section_title col-sm-12"><h1>Past Episodes</h1></div>
+		</div>
+		<% @videos.each do |key, value| %>
+
+			<div align="center" class="col-xs-12">
+			<!-- Previous page button -->
+				<% if key == "prevPageToken" %>
+					<% @prevPageToken = "&pageToken=#{value}" %>
+					<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-grand btn-warning" %>
+				<% end %>
+			
+			<!-- next page button -->
+				<% if key == "nextPageToken" %>
+					<% @nextPageToken = "&pageToken=#{value}" %>
+					<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-warning" %>
+				<% end %>
+			</div>
+			

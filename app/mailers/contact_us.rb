@@ -1,7 +1,7 @@
 class ContactUs < ApplicationMailer
 
 	default from: "from_contact@mixed-messages.org"
-	default to: "jdehay@mixed-messages.org"
+	default to: "producers@mixed-messages.org"
 
 	def contact(message)
 

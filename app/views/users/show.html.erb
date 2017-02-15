@@ -1,4 +1,4 @@
-<div class="blog-fix">
+<div class="container-fluid">
 	<div class="row">
 		<div align="center">
 			<% if logged_in? && current_user.admin && !@user.admin %>
@@ -23,6 +23,10 @@
 			<div class="col-lg-7">	
 				<div id="info" class="row">
 					<div>
+						<h3>Member since:</h3>
+						<h4><%= @user.created_at.localtime.strftime("%B %d, %Y") %></h4><br/>
+					</div>
+					<div>
 					<h3>info:</h3>
 						<% if @user.zipcode %>
 							
@@ -38,7 +42,7 @@
 						<div>
 							<h4 class="fix-link">
 								<span class="glyphicon glyphicon-pencil"></span>
-								<%= link_to "Edit your account", edit_user_path(@user) %>
+								<%= link_to "Edit your info", edit_user_path(@user) %>
 							</h4>
 						</div>
 					<% end %>
@@ -53,7 +57,9 @@
 								</div>
 								<h4><%= @user.bio %></h4>
 							<% elsif logged_in? && (current_user.admin || current_user == @user) %><br/>
-								<%= link_to "Edit your Bio", edit_user_path(@user), class: "h4" %>
+								<h4 class="fix-link">
+									<%= link_to "Edit your Bio", edit_user_path(@user) %>
+								</h4>
 							<% end %>
 						</div>
 					</div>

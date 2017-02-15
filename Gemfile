@@ -38,7 +38,7 @@ gem 'httparty'
 gem 'ckeditor'
 gem 'image_magick'
 gem 'mini_magick'
-
+gem 'omniauth-shopify-oauth2'
 #for recaptcha
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'recaptcha', require: 'recaptcha/rails'

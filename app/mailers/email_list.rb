@@ -6,3 +6,4 @@ class EmailList < ApplicationMailer
 		mail(to: @message[:email], subject: @message[:subject])
 	end
 end
+ 

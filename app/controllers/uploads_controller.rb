@@ -102,6 +102,7 @@ class UploadsController < ApplicationController
 		def require_user
 			if !logged_in?
 				redirect_to root_path
+				flash[:warning] = "You must be logged in to do that."
 			end
 		end
 

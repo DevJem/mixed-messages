@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="row good-background">
+		<div align="center">
+			<h1 class="section-title">reset password</h1>
+		</div>
+		<%= form_for :reset_email, url: new_pw_by_email_path, html: {class: "form-horizontal", role: "form"} do |f| %>
+			<div class="form-group">
+				<div class="control-label col-sm-2 col-sm-offset-1">
+					<%= f.label "Email you signed up with" %>
+				</div>
+				<div class="col-sm-6">
+					<%= f.email_field :email, class: "form-control" %>
+				</div>
+			</div>
+			<div class="col-sm-2 col-sm-offset-3 move-bottom">
+				<%= f.submit "Reset Password", class: "btn btn-lg btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</div>
