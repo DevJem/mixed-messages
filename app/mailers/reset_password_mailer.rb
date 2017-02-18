@@ -4,7 +4,7 @@ class ResetPasswordMailer < ApplicationMailer
 
 	def reset_password(user, new_password)
 		options = {user_name: "webmaster@mixed-messages.org",
-							 password: "SF*xw9EN"}
+							 password: ENV['WEBMASTER_PW']}
 
 		@new_password = new_password
 		@user = user

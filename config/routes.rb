@@ -56,8 +56,9 @@ Rails.application.routes.draw do
 
   get 'premium' => 'videos#premium'
 
-  get 'market'     => 'market#index'
-  get 'market/:id' => 'market#show'
+  get 'market'          => 'market#index'
+  get 'orders'          => 'market#orders'
+  post 'mark_fulfilled' => 'market#mark_fulfilled'
 
   get 'review' => 'uploads#review'
 

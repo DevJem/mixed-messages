@@ -155,3 +155,27 @@ watch pagination
 				<% end %>
 			</div>
 			
+________________________________________________________________
+
+<div class="row">
+				<div class="col-sm-4 col-md-6">
+					<% order["shipping_address"].as_json.each do |address| %>
+						<%= address["address1"] %><br/>
+						<%= address["address2"] %><br/>
+						<%= address["city"] %>, <%= " " %>
+						<%= address["province_code"] %><%= " " %>
+						<%= address["zip"] %> <br/>
+						<%= address["country"] %>
+						<% first_name = address["first_name"] %>
+						<% last_name = address["last_name"] %>
+					<% end %>
+				</div>
+				<div class="col-sm-4 col-md-3">
+					<%= "#{last_name}, #{first_name}" %><br/>
+					<%= order["contact_email"] %><br/>
+					<%= order["created_at"] %>
+				</div>
+				<div class="col-sm-4 col-md-3">
+					<%= order["total_price"] %>
+				</div>
+			</div>

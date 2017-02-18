@@ -1,0 +1,81 @@
+<div class="container">
+	<div class="row good-background">
+		<div align="center">
+			<h1 class="section-title">Orders Pending</h1>
+			<h3><%= @orders.each.count %></h3>
+		</div>
+		<div class="comment-hr"></div>
+
+		<% @orders.as_json.each do |order| %>
+			<% address1 = "" %>
+			<% address2 = "" %>
+			<% city = "" %>
+			<% province_code = "" %>
+			<% zip = "" %>
+			<% country = "" %>
+			<% first_name = "" %>
+			<% last_name = "" %>
+			<% line_items = Array.new %>
+			<div class="row order-item">
+				<% [order["shipping_address"]].as_json.each do |addr| %>
+					<% address1 = addr["address1"] %>
+					<% address2 = addr["address2"] %>
+					<% city = addr["city"] %>
+					<% province_code = addr["province_code"] %>
+					<% zip = addr["zip"] %>
+					<% country = addr["country"] %>
+					<% first_name = addr["first_name"] %>
+					<% last_name = addr["last_name"] %>
+				<% end %>
+				<div class="col-sm-4 col-md-3">
+					<%= "#{last_name}, #{first_name}" %><br/>
+					<%= address1 %><br/>
+					<% if !address2.empty? %>
+						<%= address2 %><br/>
+					<% end %>
+					<%= "#{city}, #{province_code} #{zip} #{country}" %>
+				</div>
+				<div class="col-sm-4 col-md-3">
+					
+					<%= email = order["contact_email"] %><br/>
+					<% user = User.where(email: email).first %>
+					<% if !user.nil? %>
+						User: <%= user.username %><br/>
+					<% end %>
+					<%= order["created_at"] %>
+				</div>
+				<div class="col-sm-4 col-md-3">
+					<div align="center">
+						Order Number: <%=order["order_number"] %><br/>
+						Order ID: <%= order["id"] %><br/>
+						Total: $<%= order["total_price"] %> <br/>
+						<% order["line_items"].as_json.each do |item| %>
+							<%= item["title"] %>: <%= item["quantity"] %><br/>
+							<% line_items << item["id"] %>
+						<% end %>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-3">
+					<% if order["fulfillment_status"] != "fulfilled" %>
+						<div align="center">
+							<%= form_for :fulfilled, url: mark_fulfilled_path do |f| %>
+								<%= f.hidden_field :order_number, value: (order["order_number"]) %>
+								<%= f.hidden_field :order_id, value: (order["id"]) %>
+								<%= f.submit "Confirm Order", class: "btn btn-md btn-primary", data: {confirm: "Mark order \"#{order["order_number"]}\" fulfilled?"} %>
+							<% end %>
+						</div>
+					<% end %>
+					<div align="center">
+						<h3><%= order["financial_status"] %></h3>
+					</div>
+				</div>
+
+			</div>
+			<div class="comment-hr"></div>
+		<% end %>
+	</div>
+</div>
+
+
+
+
