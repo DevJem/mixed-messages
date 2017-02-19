@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :uploads
   resources :notifications, except: [:create]
   resources :contacts, only: [:new, :create]
+  resources :tags, only: [:new, :create, :destroy, :index]
 
   post 'notify(.:format)' => 'notifications#create', as: :notify
   post 'delete-notifications/:id' => 'notifications#delete_all', as: :delete_notices
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
 
   get 'terms'     => 'uploads#terms'
   get 'privacy'   => 'uploads#privacy_policy'
+  post 'add_tags' => 'uploads#add_tags'
 
   post 'uploads/:id' => 'uploads#update'
   resources :comments

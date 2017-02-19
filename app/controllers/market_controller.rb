@@ -20,10 +20,7 @@ class MarketController < ApplicationController
 		@fill.prefix_options = {order_id: @order.id}
 		@fill.save
 		@order.fulfillments << @fill
-		# puts "Order is: #{@order}"
-		# 	puts "Order Fill: #{@order.fulfillments}"
-		# 	puts "fill id: #{@fill.id}"
-		# puts "Fulfillment is: #{@fill}"
+
 		if @order.save
 			flash[:success] = "Order #{fulfillment_params[:order_number]} marked fulfilled."
 			redirect_to :back

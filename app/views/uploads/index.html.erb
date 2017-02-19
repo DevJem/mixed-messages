@@ -1,16 +1,32 @@
-<div class="container">
-	<div class="row good-background">
-		<div align="center">
-			<h1>User Submissions</h1><br/>
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe width="800" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=united%20states&q=37190&key=AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc" allowfullscreen></iframe>
-			</div>
-
-			<%= will_paginate %>
+<div class="container-fluid">
+	<div class="col-sm-2 col-lg-2">
+		<div align="left">
+			<% @tags.each do |tag| %>
+				<div style="height: 30px; margin-left: 20px;" class="btn btn-sm btn-primary">
+					<%= tag.tag_name %>
+				</div><br/><br/>
+			<% end %>
 		</div>
-		<%= render 'submission_list', obj: @uploads %>
-		<div align="center">
-			<%= will_paginate %>
+	</div>
+	<div class="col-sm-8 col-lg-8">
+		<div class="row good-background">
+			<div align="center">
+				<h1>User Submissions</h1><br/>
+	<!-- 			<div class="embed-responsive embed-responsive-16by9">
+					<iframe width="800" height="400" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=united%20states&q=37190&key=AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc" allowfullscreen></iframe>
+				</div> -->
+
+				<%= will_paginate %>
+
+			</div>
+			
+			<div class="row">
+				
+			</div>
+			<%= render 'submission_list', obj: @uploads %>
+			<div align="center">
+				<%= will_paginate %>
+			</div>
 		</div>
 	</div>
 </div>

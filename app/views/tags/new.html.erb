@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row good-background">
+		<div align="center">
+			<h1 class="section-title">New tag</h1>
+		</div>
+
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="row">
+				<%= form_for(@tag, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+								<%= f.label :tag_name %>
+						</div>
+						<div class="col-sm-8">
+								<%= f.text_field :tag_name, class: "form-control", placeholder: "New Tag", autofocus: true %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.submit "Add Tag", class: "btn btn-lg btn-primary" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<div>
+			<% @tags.each do |tag| %>
+				<div class="col-sm-3 col-xs-6 btn btn-md btn-primary">
+					<%= tag.tag_name %><%= link_to " X", tag_path(tag.id), method: :delete %>
+				</div>
+			<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>

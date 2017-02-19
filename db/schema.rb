@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214190930) do
+ActiveRecord::Schema.define(version: 20170219052556) do
 
   create_table "blogs", force: :cascade do |t|
     t.integer  "user_id"
@@ -107,6 +107,20 @@ ActiveRecord::Schema.define(version: 20170214190930) do
     t.datetime "updated_at"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.integer  "uploads_id"
+    t.string   "tag_name",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tags", ["uploads_id"], name: "index_tags_on_uploads_id"
+
+  create_table "tags_uploads", id: false, force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "upload_id"
+  end
+
   create_table "uploads", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "zipcode"
@@ -117,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170214190930) do
     t.string   "file"
     t.boolean  "save_upload",          default: false
     t.integer  "terms_and_conditions", default: 0
+    t.string   "tags"
   end
 
   add_index "uploads", ["user_id", "title"], name: "index_uploads_on_user_id_and_title", unique: true

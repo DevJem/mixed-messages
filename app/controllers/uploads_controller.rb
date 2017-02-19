@@ -6,6 +6,7 @@ class UploadsController < ApplicationController
 	def index
 		#@uploads = Upload.where(save_upload: true).order("id DESC")
 		@uploads = Upload.paginate(page: params[:page], per_page: 12).where(save_upload: true).order("id DESC")
+		@tags = Tag.all
 	end
 
 	def review
@@ -14,6 +15,7 @@ class UploadsController < ApplicationController
 
 	def show
 		flags(params[:id], "upload-comment")
+		@tags = Tag.all
 	end
 
 	def new 
@@ -79,9 +81,24 @@ class UploadsController < ApplicationController
 		#@comment = Comment.find
 	end
 
+	def add_tags
+		@temp = add_tags_params[:tags]
+		@temp.pop
+		@upload = Upload.find(add_tags_params[:upload_id])
+		puts "Tags: #{@tags}"
+		@upload.update tags: Tag.find(@temp)
+		redirect_to :back
+	end
+
+
+
 	private
 		def upload_params
 			params.require(:upload).permit(:title, :note, :zipcode, :file)
+		end
+
+		def add_tags_params
+			params.require(:add_tags).permit(:upload_id, tags: [])
 		end
 
 		def comment_params
