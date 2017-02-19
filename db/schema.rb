@@ -109,12 +109,11 @@ ActiveRecord::Schema.define(version: 20170219052556) do
 
   create_table "tags", force: :cascade do |t|
     t.integer  "uploads_id"
-    t.string   "tag_name",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "uploads_type"
+    t.string   "tag_name",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
-
-  add_index "tags", ["uploads_id"], name: "index_tags_on_uploads_id"
 
   create_table "tags_uploads", id: false, force: :cascade do |t|
     t.integer "tag_id"

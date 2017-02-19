@@ -7,6 +7,23 @@
 				<%= video_tag @upload.file, controls: true, autobuffer: true, preload: "auto" %><br/>
 			</div>
 		</div>
+		<div class="col-xs-3">
+			<!-- Tag system -->
+			<% if logged_in? and current_user.admin? %>
+				<div align="left">
+					<%= form_for :add_tags, url: add_tags_path do |f| %>
+						<div class="field">
+							<%= f.hidden_field :upload_id, value: @upload.id %>
+							<%= f.collection_check_boxes :tags, Tag.all, :id, :tag_name do |tag| %>
+								<%= tag.check_box %>
+								<%= tag.label %><br/>
+							<% end %>
+						</div>
+						<%= f.submit "Mark Tags", class: "btn btn-sm btn-primary" %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
 
 		<!-- Allow or deny the file -->
 		<div class="col-md-4">
@@ -46,23 +63,7 @@
 			<% end %>
 		</div>
 
-		<!-- Tag system -->
-		<% if logged_in? and current_user.admin? %>
-			<div class="row">
-				<div align="left">
-					<%= form_for :add_tags, url: add_tags_path do |f| %>
-						<div class="field">
-							<%= f.hidden_field :upload_id, value: @upload.id %>
-							<%= f.collection_check_boxes :tags, Tag.all, :id, :tag_name do |tag| %>
-								<%= tag.check_box %>
-								<%= tag.label %><br/>
-							<% end %>
-						</div>
-						<%= f.submit "Mark Tags", class: "btn btn-sm btn-primary" %>
-					<% end %>
-				</div>
-			</div>
-		<% end %>
+		
 
 	</div>
 
