@@ -27,3 +27,13 @@
 .terms {
 	padding: 40px;
 } 
+
+.tags {
+	list-style-type: none;
+	li {
+		margin-top: 7px;
+		.btn {
+			width: 80%;
+		}
+	}
+}

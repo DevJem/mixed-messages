@@ -5,7 +5,8 @@ class UploadsController < ApplicationController
  
 	def index
 		#@uploads = Upload.where(save_upload: true).order("id DESC")
-		@uploads = Upload.paginate(page: params[:page], per_page: 12).where(save_upload: true).order("id DESC")
+		@uploads = Upload.search(params[:search]).paginate(page: params[:page], per_page: 12).where(save_upload: true).order("id DESC")
+		
 		@tags = Tag.all
 	end
 
