@@ -52,3 +52,11 @@ $mm-color: #920202;
 		}
 	}
 }
+
+@media (max-width: 992px) {
+	#home-video {
+		margin: 0;
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+}

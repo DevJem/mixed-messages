@@ -6,13 +6,13 @@
 			<p>Clicking these links will take you to our affiliate marketplace at Shopify.com</p>
 		</div>
 		<% @products.as_json.each do |product| %>
-			<div class="col-lg-4 col-sm-12">
+			<div class="col-lg-4 col-xs-12">
 				<div align="center">
 					<h3><%= product["title"] %></h3><br/>
 					<% link = product["handle"] %>
 					<% product["images"].as_json.each do |value| %>
 						<% image = value["src"] %>
-						<%= link_to (image_tag image, alt: "product['id'] picture", width: "80%"), "https://trial-for-mm.myshopify.com/products/#{link}", target: "_blank" %>
+						<%= link_to (image_tag image, alt: "product['id'] picture", class: "img-responsive", width: "80%"), "https://trial-for-mm.myshopify.com/products/#{link}", target: "_blank" %>
 					<% end %>
 					<% price = "" %>
 					<% product["variants"].as_json.each do |value| %>
