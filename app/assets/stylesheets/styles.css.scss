@@ -309,7 +309,10 @@ body {
 
 @media (max-width: 768px) {
 
+
 	#foot {
+		margin-left: 20px;
+		margin-right: 20px;
 		.social-media {
 			margin-top: 20px;
 			img {
@@ -341,15 +344,14 @@ body {
 		font-size: 30px;
 	}
 
-	#head, #foot {
-		margin: auto;
-	}
 
 	#head {
+		margin: auto;
 		margin-bottom: 50px;
 	}
 
 	#foot {
+
 		.move-top {
 			margin-top: 16px;
 		}

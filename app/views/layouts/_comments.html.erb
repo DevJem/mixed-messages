@@ -1,7 +1,7 @@
 
 <%# render 'layouts/errors', obj: obj %>
 
- 
+  
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
 		<div align="center">
@@ -37,31 +37,29 @@
 	</div>
 </div>
 
-<div class="container">
-	<div class="row each-comment good-background">
-		<div class="col-sm-9 col-xs-12"> 
-			<% if !obj.is_a? String %>
+<div class="row each-comment good-background">
+	<div class="col-sm-9 col-xs-12"> 
+		<% if !obj.is_a? String %>
 
-				<!-- Regular comments for blogs and user submissions -->
-				<% obj.comments.order("id DESC").each do |comment| %>
-					<%= render 'layouts/comment_layout', comment: comment, obj: obj %>
-				<% end %>								
-			<% else %>
+			<!-- Regular comments for blogs and user submissions -->
+			<% obj.comments.order("id DESC").each do |comment| %>
+				<%= render 'layouts/comment_layout', comment: comment, obj: obj %>
+			<% end %>								
+		<% else %>
 
 <!-- ************************************************************************** -->
-			<!-- Special comments for linked youtube videos -->
-				<% comments = Comment.where(video_id: obj) %>
-				<% comments.order("id DESC").each do |comment| %>
-					<%= render 'layouts/comment_layout', comment: comment %>
-				<% end %>
-				
+		<!-- Special comments for linked youtube videos -->
+			<% comments = Comment.where(video_id: obj) %>
+			<% comments.order("id DESC").each do |comment| %>
+				<%= render 'layouts/comment_layout', comment: comment %>
 			<% end %>
-			<div class="col-sm-12">
-				<div class="comment-hr"/></div>
-			</div>
+			
+		<% end %>
+		<div class="col-sm-12">
+			<div class="comment-hr"/></div>
 		</div>
-		<div class="col-sm-3">
-			<%= render 'layouts/ads' %>
-		</div>
+	</div>
+	<div class="col-sm-3">
+		<%= render 'layouts/ads' %>
 	</div>
 </div>

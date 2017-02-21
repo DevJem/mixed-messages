@@ -1,27 +1,34 @@
-<div class="foot"> <!-- class="navbar navbar-fixed-bottom"> -->
-	
-	<div id="foot" class="container-fluid">
-		<div class="col-md-7 col-md-offset-1 col-xs-5 move-top brighten social-media">
-			<div align="left">
-				<%= link_to image_tag("facebook.png", class: "good-background puffed"), "http://facebook.com" %>
-				<%= link_to image_tag("twitter2.png", class: "good-background puffed"), "http://twitter.com" %>
-				<%= link_to image_tag("youtube.png", class: "good-background puffed"), "http://youtube.com" %>
-				<%= link_to image_tag("instagram.png", class: "good-background puffed"), "http://instagram.com" %>
-				<%= link_to image_tag("pinterest.png", class: "good-background puffed"), "http://pinterest.com" %>
-			</div>
-		</div>
-		<div class="col-md-3 col-xs-6 footer-links" align="right">
-			<nav>
-				<ul>
-					<li><%= link_to "FAQ", faq_path %></li>
-					<li><%= link_to "ABOUT US", about_path %></li>
-					<li><%= link_to "CONTACT US", contact_us_path %></li>
-				</ul>
-			</nav>
-		</div>
-		<div class="col-xs-12">
-			<div align="center">
-				<h6>&copy;Copyright 2017 Mixed Messages LLC</h6>
+<!-- class="navbar navbar-fixed-bottom"> -->
+
+<div class="foot"> 
+	<div id="foot">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-7 col-md-offset-1 col-xs-5 move-top brighten social-media">
+					<div align="left">
+						<%= link_to image_tag("facebook.png", class: "good-background puffed"), "http://facebook.com" %>
+						<%= link_to image_tag("twitter2.png", class: "good-background puffed"), "http://twitter.com" %>
+						<%= link_to image_tag("youtube.png", class: "good-background puffed"), "http://youtube.com" %>
+						<%= link_to image_tag("instagram.png", class: "good-background puffed"), "http://instagram.com" %>
+						<%= link_to image_tag("pinterest.png", class: "good-background puffed"), "http://pinterest.com" %>
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-6 footer-links">
+					<div align="right">
+						<nav>
+							<ul>
+								<li><%= link_to "FAQ", faq_path %></li>
+								<li><%= link_to "ABOUT US", about_path %></li>
+								<li><%= link_to "CONTACT US", contact_us_path %></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div align="center">
+						<h6>&copy;Copyright 2017 Mixed Messages LLC</h6>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
