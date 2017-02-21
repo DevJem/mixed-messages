@@ -1,0 +1,131 @@
+
+
+	<div id=<%= "#{comment.id}" %> class="row">
+		<div class="col-sm-12">
+			<div class="comment-hr"/></div>
+		</div>
+		<div class="visible-sm col-xs-4" align="center">
+			<% if comment.user.admin? %>
+				<h3 class="redtext">admin</h3>
+			<% end %>
+		</div>
+		<div class="col-md-2 col-xs-5" align="center">
+			<strong><%= comment.user.username %></strong> <br/>
+			<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
+			<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
+			<% if logged_in? && current_user.admin? %>
+				Comment: <%= comment.id %> <br/>
+			<% end %>
+			<div class="hidden-sm">
+				<% if comment.user.admin? %>
+					<h3 class="redtext">admin</h3>
+				<% end %>
+			</div>
+		</div>
+		<div class="visible-xs col-xs-4 col-xs-offset-1 flags">
+			<!-- flag button -->
+			<% if logged_in? %>
+				<% if !@flags.nil? and !@flags.empty? %>
+					<% flag = @flags.where(comment_id: comment.id).where(user_id: current_user.id) %>
+						<% if logged_in? && !flag.empty? %>
+							<%= form_for(:report, url: report_path(flag.first.id), method: :delete, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+								<%= f.hidden_field :user_id, value: current_user.id %>
+								<% if !comment.blog_id.nil? %>
+									<%= f.hidden_field :blog_id, value: obj.id %>
+								<% elsif !comment.upload_id.nil? %>
+									<%= f.hidden_field :upload_id, value: obj.id %>
+								<% end %>
+								<%= f.hidden_field :comment_id, value: comment.id %>
+								<%= f.submit "Unflag", class: "btn btn-sm btn-primary" %>
+							<% end %>
+						<% else %>
+					<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+								<%= f.hidden_field :user_id, value: current_user.id %>
+								<% if !comment.blog_id.nil? %>
+									<%= f.hidden_field :blog_id, value: obj.id %>
+								<% elsif !comment.upload_id.nil? %>
+									<%= f.hidden_field :upload_id, value: obj.id %>
+								<% end %>
+								<%= f.hidden_field :comment_id, value: comment.id %>
+								<%= f.submit "Flag  ", class: "btn btn-sm btn-primary" %>
+							<% end %>
+						<% end %>
+				<% else %>
+					<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+						<%= f.hidden_field :user_id, value: current_user.id %>
+						<% if !comment.blog_id.nil? %>
+							<%= f.hidden_field :blog_id, value: obj.id %>
+						<% elsif !comment.upload_id.nil? %>
+							<%= f.hidden_field :upload_id, value: obj.id %>
+						<% end %>
+						<%= f.hidden_field :comment_id, value: comment.id %>
+						<%= f.submit "Flag  ", class: "btn btn-sm btn-primary" %>
+					<% end %>
+				<% end %>
+			
+
+				<!-- Delete button -->
+				<% if current_user.admin? %>
+					<%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-sm btn-info" %>
+				<% end %>
+			<% end %>
+		</div>
+		
+		
+		<div class="col-md-8 col-md-offset-0 col-xs-12">
+			<div align="left">
+				<h4><strong><%= comment.title.upcase %></strong></h4><br/>
+				<%= comment.comment %>
+			</div>
+		</div>
+
+		<div class="hidden-xs col-xs-2 flags">
+
+			<!-- flag button -->
+			<% if logged_in? %>
+				<% if !@flags.nil? and !@flags.empty? %>
+					<% flag = @flags.where(comment_id: comment.id).where(user_id: current_user.id) %>
+						<% if logged_in? && !flag.empty? %>
+							<%= form_for(:report, url: report_path(flag.first.id), method: :delete, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+								<%= f.hidden_field :user_id, value: current_user.id %>
+								<% if !comment.blog_id.nil? %>
+									<%= f.hidden_field :blog_id, value: obj.id %>
+								<% elsif !comment.upload_id.nil? %>
+									<%= f.hidden_field :upload_id, value: obj.id %>
+								<% end %>
+								<%= f.hidden_field :comment_id, value: comment.id %>
+								<%= f.submit "Unflag", class: "btn btn-sm btn-primary" %>
+							<% end %>
+						<% else %>
+							<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+								<%= f.hidden_field :user_id, value: current_user.id %>
+								<% if !comment.blog_id.nil? %>
+									<%= f.hidden_field :blog_id, value: obj.id %>
+								<% elsif !comment.upload_id.nil? %>
+									<%= f.hidden_field :upload_id, value: obj.id %>
+								<% end %>
+								<%= f.hidden_field :comment_id, value: comment.id %>
+								<%= f.submit "Flag  ", class: "btn btn-sm btn-primary" %>
+							<% end %>
+						<% end %>
+				<% else %>
+					<%= form_for(:report, url: reports_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+						<%= f.hidden_field :user_id, value: current_user.id %>
+						<% if !comment.blog_id.nil? %>
+							<%= f.hidden_field :blog_id, value: obj.id %>
+						<% elsif !comment.upload_id.nil? %>
+							<%= f.hidden_field :upload_id, value: obj.id %>
+						<% end %>
+						<%= f.hidden_field :comment_id, value: comment.id %>
+						<%= f.submit "Flag  ", class: "btn btn-sm btn-primary" %>
+					<% end %>
+				<% end %>
+			
+
+				<!-- Delete button -->
+				<% if current_user.admin? %>
+					<%= link_to "Delete", comment_path(comment), method: :delete, class: "btn btn-sm btn-info" %>
+				<% end %>
+			<% end %>
+		</div>
+	</div> 

@@ -16,8 +16,17 @@
 #main-episode {
 	margin-top: 25px;
 	width: 75%;
-	height: 500px;
 	//background: url('/assets/members-only.png');
 	//opacity: .4;
 	//border: 1px solid black;
+}
+
+.videos {
+	margin-top: 20px;
+}
+
+.video-nav {
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }

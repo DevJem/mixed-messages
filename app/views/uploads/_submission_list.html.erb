@@ -1,10 +1,12 @@
-<div class="good-background">	
+<div>	
 	<% @uploads.each do |upload| %>
-		<div class="col-lg-4 col-md-6 style-upload-index">
+		<div class="col-lg-4 col-sm-6 style-upload-index">
 			<div align="center" class="single-upload">
 				<% user = "Submitted by: #{upload.user.username}" %>
 				<h4 class="fix-link"><%= link_to user, user_path(upload.user.id) %></h4><br/>
-				<%= link_to (video_tag upload.file, height: "180px", preload: "metadata"), upload_path(upload) %> <br/>
+				
+				<%= link_to (video_tag upload.file, height: "230px", preload: "metadata"), upload_path(upload) %>
+				<br/>
 				<h4><%= upload.title %></h4><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
 				<%= time_ago_in_words(upload.created_at) %><br/>
@@ -18,5 +20,7 @@
 				<% end %>
 			</div>
 		</div>
+<!-- 		<div class="clearfix"></div>
+ -->
 	<% end %>
 </div>

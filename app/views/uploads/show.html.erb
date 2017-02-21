@@ -2,12 +2,16 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-6 col-xs-offset-3">
-			<div align="center" class="embed-responsive embed-responsive-16by9">
+			<div align="center">
 				<h1 class="fix-link"><%= link_to @upload.user.username, user_path(@upload.user) %></h1><br/>
+			</div>
+		</div>
+		<div align="center">
+			<div class="col-xs-12 col-md-6 col-md-offset-3 upload-video">
 				<%= video_tag @upload.file, controls: true, autobuffer: true, preload: "auto" %><br/>
 			</div>
 		</div>
-		<div class="col-xs-3">
+		<div class="hidden-sm hidden-xs col-md-3">
 			<!-- Tag system -->
 			<% if logged_in? and current_user.admin? %>
 				<div align="left">
@@ -26,44 +30,46 @@
 		</div>
 
 		<!-- Allow or deny the file -->
-		<div class="col-md-4">
-			<% if logged_in? && current_user.admin %>
-				<% if !@upload.save_upload %>
-					<div align="right">
-							<%= link_to "Allow File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
-					</div>
-				<% else %>
-					<div align="right">
-							<%= link_to "Deny File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
-					</div>
-				<% end %>
-			<% end %>
-		</div>
-
-		<!-- File info and tags -->
-		<div class="col-md-4">
-			<div align="center">
-				<h4><strong><%= @upload.title %></strong></h4><br/>
-				<%= @upload.note %><br/>
-				<%= time_ago_in_words(@upload.created_at).capitalize %> ago.<br/>
-				<% if !@upload.tags.nil? %>
-					<% @upload.tags.each do |tag| %>
-						<div class="col-sm-3 btn btn-sm btn-primary">
-							<%= tag.tag_name %>
+			<div class="col-md-4 col-xs-6">
+				<% if logged_in? && current_user.admin %>
+					<% if !@upload.save_upload %>
+						<div align="right">
+								<%= link_to "Allow File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
+						</div>
+					<% else %>
+						<div align="right">
+								<%= link_to "Deny File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
 						</div>
 					<% end %>
 				<% end %>
-			</div>	
-		</div>
+			</div>
 
-		<!-- Completely delete the file -->
-		<div class="col-md-4">
-			<% if logged_in? && current_user.admin %>
-				<div align="left">
-						<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg" %>
-				</div>
-			<% end %>
-		</div>
+			<!-- Completely delete the file -->
+			<div class="col-md-4 col-md-push-4 col-xs-6">
+				<% if logged_in? && current_user.admin %>
+					<div align="left">
+							<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg" %>
+					</div>
+				<% end %>
+			</div>
+
+			<!-- File info and tags -->
+			<div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2 upload-info">
+				<div align="center">
+					<h4><strong><%= @upload.title %></strong></h4><br/>
+					<%= @upload.note %><br/>
+					<%= time_ago_in_words(@upload.created_at).capitalize %> ago.<br/>
+					<% if !@upload.tags.nil? %>
+						<% @upload.tags.each do |tag| %>
+							<div class="col-sm-3 btn btn-sm btn-primary upload-tags">
+								<%= tag.tag_name %>
+							</div>
+						<% end %>
+					<% end %>
+				</div>	
+			</div>
+
+			
 
 		
 

@@ -30,3 +30,30 @@
 .submit-pic {
 	margin-top: 50px;
 }
+
+.safe-video {
+	margin-bottom: 30px;
+}
+
+
+/*										*
+ *										*
+ *										*
+ *    MEDIA QUERIES  	*
+ *										*
+ *										*
+ *										*/
+ 
+@media (min-width: 1201px) {
+
+ 	.safe-video {
+ 		margin-top: 26px;
+ 	}
+}
+
+
+@media (min-width: 993px) and (max-width: 1200px) {
+	.safe-video {
+		margin-top: 23px;
+	}
+}

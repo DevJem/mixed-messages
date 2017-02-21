@@ -2,109 +2,51 @@
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1 good-background">
+		<div class="col-xs-10 col-xs-offset-1 good-background">
 			<div class="section-title">
 				<h1 align="center">Get involved!</h1><br/><br/>
 			</div>
 			<div class="row">
-				<div class="col-md-10">
+				<div class="col-xs-12 col-sm-10">
 					<div class="lobster">“Against the assault of laughter, nothing can stand.  You are always fussing and fighting with your other weapons.  Do you ever use that one?  No; you leave it lying and rusting.  As a race, do you ever use it at all?  No; you lack the sense and the courage.”  - <span class="underline">Mark Twain</span>
 					</div>
 				</div><br/><br/>
 			</div>
 			<div class="row">
+				<div class="visible-xs col-xs-10 col-xs-offset-1">
+					<div class="embed-responsive embed-responsive-16by9 submit-video">
+						<iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/MFQWnlgkQIw" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
 				<div class="col-md-4 faq involved-text">
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					Here’s your chance to do something good without having to do anything great!  If you are tired of seeing smart phone zombies half-heartedly manipulating the controls of their rolling death carriages, this is your chance to fight back.  The threat of death and damage may not convince people to wait until later to play on their phones, but we have noticed that catching them on camera does.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
 
-					Helping is simple.  Drive wherever you normally would drive, and don’t change your routine.  Just make a conscious effort to keep an eye on the drivers around you in traffic.  If you notice someone endangering others because they are not paying attention to the road, try to catch them on camera.<br/><br/><br/><div class="comment-hr"></div>  
+					Helping is simple.  Drive wherever you normally would drive, and don’t change your routine.  Just make a conscious effort to keep an eye on the drivers around you in traffic.  If you notice someone endangering others because they are not paying attention to the road, try to catch them on camera.<br/><br/><br/><div class="comment-hr hidden-xs hidden-sm"></div>  
 				</div>
-				<div class="col-md-8">
-					<div id="submit-video" class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/MFQWnlgkQIw" frameborder="0" allowfullscreen></iframe>
+				<div class="col-md-8 col-md-offset-0 col-xs-10 col-xs-offset-1">
+					<div class="submit-video hidden-xs embed-responsive embed-responsive-16by9">
+						<iframe class="embed-responsive-item"  src="https://www.youtube.com/embed/MFQWnlgkQIw" frameborder="0" allowfullscreen></iframe>
 					</div>
+					<div class="submit-space visible-md visible-xs">
+						<%= render 'submit_form' %>
+					</div>
+
 				</div>
 			</div>
 			<div class="row">
-			<div class="col-md-7 faq involved-text fix-link">&nbsp;&nbsp;&nbsp;&nbsp;
-				<strong>**DO NOT attempt to drive your car and film the other person . . . </strong>you do not help the situation by becoming as much or more of a danger than the person you are trying to film**  <%= link_to "Check out our video on safe filming techniques,", safe_path %> and <%= link_to "read our blog", blogs_path %> for ideas and instructions for how to get quality footage and create good submission material.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="col-lg-7 faq involved-text fix-link">&nbsp;&nbsp;&nbsp;&nbsp;
+					<strong>**DO NOT attempt to drive your car and film the other person . . . </strong>you do not help the situation by becoming as much or more of a danger than the person you are trying to film**  <%= link_to "Check out our video on safe filming techniques,", safe_path %> and <%= link_to "read our blog", blogs_path %> for ideas and instructions for how to get quality footage and create good submission material.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
 
-				Once you have obtained a clip of a distracted driver, just submit it here on the website along with the zip code where it was filmed, and any jokes or comments you would make about the video.  We will review the submissions and post the clips to the website so that everyone they know can see them (and hopefully convince them to change their ways . . . ).<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+					Once you have obtained a clip of a distracted driver, just submit it here on the website along with the zip code where it was filmed, and any jokes or comments you would make about the video.  We will review the submissions and post the clips to the website so that everyone they know can see them (and hopefully convince them to change their ways . . . ).<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
 
-				You can also put other drivers on notice to keep focused by ordering a Mixed-Messages bumper sticker.  The sticker is an inexpensive way to remind drivers near you in traffic that you are paying attention, and if they are not, they may receive the celebrity treatment!  That little extra incentive could be the difference that convinces someone to be responsible.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
+					You can also put other drivers on notice to keep focused by ordering a Mixed-Messages bumper sticker.  The sticker is an inexpensive way to remind drivers near you in traffic that you are paying attention, and if they are not, they may receive the celebrity treatment!  That little extra incentive could be the difference that convinces someone to be responsible.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
 
-				It is our hope that when enough people have joined in the movement, the number of cameras and bumper stickers on the road will convince drivers everywhere to pay attention to their surroundings, rather than worrying about whatever message or social media update they have coming in at the time.  So join in, help us, and have some fun with a car pool buddy.  You never know whose life you may save by shaming someone into waiting until they are parked to check their phone!<br/><br/><br/>
-			</div>
-			<div id="submit-space" class="col-md-5">
-				
-				<br/><br/><br/>
-				<% if logged_in? %>
-					<div class="col-lg-12">
-						<div align="center">
-							<h3>Submit your content here!</h3>
-						</div>
-					</div>
-					<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-						<div class="form-group">
-							<div class="control-label col-sm-2">
-								
-									<%= f.label :title %>
-							</div>
-							<div class="col-sm-8">
-									<%= f.text_field :title, class: "form-control", placeholder: "Title" %>
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="control-label col-sm-2">
-								
-									<%= f.label :zipcode %>
-							</div>
-							<div class="col-sm-8">
-									<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode", value: current_user.zipcode %>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<div class="control-label col-sm-2">
-								
-									<%= f.label :note %>
-							</div>
-							<div class="col-sm-8">
-									<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Tell us about this video"%>
-							</div>
-						</div>
-
-						
-						<div class="form-group">
-							<div class="control-label col-sm-2">
-								
-									<%= f.label "#{:file} (<100mb)" %>
-							</div>
-							<div class="col-sm-2">
-									<%= f.file_field :file %>
-							</div>
-							<div id="loading" class="col-sm-3">
-								<%= image_tag "loading.gif" %>
-							</div>
-							<div class="col-sm-8 tos">
-								<%= f.check_box :terms_and_conditions, {id: "terms", checked: "false", onclick: "document.getElementById('submit_upload').disabled = false" }%> I agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-2 col-sm-8">
-								<%= f.submit "Submit", class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "document.getElementById('loading').hidden = false", disabled: true %>
-							</div>
-						</div>
-					<% end %>
-				<% else %>
-					<div class="col-lg-8 col-lg-offset-2">
-						<div align="center">
-							<h3 class="fix-link"><%= link_to raw("Log in to submit<br/>your own!"), login_path %></h3>
-						</div>
-					</div>
-				<% end %>
-			</div>
+					It is our hope that when enough people have joined in the movement, the number of cameras and bumper stickers on the road will convince drivers everywhere to pay attention to their surroundings, rather than worrying about whatever message or social media update they have coming in at the time.  So join in, help us, and have some fun with a car pool buddy.  You never know whose life you may save by shaming someone into waiting until they are parked to check their phone!<br/><br/><br/>
+				</div>
+				<div class="submit-space col-lg-5 hidden-md hidden-xs">
+					<%= render 'submit_form' %>
+				</div>
 			</div>
 		</div>
 	</div>

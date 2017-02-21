@@ -1,0 +1,66 @@
+<% if logged_in? %>
+	<div class="col-lg-12">
+		<div align="center">
+			<h3>Submit your content here!</h3>
+		</div>
+	</div>
+	<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+		<div class="form-group">
+			<div class="control-label col-sm-2">
+				
+					<%= f.label :title %>
+			</div>
+			<div class="col-sm-8">
+					<%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="control-label col-sm-2">
+				
+					<%= f.label :zipcode %>
+			</div>
+			<div class="col-sm-8">
+					<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode", value: current_user.zipcode %>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="control-label col-sm-2">
+				
+					<%= f.label :note %>
+			</div>
+			<div class="col-sm-8">
+					<%= f.text_area :note, class: "form-control", rows: 10, placeholder: "Tell us about this video"%>
+			</div>
+		</div>
+
+		
+		<div class="form-group">
+			<div class="control-label col-sm-2">
+				
+					<%= f.label "#{:file} (<100mb)" %>
+			</div>
+			<div class="col-sm-2">
+					<%= f.file_field :file %>
+			</div>
+			<div id="loading" class="col-sm-3">
+				<%= image_tag "loading.gif" %>
+			</div>
+			<div class="col-sm-8 tos">
+				<%= f.check_box :terms_and_conditions, {id: "terms", checked: "false", onclick: "document.getElementById('submit_upload').disabled = false" }%> I agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-8">
+				<%= f.submit "Submit", class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "document.getElementById('loading').hidden = false", disabled: true %>
+			</div>
+		</div>
+	<% end %>
+<% else %>
+	<div class="col-lg-8 col-lg-offset-2">
+		<div align="center">
+			<h3 class="fix-link"><%= link_to raw("Log in to submit<br/>your own!"), login_path %></h3>
+		</div>
+	</div>
+<% end %>

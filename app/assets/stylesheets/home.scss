@@ -31,3 +31,24 @@ $mm-color: #920202;
 	margin-top: 40px;
 }
 
+/*										*
+ *										*
+ *										*
+ *    MEDIA QUERIES  	*
+ *										*
+ *										*
+ *										*/
+
+@media (max-width: 1198px) and (min-width: 993px) {
+	#home-picture {
+		margin-top: 100px;
+	}
+}
+
+@media (max-width: 485px) {
+	.home-text-right {
+		p {
+			font-size: 22px;
+		}
+	}
+}

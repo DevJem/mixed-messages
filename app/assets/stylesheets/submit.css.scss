@@ -29,8 +29,8 @@ $mm-color: #920202;
  	margin-left: 70px;
  }
 
- #submit-video {
- 	margin: 12px 40px 40px 20px;
+ .submit-video {
+ 	margin: 34px 40px 40px 20px;
  	border: 2px solid $mm-color;
  }
 
@@ -38,3 +38,30 @@ $mm-color: #920202;
  	margin-top: 30px;
  	padding-left: 30px;
  }
+
+
+
+/*										*
+ *										*
+ *										*
+ *    MEDIA QUERIES  	*
+ *										*
+ *										*
+ *										*/
+
+@media (max-width: 1199px) and (min-width: 992px) {
+	.submit-video {
+		margin: 0;
+		margin-top: 35px;
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width: 991px) {
+	.submit-video {
+		margin: auto;
+		margin-bottom: 20px;
+		margin-top: 10px;
+	}
+}
+

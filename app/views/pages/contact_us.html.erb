@@ -6,7 +6,7 @@
 			<h1 class="fix-link section-title">Send us a message!</h1><br/>
 		</div>
 		<div class="row">
-			<div class="col-sm-8">
+			<div class="col-sm-8"> 
 				<div class="lobster">“Let us engage in a little gentlemanly debate . . . then we shall see who wields the sharper wit!”
 				</div>
 			</div>
@@ -27,7 +27,7 @@
 				<% if !logged_in? %>
 					<h1 class="fix-link section-title"><strong><%= link_to "LOG IN TO SEND US AN EMAIL!", login_path %></strong></h1><br/><h4>Or just email us at <%= link_to "producers@mixed-messages.org", "mailto:producers@mixed-messages.org" %></h4>
 					<% else %>
-						<h4>Or just email us at <%= link_to "producers@mixed-messages.org", "mailto:producers@mixed-messages.org" %></h4><br/>
+						<h4 class="faq">Or just email us at <%= link_to "producers@mixed-messages.org", "mailto:producers@mixed-messages.org" %></h4><br/>
 				</div>
 				<%= form_for(:contact, url: contacts_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 					<div class="form-group">

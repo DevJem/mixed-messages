@@ -1,8 +1,7 @@
 <div class="container-fluid">
-	<div class="col-sm-2 col-lg-2">
-		<div align="left">
+	<div class="col-md-2 col-md-offset-0 col-xs-6 col-xs-offset-3 fixed">
 
-			
+		<% if !@tags.nil? and !@tags.empty? %>
 			<ul class="tags">
 				<li><%= link_to "All Tags", uploads_path, class: "btn btn-sm btn-primary" %></li>
 				<% @tags.each do |tag| %>
@@ -10,12 +9,11 @@
 						<%= hidden_field_tag :search, tag.id %>
 						<li><%= submit_tag tag.tag_name, tags: nil, class: "btn btn-sm btn-primary" %></li>
 					<% end %>
-				
 				<% end %>
 			</ul>
-		</div>
+		<% end %>
 	</div>
-	<div class="col-sm-8 col-lg-8">
+	<div class="col-md-8 col-md-offset-0 col-xs-12">
 		<div class="row good-background">
 			<div align="center">
 				<h1>User Submissions</h1><br/>

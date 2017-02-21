@@ -31,7 +31,9 @@ h1, h3  {
 	margin-bottom: 30px;
 }
 
-.social-media {
+.share {
+	margin-top: 10px;
+	margin-bottom: 10px;
 	.fb-share-button {
 		display: inline-block;
 		height: 20px;
@@ -118,7 +120,7 @@ body {
 	overflow-y: scroll;
 	margin: 0;
 	padding: 0;
-	background: image-url("bg6.jpg") center fixed;
+	background: image-url("bg6.jpg");
 }
 
 #page {
@@ -134,7 +136,7 @@ body {
 
 // *****HEADER***** //
 
-#head {
+#head { 
 
 	.navbar {
 		margin-bottom: 0px;
@@ -168,7 +170,7 @@ body {
 		color: #ccc
 	}
 	img {
-		width: 250px;
+		max-height: 100px;
 	}
 }
 
@@ -177,9 +179,9 @@ body {
 		text-align: center;
 	}
 	margin-top: 40px;
-	vertical-align: bottom;
+	vertical-align: middle;
 	a {
-		font-size: .8vw;
+		font-size: 14px;
 		letter-spacing: 2px;
 		font-weight: bold;
 		text-transform: uppercase;
@@ -242,7 +244,12 @@ body {
 			color: $mm-color;
 			box-shadow: -2px 2px 10px $mm-color;
 		}
-		
+	}
+
+	.social-media {
+		img {
+			width: 6%;
+		}
 	}
 	ul {
 		margin-top: 15px;
@@ -276,15 +283,109 @@ body {
  *										*
  *										*/
 
+@media (max-width: 1200px) {
+	#foot {
+		.social-media {
+			margin-top: 20px;
+			img {
+				margin-top: 4px;
+				width: 14%;
+			}
+		}
 
-@media (max-width: 845px) {
-
-	#mm img {
-		width: 100%;
+		.footer-links {
+			margin-top: 17px;
+			font-size: 14px;
+		}
 	}
 
-	#top-link-bar {
+	.lobster {
+		font-size: 20px;
+		padding: 20px 0 20px 12px;
+		margin-left: 20px;
+		margin-bottom: 15px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	#foot {
+		.social-media {
+			margin-top: 20px;
+			img {
+				border-radius: 6px;
+				margin-top: 4px;
+				width: 20%;
+			}
+		}
+
+		.footer-links {
+			margin-top: 17px;
+			font-size: 14px;
+		}
+	}
+
+
+}
+
+
+@media (max-width: 485px) {
+
+	.lobster {
+		font-size: 22px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+
+	h1 {
+		font-size: 30px;
+	}
+
+	#head, #foot {
 		margin: auto;
-		font-size: 1vw;
 	}
+
+	#head {
+		margin-bottom: 50px;
+	}
+
+	#foot {
+		.move-top {
+			margin-top: 16px;
+		}
+		.puffed {
+			margin-left: 3px;
+		}
+		.social-media {
+			margin-left: 15px;
+			margin-bottom: 40px;
+			img {
+				width: 25%;
+				margin-top: 4px;
+				border-radius: 4px;
+			}
+		}
+	}
+
+	#top-link-bar { 
+
+		margin-top: 40px;
+		vertical-align: bottom;
+		a {
+			font-size: 20px;
+			letter-spacing: 2px;
+			font-weight: bold;
+			text-transform: uppercase;
+			padding: 0px;
+			border: 0;
+		}
+		li {
+			display: block;
+		}
+	}
+
+	.footer-links {
+		font-size: 16px;
+	}
+
 }

@@ -7,6 +7,9 @@
 }
 
 .style-upload-index {
+	video {
+		max-width: 100%;
+	}
 	margin: 0;
 	.single-upload {
 		margin-bottom: 20px;
@@ -37,3 +40,67 @@
 		}
 	}
 }
+
+.upload-video {
+	video {
+		max-width: 80%;
+	}
+} 
+
+
+.upload-info {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	.upload-tags {
+		margin-top: 15px;
+	}
+}
+
+
+/*										*
+ *										*
+ *										*
+ *    MEDIA QUERIES  	*
+ *										*
+ *										*
+ *										*/
+ 
+ @media (min-width: 993px) {
+ 	.upload-video {
+		video {
+			max-height: 500px;
+		}
+	}
+
+ 	.tags {
+ 		text-align: left;
+	 		li {
+	 			.btn {
+	 				width: 100%;
+	 			}
+	 		}
+	 	}
+	}
+
+
+ @media (max-width: 992px) {
+	.tags {
+		margin-left: -40px;
+		ul {
+			margin-left: -40px;
+			padding: 0;
+			-webkit-padding-start: 0;
+		}
+ 		li {
+ 			.btn {
+ 				width: 100%;
+ 			}
+ 		}
+ 	}
+ 	.upload-video {
+		video {
+			max-height: 300px;
+			margin-bottom: 20px;
+		}
+	}
+ }

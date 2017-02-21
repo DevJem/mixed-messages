@@ -11,11 +11,11 @@ window.onload = submitform;
 <div align="center">
 	<h1 class="fix-link">
 		Please wait while we redirect you <br/>
-		<%= link_to "or click here to continue.", "#" %>
+		<%= link_to "or click here to return home.", root_path %>
 	</h1>
 </div>
 <div align="center">
-	<% image_tag "loading.gif" %>
+	<% image_tag "loading.gif", alt: "Loading Icon" %>
 </div>
 <div style="visibility: hidden;">
 	<%= form_for @notification, as: :notification, url: notify_path, html: {id: "note_form", role: "form"} do |f| %>
