@@ -3,8 +3,8 @@ ENV['RAILS_ENV'] = 'production'
 ENV['HOME'] ||= `echo ~`.strip
 ENV['GEM_HOME'] = File.expand_path('~/.gems')
 ENV['GEM_PATH'] = File.expand_path('~/.gems')
-require 'fcgi'
-require File.join(File.dirname(\__FILE\__),     '../config/environment.rb')
+require 'fcgi' 
+require File.join(File.dirname(__FILE__), '../config/environment.rb')
 class Rack::PathInfoRewriter
   def initialize(app)
     @app = app
@@ -17,4 +17,11 @@ class Rack::PathInfoRewriter
     @app.call(env)
   end
 end
-Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(MixedMessages::Application)
+# Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(MixedMessages::Application)
+
+wrappedApp = Rack::Builder.new do
+  use Rack::ShowExceptions
+  use Rack::PathInfoRewriter
+  run MixedMessages::Application
+end
+Rack::Handler::FastCGI.run wrappedApp
