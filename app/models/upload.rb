@@ -11,10 +11,12 @@ class Upload < ActiveRecord::Base
 
 	mount_uploader :file, FileUploader
 	validates :file, presence: true, on: :create
-	validates :file, file_size: {less_than: 500.megabytes}
+	validates :file, file_size: {less_than: 100.megabytes}
 
-	def self.search(search)
-	  if search
+	def self.search(search, zip)
+		if search and zip
+			where(['zipcode LIKE ?', "%#{zip}%"])
+	  elsif search
 	  	self.joins("INNER JOIN tags_uploads ON uploads.id = tags_uploads.upload_id").where [ "tag_id = ?", search]
 	  else
 	    all

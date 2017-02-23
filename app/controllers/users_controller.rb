@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 	end 
 
 	def update
-		if verify_recaptcha(model: @user) && @user.update(user_params)
+		if @user.update(user_params)
 			if @user.allow_emails
 				Subscribe.create(email: @user.email)
 			end

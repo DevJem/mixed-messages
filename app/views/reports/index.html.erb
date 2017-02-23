@@ -20,8 +20,8 @@
 					Report count: <%= report.count %> <br/>
 					Reported by: <%= User.find(report.user_id).username %> <br/>
 					<% comment = Comment.find(report.comment_id) %>
-					<%= comment.title %> <br/>
-					<%= comment.comment %> <br/>
+					<h4><%= comment.title %></h4>
+					<%= truncate(simple_format(comment.comment) , length: 250, escape: false)%> <br/> 
 					<div class="row">
 						<div class="col-sm-6">
 							<%= form_for :report, url: unflag_path do |f| %>

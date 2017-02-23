@@ -288,8 +288,9 @@ body {
 		.social-media {
 			margin-top: 20px;
 			img {
-				margin-top: 4px;
-				width: 14%;
+				margin-top: 6px;
+				margin-left: 6px;
+				width: 16%;
 			}
 		}
 
@@ -307,8 +308,19 @@ body {
 	}
 }
 
+@media only screen and (min-width : 768px) {
+    /* Make Navigation Toggle on Desktop Hover */
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
+
 @media (max-width: 768px) {
 
+	#head {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
 
 	#foot {
 		margin-left: 20px;
@@ -337,7 +349,7 @@ body {
 	.lobster {
 		font-size: 22px;
 		margin-left: 20px;
-		margin-right: 20px;
+		// margin-right: 20px;
 	}
 
 	h1 {
@@ -346,7 +358,8 @@ body {
 
 
 	#head {
-		margin: auto;
+		margin-left: 20px;
+		margin-right: 20px;
 		margin-bottom: 50px;
 	}
 

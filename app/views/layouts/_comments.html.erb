@@ -1,6 +1,3 @@
-
-<%# render 'layouts/errors', obj: obj %>
-
   
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
@@ -51,7 +48,7 @@
 		<!-- Special comments for linked youtube videos -->
 			<% comments = Comment.where(video_id: obj) %>
 			<% comments.order("id DESC").each do |comment| %>
-				<%= render 'layouts/comment_layout', comment: comment %>
+				<%= render 'layouts/comment_layout', comment: comment, obj: obj %>
 			<% end %>
 			
 		<% end %>
