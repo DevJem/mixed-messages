@@ -27,3 +27,6 @@
 
 # Ignore under construction page
 /public/index*
+
+#Ignore gemfile.lock
+/Gemfile.lock
