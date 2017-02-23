@@ -17,7 +17,7 @@ class Upload < ActiveRecord::Base
 
 
 	def self.search(search, zip)
-		if search and zip
+		if zip
 			where(['zipcode LIKE ?', "%#{zip}%"])
 	  elsif search
 	  	self.joins("INNER JOIN tags_uploads ON uploads.id = tags_uploads.upload_id").where [ "tag_id = ?", search]
