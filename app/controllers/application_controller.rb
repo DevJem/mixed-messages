@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
       type = "success"
     elsif result == :denied
       notice = "Your upload \"#{source}\" has been denied"
-      type = "warning"
+      type = "danger"
     elsif result == :comment
       notice = "You have a new comment on your upload \"#{source}\""
       type = "info"

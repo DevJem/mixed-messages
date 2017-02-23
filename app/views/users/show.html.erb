@@ -88,6 +88,11 @@
 								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success" %>
 								<%= notice.notice %>
 							</li>
+						<% elsif notice.notice_type == "warning" %>
+							<li class="list-group-item list-group-item-warning">
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-warning" %>
+								<%= notice.notice %>
+							</li>
 						<% elsif notice.notice_type == "danger" %>
 							<li class="list-group-item list-group-item-danger">
 								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger" %>
