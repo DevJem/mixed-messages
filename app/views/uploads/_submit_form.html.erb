@@ -1,3 +1,10 @@
+<script type="text/javascript">
+	$(function () {
+		$('[data-toggle="popover"]').popover()
+})
+
+</script>
+
 <% if logged_in? %>
 	<div class="col-lg-12">
 		<div align="center">
@@ -17,10 +24,10 @@
 
 		<div class="form-group">
 			<div class="control-label col-sm-2">
-				
-					<%= f.label :zipcode %>
+					<%= f.label :zipcode %> 
 			</div>
-			<div class="col-sm-8">
+
+			<div class="col-sm-8" data-toggle="popover" data-trigger="focus" data-placement="left" data-content="Tagging a video with the zip code of where the subject resides, or at least where they were filmed, helps to increase the odds of someone recognizing them on the website. We believe that the greater the chance someone will be recognized on our site, the greater a deterrent the movement becomes. Please help us to sort our content and create the greatest incentive for people to pay attention to the road rather than their phones. You could save a life.">
 					<%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode", value: current_user.zipcode %>
 			</div>
 		</div>
