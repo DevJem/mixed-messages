@@ -5,6 +5,9 @@ AddHandler fastcgi-script .fcgi
 AddHandler fcgid-script .fcgi
 </IfModule>
 
+AddHandler fcgid-script .php 
+FCGIWrapper "/dh/cgi-system/php56.cgi" .php
+
 Options +FollowSymLinks +ExecCGI
 
 RewriteEngine On
