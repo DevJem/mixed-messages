@@ -35,7 +35,7 @@ class MarketController < ApplicationController
 	private
 
 	def get_shop
-		shop_url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_PASSWORD']}@trial-for-mm.myshopify.com/admin"
+		shop_url = "https://#{ENV['SHOPIFY_API_KEY']}:#{ENV['SHOPIFY_PASSWORD']}@mixed-messages.myshopify.com/admin"
 		ShopifyAPI::Base.site = shop_url
 		@shop = ShopifyAPI::Shop.current
 	end
