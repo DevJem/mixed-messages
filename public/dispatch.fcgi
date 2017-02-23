@@ -4,7 +4,7 @@ ENV['HOME'] ||= `echo ~`.strip
 ENV['GEM_HOME'] = File.expand_path('~/.gems')
 ENV['GEM_PATH'] = File.expand_path('~/.gems')
 require 'fcgi' 
-require File.join(File.dirname(__FILE__), '../config/environment.rb')
+require File.join(File.dirname(__FILE__) + '../config/environment.rb')
 class Rack::PathInfoRewriter
   def initialize(app)
     @app = app
