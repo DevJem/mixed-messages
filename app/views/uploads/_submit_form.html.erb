@@ -3,6 +3,8 @@
 		$('[data-toggle="popover"]').popover()
 })
 
+	$('#submit_upload').onclick(document.getElementById('submit_upload').disabled = false);
+
 </script>
 
 <% if logged_in? %>
@@ -53,14 +55,14 @@
 			</div>
 			<div id="loading" class="col-sm-3">
 				<%= image_tag "loading.gif" %>
-			</div>
+			</div> 
 			<div class="col-sm-8 tos">
-				<%= f.check_box :terms_and_conditions, {id: "terms", checked: "false", onclick: "document.getElementById('submit_upload').disabled = false" }%> I agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
+				<%= f.check_box :upload_terms_and_conditions %> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-8">
-				<%= f.submit "Submit", class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "document.getElementById('loading').hidden = false", disabled: true %>
+				<%= f.submit( "Submit", class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "document.getElementById('loading').hidden = false") %>
 			</div>
 		</div>
 	<% end %>

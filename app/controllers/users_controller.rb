@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 		@user_uploads = @user.uploads.order("id DESC").paginate(page: params[:page], per_page: 6)
 	end
 
-	def destroy
+	def destroy 
 		@user = User.find(params[:id])
 		if @user.admin
 			flash[:danger] = "You cannot delete another admin"
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:username, :email, :password, :zipcode, :bio, :password_confirmation, :allow_emails)
+		params.require(:user).permit(:username, :email, :password, :zipcode, :bio, :password_confirmation, :allow_emails, :terms_and_conditions)
 	end
 
 	def set_user
@@ -116,7 +116,7 @@ class UsersController < ApplicationController
 	def require_admin
 		if !logged_in? or !current_user.admin?
 			flash[:danger] = "Only admin users can perform that action"
-			redirect_to root_path
+			redirect_to '/403.html'
 		end
 	end
 

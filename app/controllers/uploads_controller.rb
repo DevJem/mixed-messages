@@ -13,7 +13,7 @@ class UploadsController < ApplicationController
 	def review
 		@uploads = Upload.paginate(page: params[:page], per_page: 12).where(save_upload: false).order("id ASC")
 	end
-
+ 
 	def show
 		flags(params[:id], "upload-comment")
 		@tags = Tag.all
@@ -95,7 +95,7 @@ class UploadsController < ApplicationController
 
 	private
 		def upload_params
-			params.require(:upload).permit(:title, :note, :zipcode, :file)
+			params.require(:upload).permit(:title, :note, :zipcode, :file, :upload_terms_and_conditions)
 		end
 
 		def add_tags_params
@@ -113,7 +113,7 @@ class UploadsController < ApplicationController
 		def require_admin
 			if !logged_in? || !current_user.admin 
 				flash[:danger] = "Administrator access required for that action"
-				redirect_to root_path
+				redirect_to '403.html'
 			end
 		end
 

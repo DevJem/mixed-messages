@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password
 
 	validates :bio, length: { maximum: 3000}
-  validates :terms_and_conditions, acceptance: {accept: true}
+  validates_acceptance_of :terms_and_conditions
 
 	def self.search(search)
 	  if search
