@@ -17,11 +17,11 @@ class Rack::PathInfoRewriter
     @app.call(env)
   end
 end
-Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(MixedMessages::Application)
+# Rack::Handler::FastCGI.run  Rack::PathInfoRewriter.new(MixedMessages::Application)
 
-# wrappedApp = Rack::Builder.new do
-#   use Rack::ShowExceptions
-#   use Rack::PathInfoRewriter
-#   run MixedMessages::Application
-# end
-# Rack::Handler::FastCGI.run wrappedApp
+wrappedApp = Rack::Builder.new do
+  use Rack::ShowExceptions
+  use Rack::PathInfoRewriter
+  run MixedMessages::Application
+end
+Rack::Handler::FastCGI.run wrappedApp
