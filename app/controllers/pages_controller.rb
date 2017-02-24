@@ -9,6 +9,9 @@ class PagesController < ApplicationController
   def logo
   end
 
+  def google
+  end
+
   def unsubscribe
   end
 

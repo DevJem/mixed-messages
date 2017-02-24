@@ -67,5 +67,7 @@ Rails.application.routes.draw do
   get 'logo'   => 'pages#logo'
   
   root 'pages#home'
+
+  get 'googlefe18980250372b0b.html' => 'pages#google'
  
 end
