@@ -26,4 +26,4 @@ production:
   database: blog_development
   pool: 5
   username: rails
-  password: 
+  password: password
