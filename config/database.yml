@@ -26,5 +26,5 @@ production:
   database: mixedmessages
   pool: 5
   username: rails
-  password: 
+  password: ENV['RAIL_RAIL_POSTGRESS_PASS']
   host: localhost
