@@ -25,6 +25,6 @@ production:
   encoding: unicode
   database: mixedmessages
   pool: 5
-  username: rails
+  username: postgres
   password: password
   host: localhost
