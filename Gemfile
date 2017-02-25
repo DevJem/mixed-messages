@@ -66,7 +66,5 @@ group :development do
 end
 
 group :production do
-	gem 'fcgi'
-	# gem 'pg'
-	# gem 'mysql2'
+	gem 'pg'
 end

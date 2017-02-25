@@ -95,7 +95,7 @@ class PagesController < ApplicationController
     key = ENV['API_KEY']
     playlist_id = "PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU"
     json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=#{playlist_id}&part=snippet&maxResults=12&key=#{key}"
-    # json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An&part=snippet&maxResults=9&key=AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
+    
 
     @PageToken = params
     @PageToken.each do |k, v|
@@ -128,7 +128,6 @@ class PagesController < ApplicationController
   end
 
 private
-  #API_KEY="AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc"
 
   def slide_params
   end
@@ -152,6 +151,3 @@ private
     params.require(:reset_email).permit(:email)
   end
 end
-
-# youtube data api key AIzaSyCx6Ry7sp2t4Trd1hlT22ZUxPfXkWJuMTc
-# https://www.youtube.com/watch?v=_3cg_Efs0d8&list=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU
