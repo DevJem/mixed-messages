@@ -27,3 +27,4 @@ production:
   pool: 5
   username: rails
   password: password
+  host: localhost
