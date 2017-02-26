@@ -44,6 +44,7 @@ gem 'omniauth-shopify-oauth2'
 #gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'spring'
+gem 'rack', '~> 2.0.1'
 
 
 # Use Unicorn as the app server
