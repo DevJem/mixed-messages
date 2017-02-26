@@ -41,10 +41,10 @@ gem 'image_magick'
 gem 'mini_magick'
 gem 'omniauth-shopify-oauth2'
 #for recaptcha
-gem 'dotenv-rails', require: 'dotenv/rails-now'
+#gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'spring'
-gem 'pg'
+
 
 # Use Unicorn as the app server
 gem 'unicorn'
@@ -67,4 +67,5 @@ group :development do
 end
 
 group :production do
+	gem 'pg'
 end
