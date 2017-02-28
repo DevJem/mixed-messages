@@ -91,8 +91,9 @@ class UsersController < ApplicationController
 			@message = {email: subscriber.email,
 									subject: params[:subject],
 									content: params[:content]}
-			EmailList.list(@message).deliver_later
+			EmailList.list(@message).deliver_later 
 		end
+		
 		redirect_to :back
 	end
 

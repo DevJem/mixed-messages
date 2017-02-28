@@ -26,7 +26,13 @@
 /.env
 
 # Ignore under construction page
-#/public/index*
+/public/index*
 
 #Ignore gemfile.lock
 /Gemfile.lock
+
+#Ignore premium video
+/public/location
+
+#Ignore source
+/source

@@ -1,8 +1,20 @@
 class FileUploader < CarrierWave::Uploader::Base
+  include CarrierWave::Video
+  include CarrierWave::MiniMagick
+  FFMPEG.ffmpeg_binary = '/usr/bin/ffmpeg'
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
+
+  # process encode_video: [ 
+  #   # watermark: {
+  #   #   path: File.join(Rails.root, "/public/", "favicon.ico"),
+  #   #   position: :bottom_left,
+  #   #   pixels_from_edge: 10
+  #   # }
+  # ]
+
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -37,7 +49,7 @@ class FileUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(3gp avi flv m1v m2v mp4 wmv ogg)
+    %w(3gp avi flv m1v m2v mp4 wmv ogg m4v webm)
   end
 
   # Override the filename of the uploaded files:
