@@ -1,33 +1,34 @@
-role :app, %w{dehay@67.205.184.235}
-role :web, %w{dehay@67.205.184.235}
-role :db, %w{dehay@67.205.184.235}
+# role :app, %w{deployer@67.205.184.235}
+# role :web, %w{deployer@67.205.184.235}
+# role :db, %w{deployer@67.205.184.235}
 
-server '67.205.184.235', user: 'dehay', roles: %w{web app}
-
-
+# server '67.205.184.235', user: 'deployer', roles: %w{web app db}
 
 
-# set :port, 22
-# set :user, 'dehay'
-# set :deploy_via, :remote_cache
-# set :use_sudo, false
 
-# server '67.205.184.235',
-#   roles: [:web, :app, :db],
-#   port: fetch(:port),
-#   user: fetch(:user),
-#   primary: true
 
-# set :deploy_to, "/home/rails/mixed-messages"
+set :port, 22
+set :user, 'deployer'
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+server '67.205.184.235',
+  roles: [:web, :app, :db],
+  port: fetch(:port),
+  user: fetch(:user),
+  primary: true
+
+
 
 set :ssh_options, {
   forward_agent: true,
-  auth_methods: %w{publickey},
-  user: 'dehay',
+  auth_methods: %w{password},
+  password: ENV['CAP_PW'],
+  user: 'deployer',
 }
 
-# set :rails_env, :production
-# set :conditionally_migrate, true 
+set :rails_env, :production
+set :conditionally_migrate, true 
 
 
 # server-based syntax
