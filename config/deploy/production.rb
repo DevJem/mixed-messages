@@ -3,7 +3,15 @@
 # role :db, %w{deployer@67.205.184.235}
 
 # server '67.205.184.235', user: 'deployer', roles: %w{web app db}
+before_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
 
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+end
 
 
 
