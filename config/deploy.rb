@@ -54,7 +54,6 @@ namespace :deploy do
   after 'deploy:publishing', 'deploy:restart'
   task :restart do
   	on "deployer@67.205.184.235" do
-  		password: ENV['CAP_PW']
   		execute "sudo service unicorn restart"
   	end
   end
