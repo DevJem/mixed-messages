@@ -37,7 +37,7 @@ set :deploy_to, "/home/rails/"
 set :group, "deployers"
 
 
-set :use_sudo, false
+# set :use_sudo, false
 set :bundle_binstubs, nil
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
@@ -54,7 +54,7 @@ namespace :deploy do
   after 'deploy:publishing', 'deploy:restart'
   task :restart do
   	on "deployer@67.205.184.235" do
-  		execute "sudo service unicorn restart"
+  		execute "service unicorn restart"
   	end
   end
 end
