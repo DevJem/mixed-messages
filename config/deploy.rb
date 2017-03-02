@@ -55,6 +55,7 @@ namespace :deploy do
   task :execute_on_server do
   	on "deployer@67.205.184.235" do
   		execute "sudo service unicorn restart"
+  	end
   end
 end
 
