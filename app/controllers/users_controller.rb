@@ -94,7 +94,7 @@ class UsersController < ApplicationController
 								}
 			EmailList.list(@message).deliver_later 
 		end
-		
+		flash[:success] = "Email sent!"
 		redirect_to :back
 	end
 

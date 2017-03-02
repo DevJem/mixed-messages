@@ -1,12 +1,14 @@
   
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2 col-xs-12">
-		<div align="center">
-			<% if !logged_in? %>
+		<% if !logged_in? %>
+			<div align="center">
 				<h3 class="fix-link"><strong><%= link_to "LOG IN TO ADD YOUR COMMENT!", login_path %></strong></h3>
-			<% else %>
+			</div>
+		<% else %>
+			<div align="center">
 				<h3>Add Your Comment</h3>
-		</div>
+			</div>
 			<%= form_for(:comment, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 				<div class="form-group">
 					<div class="control-label col-md-2">
