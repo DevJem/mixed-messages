@@ -89,8 +89,8 @@ class UsersController < ApplicationController
 		@message = Hash.new
 		Subscribe.all.each do |subscriber|
 			@message = {email: subscriber.email,
-									subject: params[:subject],
-									content: params[:content]}
+									subject: send_email_params[:subject],
+									content: send_email_params[:content]}
 			EmailList.list(@message).deliver_later 
 		end
 		
@@ -122,7 +122,7 @@ class UsersController < ApplicationController
 	end
 
 	def send_email_params
-		params.require(:send_email).permit(:subject, :content)
+		params.require(:send_email).permit(:subject, :content) 
 	end
 
 
