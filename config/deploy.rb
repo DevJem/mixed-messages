@@ -52,6 +52,9 @@ end
 namespace :deploy do
   after :finishing, 'deploy:cleanup'
   after 'deploy:publishing', 'deploy:restart'
+  task :restart do
+    invoke 'unicorn:reload'
+  end
 end
 
 # namespace :deploy do
