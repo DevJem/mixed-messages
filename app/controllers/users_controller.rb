@@ -90,7 +90,7 @@ class UsersController < ApplicationController
 		Subscribe.all.each do |subscriber|
 			@message = {email: subscriber.email,
 									subject: send_email_params[:subject],
-									content: simple_format(send_email_params[:content], escape: false)
+									content: raw(send_email_params[:content])
 								}
 			EmailList.list(@message).deliver_later 
 		end

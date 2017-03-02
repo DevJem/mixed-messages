@@ -52,7 +52,7 @@ end
 namespace :deploy do
   after :finishing, 'deploy:cleanup'
   after 'deploy:publishing', 'deploy:restart'
-  task :execute_on_server do
+  task :restart do
   	on "deployer@67.205.184.235" do
   		execute "sudo service unicorn restart"
   	end
