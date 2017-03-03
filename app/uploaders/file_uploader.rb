@@ -1,7 +1,7 @@
 class FileUploader < CarrierWave::Uploader::Base
-  include CarrierWave::Video
-  include CarrierWave::MiniMagick
-  FFMPEG.ffmpeg_binary = '/usr/bin/ffmpeg'
+  # include CarrierWave::Video
+  # include CarrierWave::MiniMagick
+  # FFMPEG.ffmpeg_binary = '/usr/bin/ffmpeg'
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick

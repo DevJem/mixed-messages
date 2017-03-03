@@ -31,7 +31,7 @@ window.twttr = (function(d, s, id) {
 <% content_for :head do %>
   <meta property="og:url" content=<%= "http://mixed-messages.org/videos/#{v}" %> />
   <meta property="og:type" content="video" />
-  <meta property="og:image" content="http://img.youtube.com/vi/#{v}/1.jpg" />
+  <meta property="og:image" content=<%= "http://img.youtube.com/vi/#{v}/1.jpg" %> />
 <% end %>
 
   <% src = "https://www.youtube.com/embed/#{v}?rel=0" %>
