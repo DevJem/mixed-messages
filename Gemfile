@@ -47,14 +47,14 @@ gem 'spring'
 
 gem 'carrierwave-video'
 
-# # Use Unicorn as the app server
-# gem 'unicorn'
+# Use Unicorn as the app server
+gem 'unicorn'
 
-# # Use Capistrano for deployment
-# gem 'capistrano-rails'
-# gem 'capistrano3-unicorn'
-# gem 'capistrano-bundler'
-# gem 'capistrano-rvm'
+# Use Capistrano for deployment
+gem 'capistrano-rails'
+gem 'capistrano3-unicorn'
+gem 'capistrano-bundler'
+gem 'capistrano-rvm'
 
 
 group :development, :test do
