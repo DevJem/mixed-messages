@@ -1,7 +1,7 @@
 <% content_for :head do %>
 	<meta property="og:url" content=<%= "http://mixed-messages.org/blogs/#{@blog.id}" %> />
 	<meta property="og:type" content="blog" />
-	<meta property="og:title" content="<%= @blog.title.gsub(" ", "%20") %>" />
+	<meta property="og:title" content="<%= @blog.title %>" />
 	<meta property="og:image" content="http://mixed-messages.org/stage.jpg" />
 <% end %>
  
