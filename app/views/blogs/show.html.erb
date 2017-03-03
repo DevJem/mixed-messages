@@ -1,8 +1,10 @@
+<% content_for :head do %>
+	<meta property="og:url" content=<%= "http://mixed-messages.org/blogs/#{@blog.id}" %> />
+	<meta property="og:type" content="blog" />
+	<meta property="og:title" content="<%= @blog.title.gsub(" ", "%20") %>" />
+	<meta property="og:image" content="http://mixed-messages.org/stage.jpg" />
+<% end %>
 
- <meta itemprop="U" property="og:url" content=<%= "http://mixed-messages.org/blogs/#{@blog.id}" %> />
- <meta itemprop="T" property="og:type" content="website" />
- <meta itemprop="t" property="og:title" content=<%= @blog.title.gsub(" ", "%20") %> />
- <meta itemprop="i" property="og:image" content="http://mixed-messages.org/stage.jpg" />
 <!-- Load Facebook SDK and twitter for JavaScript -->
 <div id="fb-root"></div>
 <script>

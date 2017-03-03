@@ -1,23 +1,21 @@
 
 <!-- Premium video at top -->
 <div class="container good-background"> 
-		<div class="row">
-			<div align="center" class="section-title">
-				<h1>New Episode</h1>
-				<div id="main-episode">
-					<% if !logged_in? %>
-						<%= link_to (image_tag "members-only.jpg", width: "100%", class: "img-responsive good-background"), signup_path %>
-					<% else %>
-						<%= render 'premium' %>
-						<div align="center">
-							<h3 class="fix-link"><%# link_to "Click for more!", premium_path %></h3>
-						</div>
-					<% end %>
-				</div>
+	<div class="row">
+		<div align="center" class="section-title">
+			<h1>New Episode</h1>
+			<div id="main-episode">
+				<% if !logged_in? %>
+					<%= link_to (image_tag "members-only.jpg", width: "100%", class: "img-responsive good-background"), signup_path %>
+				<% else %>
+					<%= render 'premium' %>
+					<div align="center">
+						<h3 class="fix-link"><%# link_to "Click for more!", premium_path %></h3>
+					</div>
+				<% end %>
 			</div>
 		</div>
-
-
+	</div>
 
 	<!-- Navigation -->
 	<div class="col-xs-12 videos">
@@ -37,25 +35,25 @@
 			<% end %>
 		<% end %>
 
-			<div align="center" class="row">
-				<!-- Previous page button -->
-				<div class="col-xs-6 video-nav">
-					<div align="right">
-						<% if !@prevPageToken.empty? %>
-							<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
-						<% else %>
-							<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-grand btn-primary disabled" %>
-						<% end %>
-					</div>
-				</div>
-			
-				<!-- next page button -->
-				<div class="col-xs-6 video-nav">
-					<div align="left">
-						<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
-					</div>
+		<div align="center" class="row">
+			<!-- Previous page button -->
+			<div class="col-xs-6 video-nav">
+				<div align="right">
+					<% if !@prevPageToken.empty? %>
+						<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
+					<% else %>
+						<%= link_to "Previous Page", watch_path(@prevPageToken), method: :patch, class: "btn btn-grand btn-primary disabled" %>
+					<% end %>
 				</div>
 			</div>
+		
+			<!-- next page button -->
+			<div class="col-xs-6 video-nav">
+				<div align="left">
+					<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
+				</div>
+			</div>
+		</div>
 		<% @videos.each do |key, value| %>
 
 			<!-- 			Loop to display episodes -->
@@ -89,6 +87,7 @@
 			<% end %>
 		<% end %>
 	</div>
+
 	<div align="center" class="col-xs-12">
 		<!-- Previous page button -->
 		<div class="col-xs-6 video-nav">
@@ -100,7 +99,6 @@
 				<% end %>
 			</div>
 		</div>
-
 	
 		<!-- next page button -->
 		<div class="col-xs-6 video-nav">

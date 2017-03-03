@@ -94,8 +94,7 @@ class PagesController < ApplicationController
     playlist_id = "PLDEgt5YKZjd52qpLq54cry_9_47Rfs3An" # real playlist
     #playlist_id = "PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU" # For testing
     key = ENV['API_KEY']
-    puts "key is: #{ENV['API_KEY']}"
-    json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=#{playlist_id}&part=snippet&maxResults=12&key=#{key}"
+    json_url = "https://www.googleapis.com/youtube/v3/playlistItems?playlistId=#{playlist_id}&part=snippet&maxResults=6&key=#{key}"
     
 
     @PageToken = params

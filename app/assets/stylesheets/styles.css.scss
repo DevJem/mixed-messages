@@ -192,8 +192,8 @@ body {
 			color: #222;
 		}
 		&:hover {
-			-webkit-transition-duration: 0.2s; /* Safari */
-  		transition-duration: 0.2s;	
+			//-webkit-transition-duration: 0.2s; /* Safari */
+  		//transition-duration: 0.2s;	
 			//background: $mm-color;
 			border: 0px solid $mm-color;
 			border-radius: 7px;
