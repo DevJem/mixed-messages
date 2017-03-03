@@ -17,7 +17,7 @@
 					<% baduser = User.find(user) %>
 					<%= link_to "Bad User: #{baduser.username}, Warn Level: #{baduser.warn_level}", user_path(user) %> <br/>
 
-					Report count: <%= report.count %> <br/>
+					<!-- Report count: <%# report.count %> <br/> -->
 					Reported by: <%= User.find(report.user_id).username %> <br/>
 					<% comment = Comment.find(report.comment_id) %>
 					<h4><%= comment.title %></h4>
@@ -26,11 +26,11 @@
 						<div class="col-sm-6">
 							<%= form_for :report, url: unflag_path do |f| %>
 								<%= f.hidden_field :comment_id, value: report.comment_id %>
-								<%= f.submit "Unflag", class: "btn btn-sm btn-primary" %>
+								<%= f.submit "Unflag", class: "btn btn-sm btn-primary", data: {confirm: "Unflag this comment?"} %>
 							<% end %>
 						</div>
 						<div class="col-sm-6">
-							<%= link_to "Delete", comment_path(comment), class: "btn btn-sm btn-success", method: :delete %>
+							<%= link_to "Delete", comment_path(comment), class: "btn btn-sm btn-warning", method: :delete, data: {confirm: "Delete this comment and warn the user?"} %>
 						</div>
 					</div>
 				</div>

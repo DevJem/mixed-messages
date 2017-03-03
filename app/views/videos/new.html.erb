@@ -1,17 +1,20 @@
 <div class="container">	
-	<div class="row">
+	<div class="row good-background">
+		<div align="center" class="section-title move-bottom">
+			<h1>Set premium video</h1>
+		</div>
 		<%= form_for :video do |video| %>
 			<div class="form-group">
 				<div class="control-label col-sm-2">
 					<%= video.label @label %>
 				</div>
-				<div class="col-sm-5 col-sm-offset-1">
+				<div class="col-sm-5 col-sm-offset-1 move-bottom">
 					<%= video.text_field @location, class: "form-control", placeholder: "Enter video id", autofocus: true %>
 				</div>
 			</div>
 			<div class="form-group">
 				<div class=" col-sm-2">
-					<%= video.submit "Enter", class: "btn btn-primary btn-md" %>
+					<%= video.submit "Enter", class: "btn btn-primary btn-md", data: {confirm: "Set new premium video?"} %>
 				</div>
 			</div>
 		<% end %>

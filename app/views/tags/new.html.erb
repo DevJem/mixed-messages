@@ -25,7 +25,7 @@
 			<div>
 			<% @tags.each do |tag| %>
 				<div class="col-sm-3 col-xs-6 btn btn-md btn-primary">
-					<%= tag.tag_name %><%= link_to " X", tag_path(tag.id), method: :delete %>
+					<%= tag.tag_name %><%= link_to " X", tag_path(tag.id), method: :delete, data: {confirm: "Are you sure you want to delete this tag?"} %>
 				</div>
 			<% end %>
 

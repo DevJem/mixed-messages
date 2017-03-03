@@ -3,7 +3,7 @@
 		<ul class="tags">
 			<li>
 				<!-- Zipcode search -->
-				<%= form_tag uploads_path, method: "get" do %>
+				<%= form_tag uploads_path, method: "get", rel: "nofollow" do %>
 					<div class="field" align="center" style="margin-bottom: 20px;">
 					<%= hidden_field_tag :search, params[:search] %>
 					<%= text_field_tag :zip, "", id: "zipcode-search"%>
@@ -15,9 +15,9 @@
 			<!-- Tags List -->
 			<% if !@tags.nil? and !@tags.empty? %>
 				
-				<li><%= link_to "All Tags", uploads_path, class: "btn btn-sm btn-primary" %></li>
+				<li><%= link_to "All Tags", uploads_path, class: "btn btn-sm btn-primary", rel: "nofollow" %></li>
 				<% @tags.each do |tag| %>
-					<%= form_tag uploads_path, method: "get" do %>
+					<%= form_tag uploads_path, method: "get", rel: "nofollow" do %>
 						<%= hidden_field_tag :search, tag.id %>
 
 						<li><%= submit_tag tag.tag_name, tags: nil, class: "btn btn-sm btn-primary" %></li>

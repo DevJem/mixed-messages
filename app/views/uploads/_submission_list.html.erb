@@ -11,16 +11,14 @@
 				<%= truncate(upload.note, length: 100) %><br/>
 				<%= time_ago_in_words(upload.created_at) %><br/>
 				<% if logged_in? && current_user.admin %>
-					<%= link_to "Delete", upload_path(upload), method: :delete, class: "btn btn-sm btn-info" %>
+					<%= link_to "Delete", upload_path(upload), method: :delete, class: "btn btn-sm btn-info", data: {confirm: "Delete this submission?"} %>
 					<% if !upload.save_upload %>
-						<%= link_to "Allow", save_upload_path(upload), class: "btn btn-danger btn-sm", method: :patch %>
+						<%= link_to "Allow", save_upload_path(upload), class: "btn btn-danger btn-sm", method: :patch, data: {confirm: "Allow this submission?"} %>
 					<% else %>
-						<%= link_to "Deny", save_upload_path(upload), class: "btn btn-warning btn-sm", method: :patch %>
+						<%= link_to "Deny", save_upload_path(upload), class: "btn btn-warning btn-sm", method: :patch, data: {confirm: "Deny this submission but keep the file?"} %>
 					<% end %>
 				<% end %>
 			</div>
 		</div>
-<!-- 		<div class="clearfix"></div>
- -->
 	<% end %>
 </div>

@@ -34,11 +34,11 @@
 				<% if logged_in? && current_user.admin %>
 					<% if !@upload.save_upload %>
 						<div align="right">
-								<%= link_to "Allow File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch %>
+								<%= link_to "Allow File", save_upload_path(@upload), class: "btn btn-danger btn-lg", method: :patch, rel: "nofollow" %>
 						</div>
 					<% else %>
 						<div align="right">
-								<%= link_to "Deny File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch %>
+								<%= link_to "Deny File", save_upload_path(@upload), class: "btn btn-warning btn-lg", method: :patch, rel: "nofollow" %>
 						</div>
 					<% end %>
 				<% end %>
@@ -48,7 +48,7 @@
 			<div class="col-md-4 col-md-push-4 col-xs-6">
 				<% if logged_in? && current_user.admin %>
 					<div align="left">
-							<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg" %>
+							<%= link_to "Delete File", upload_path(@upload), method: :delete, class: "btn btn-info btn-lg", rel: "nofollow" %>
 					</div>
 				<% end %>
 			</div>

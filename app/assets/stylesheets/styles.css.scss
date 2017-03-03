@@ -246,6 +246,13 @@ body {
 		}
 	}
 
+	#copyright {
+		a, a:hover, a:visited, a:link {
+			text-decoration: none;
+			color: black;
+		}
+	}
+
 	.social-media {
 		img {
 			width: 6%;

@@ -16,7 +16,7 @@
 			<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
 			Before you send us a question, please double check for the answer on our <%= link_to "Frequently Asked Questions page", faq_path %>; you may just find what you need without having to wait on us.
 			<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
-			If you have had trouble with a merchandise order, please contact us by email at ordersupport@mixed-messages.org. Please enter the order number in the subject line of your email and we will address your issue as quickly as possible. Be sure to visit our HELP! Page to learn more about our refunds and returns policy.
+			If you have had trouble with a merchandise order, please contact us by email at ordersupport@mixed-messages.org. Please enter the order number in the subject line of your email and we will address your issue as quickly as possible.
 			<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;
 			If you have questions, suggestions, or awesome input that requires our attention, please type it into the box on the right and we'll look at it.
 		</div>
@@ -28,7 +28,7 @@
 					<% else %>
 						<h4 class="faq">Or just email us at <%= link_to "producers@mixed-messages.org", "mailto:producers@mixed-messages.org" %></h4><br/>
 				</div>
-				<%= form_for(:contact, url: contacts_path, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+				<%= form_for(:contact, url: contacts_path, :html => {class: "form-horizontal", role: "form", rel: "nofollow"}) do |f| %>
 					<div class="form-group">
 						<div class="control-label col-md-2">
 							<% f.label :title %>

@@ -13,7 +13,7 @@
 			<h3>Submit your content here!</h3>
 		</div>
 	</div>
-	<%= form_for(@upload, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+	<%= form_for(@upload, :html => {class: "form-horizontal", role: "form", rel: "nofollow"}) do |f| %>
 		<div class="form-group">
 			<div class="control-label col-sm-2">
 				
@@ -69,7 +69,7 @@
 <% else %>
 	<div class="col-lg-8 col-lg-offset-2">
 		<div align="center">
-			<h3 class="fix-link"><%= link_to raw("Log in to submit<br/>your own!"), login_path %></h3>
+			<h3 class="fix-link"><%= link_to raw("Log in to submit<br/>your own!"), login_path, rel: "nofollow" %></h3>
 		</div>
 	</div>
 <% end %>

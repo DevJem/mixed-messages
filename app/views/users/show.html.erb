@@ -3,11 +3,11 @@
 		<div align="center">
 			<% if logged_in? && current_user.admin && !@user.admin %>
 				<div class="row">
-				<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl" %>
+				<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl", rel: "nofollow" %>
 				<% if !@user.banned && !@user.admin %>
-					<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl" %>
+					<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl", rel: "nofollow" %>
 				<% elsif !@user.admin %>
-					<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl" %>
+					<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl", rel: "nofollow" %>
 				<% end %>
 				</div>
 				<div class="row">
@@ -77,7 +77,7 @@
 					<% @user.notifications.each do |notice| %>
 						<% @delete_notice.push(notice) %>
 					<% end %>
-					<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info" %>
+					<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info", rel: "nofollow" %>
 				</div>
 
 				<!-- The list -->
@@ -85,22 +85,22 @@
 					<% @user.notifications.each do |notice| %>
 						<% if notice.notice_type == "success" %>
 							<li class="list-group-item list-group-item-success">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success" %>
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success", rel: "nofollow" %>
 								<%= notice.notice %>
 							</li>
 						<% elsif notice.notice_type == "warning" %>
 							<li class="list-group-item list-group-item-warning">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-warning" %>
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-warning", rel: "nofollow" %>
 								<%= notice.notice %>
 							</li>
 						<% elsif notice.notice_type == "danger" %>
 							<li class="list-group-item list-group-item-danger">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger" %>
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger", rel: "nofollow" %>
 								<%= notice.notice %>
 							</li>
 						<% elsif notice.notice_type == "info" %>
 							<li class="list-group-item list-group-item-info">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info" %>
+								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info", rel: "nofollow" %>
 								<%= notice.notice %>
 							</li>
 						<% end %>
