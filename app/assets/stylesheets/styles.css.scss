@@ -157,6 +157,11 @@ body {
 	margin: 0px 100px 40px 100px;
 }
 
+.dropdown-menu > li {
+	-webkit-transition-duration: 0.2s; /* Safari */
+  transition-duration: 0.2s;	
+}
+
 // main image
 #mm {
 	//float: left;
@@ -250,6 +255,8 @@ body {
 		a, a:hover, a:visited, a:link {
 			text-decoration: none;
 			color: black;
+			cursor: default;
+
 		}
 	}
 
