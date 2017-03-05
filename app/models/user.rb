@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
 	def self.search(search)
 	  if search
-	    where(['username LIKE ?', "%#{search}%"])
+	    where(['username ILIKE ?', "%#{search.downcase}%"])
 	  else
 	    all
 	  end
