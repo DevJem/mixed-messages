@@ -46,6 +46,7 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'spring'
 
 gem 'carrierwave-video'
+gem 'carrierwave-ffmpeg'
 
 # Use Unicorn as the app server
 gem 'unicorn'

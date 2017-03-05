@@ -1,20 +1,25 @@
 class FileUploader < CarrierWave::Uploader::Base
-  # include CarrierWave::Video
+  include CarrierWave::Video
   # include CarrierWave::MiniMagick
-  # FFMPEG.ffmpeg_binary = '/usr/bin/ffmpeg'
+  FFMPEG.ffmpeg_binary = '/usr/bin/ffmpeg'
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
-  # process encode_video: [ 
-  #   # watermark: {
-  #   #   path: File.join(Rails.root, "/public/", "favicon.ico"),
-  #   #   position: :bottom_left,
-  #   #   pixels_from_edge: 10
-  #   # }
+  # process encode_video: [:mp4]
+
+  # process encode_video: [
+  #   watermark: {
+  #     path: File.join(Rails.root, "public/", "favicon.ico"),
+  #     position: :bottom_left,
+  #     pixels_from_edge: 10
+  #   }
   # ]
-
+  # def filename
+  #   result = [original_filename.gsub(/.\w+$/, ""), 'mp4'].join('.') if original_filename
+  #   result
+  # end
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -23,7 +28,7 @@ class FileUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "/home/rails/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -49,7 +54,8 @@ class FileUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(3gp avi flv m1v m2v mp4 wmv ogg m4v webm)
+    #%w(3gp avi flv mp4 mov wmv mpg ogg m4v webm)
+    %w(mp4 ogg webm)
   end
 
   # Override the filename of the uploaded files:

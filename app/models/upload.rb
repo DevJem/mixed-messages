@@ -5,6 +5,12 @@ class Upload < ActiveRecord::Base
   has_and_belongs_to_many :comments
   has_and_belongs_to_many :tags
 
+  before_save do
+  	if self.zipcode.nil?
+  		self.zipcode = "0"
+  	end
+  end
+
   validates :title, presence: true, length: {minimum: 3, maximum: 100}, uniqueness: true
 	validates :user_id, presence: true, on: :create
 	#validates :note, presence: true, length: {minimum: 10, maximum: 1000}

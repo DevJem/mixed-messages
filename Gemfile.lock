@@ -79,6 +79,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrierwave-ffmpeg (1.0.0)
+      carrierwave
+      streamio-ffmpeg
     carrierwave-video (0.5.6)
       carrierwave
       streamio-ffmpeg
@@ -296,6 +299,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-unicorn
   carrierwave (~> 1.0)
+  carrierwave-ffmpeg
   carrierwave-video
   ckeditor
   coffee-rails (~> 4.1.0)

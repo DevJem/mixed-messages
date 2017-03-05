@@ -2,6 +2,13 @@ $mm-color: #920202;
 
 // *****BODY***** // 
 
+
+.submit-pic {
+	border: 1px solid $mm-color;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 #home-video {
 	margin: 80px 30px 40px 0;
 	border: 2px solid $mm-color;

@@ -1,4 +1,4 @@
-
+ 
 <div class="container good-background">
 	<div class="row">
 		<div class="text-center section-title">
@@ -29,22 +29,30 @@
 		</div>
 
 		<div class="col-xs-12">
+
 			<!-- LEFT SIDE -->
-			<div class="col-lg-5 col-md-4 col-md-offset-0 col-xs-10 col-xs-offset-1">
+			<div class="col-lg-6 col-md-7 col-md-offset-0 col-xs-10 col-xs-offset-1">
 				<div class="home-text-right">
+					<div align="center">
+						<h3 class="fix-link"><%= @blog.title.upcase %></h3>
+					</div>
 					<p class="fix-link"> 
-					Check out our <%= link_to "latest blog", blog_path(@blog) %>!<br/>
-					Watch our <%= link_to "safe filming video", safe_path %>!<br/>
-					</p>
+						<%= truncate(simple_format(@blog.content, sanitize: false), length: 400, escape: false) %>
+					</p><%= link_to "Read More", blog_path(@blog), class: "btn btn-lg btn-primary" %>
 				</div>
-				<div class="col-lg-8 col-md-8 col-md-offset-2 col-xs-6 col-xs-offset-3">
-					<%= link_to image_tag( "submit.jpg", width: "100%", class: "good-background submit-pic img-responsive"), "/submit/#submit-space" %> 
+				<div class="comment-hr"></div>
+				<div class="col-xs-5 ">
+					<%= link_to image_tag( "submit.jpg", width: "100%", class: "submit-pic img-responsive"), "/submit/#submit-space" %> 
+				</div>
+				<div class="col-xs-5 col-xs-offset-2">
+					
 				</div>
 			</div>
+
 				<!-- RIGHT SIDE -->
-			<div class="col-lg-7 col-md-8 col-md-offset-0 col-xs-10 col-xs-offset-1">  
+			<div class="col-lg-6 col-md-5 col-md-offset-0 col-xs-10 col-xs-offset-1">  
 				<div id="home-video" align="center" class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" width="100%" src="https://www.youtube.com/embed/dDdAV9LV-7w" allowfullscreen></iframe>
+					<iframe class="embed-responsive-item" width="100%" src="https://www.youtube.com/embed/dDdAV9LV-7w?rel=0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
