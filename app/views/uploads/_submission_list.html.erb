@@ -4,7 +4,7 @@
 			<div align="center" class="single-upload">
 				<% user = "Submitted by: #{upload.user.username}" %>
 				<h4 class="fix-link"><%= link_to user, user_path(upload.user.id) %></h4><br/>
-				<%= "File is: #{upload.file}" %>
+				<%# "File is: #{upload.file}" %>
 				<%= link_to (video_tag upload.file, height: "230px", preload: "metadata"), upload_path(upload) %>
 				<br/>
 				<h4><%= upload.title %></h4><br/> 
