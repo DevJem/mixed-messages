@@ -13,7 +13,7 @@ set :repo_url, "git@bitbucket.org:DevJem/mixed-messages.git"
 
 # Default value for :format is :airbrussh.
 set :format, :pretty
-
+ 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
 # set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
