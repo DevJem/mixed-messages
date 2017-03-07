@@ -147,7 +147,9 @@ body {
 		margin: 13px 0 10px 0;
 		color: white;
 	}
-
+	@media (max-width: 700px) {
+		height: 80px;
+	}
 }
 
 #head { 

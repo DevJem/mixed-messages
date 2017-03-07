@@ -15,7 +15,7 @@
 			</div>
 
 				<!-- RIGHT SIDE -->
-			<div class="col-lg-6 col-md-6 col-md-offset-0 col-xs-10 col-xs-offset-1">  
+			<div class="col-lg-6 col-md-6 col-xs-12">  
 				<div align="center">
 					<div class="home-text-right">
 						<p class="fix-link"> We're working to reduce the problem of distracted driving and we want you to help. On our site you'll find comedy videos of people filmed with their eyes off the road. We hope that the threat of public shame will give people a strong enough reason to wait until they're parked to use their phones, but unfortunately, we can't be everywhere. So hang out, watch some videos, have a few laughs, think about the responsibility of safe driving, and visit our <%= link_to "Get Involved", submit_path %> section to learn how you can have some fun and help us to reduce distracted driving in your community. Which side of the camera will you be on?
@@ -31,27 +31,27 @@
 		<div class="col-xs-12">
 
 			<!-- LEFT SIDE -->
-			<div class="col-lg-6 col-md-7 col-md-offset-0 col-xs-10 col-xs-offset-1">
+			<div class="col-lg-6 col-md-7 col-xs-12">
 				<div class="home-text-right">
 					<div align="center">
 						<h3 class="fix-link"><%= @blog.title.upcase %></h3>
 					</div>
-					<p class="fix-link hidden-xs"> 
-						<%= truncate(simple_format(@blog.content, sanitize: false), length: 400, escape: false) %></p>
-					</p>
-					<p class="fix-link visible-xs hidden-sm-up"> 
-						<%= truncate(simple_format(@blog.content, sanitize: false), length: 200, escape: false) %></p>
-					</p>
+					<div class="fix-link hidden-xs"> 
+						<h4><%= truncate(simple_format(@blog.content, sanitize: false), length: 400, escape: false) %></h4>
+					</div>
+					<div class="fix-link visible-xs-inline-block"> 
+						<h4><%= truncate(simple_format(@blog.content, sanitize: false), length: 200, escape: false) %></h4>
+					</div>
 					<div align="right">
 						<%= link_to "Read More", blog_path(@blog), class: "btn btn-lg btn-primary" %>
 					</div>
 				</div>
 				<div class="comment-hr"></div>
-				<div class="col-xs-5 ">
+				<div class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
 					<%= link_to image_tag( "submit.jpg", width: "100%", class: "submit-pic img-responsive"), "/submit/#submit-space" %> 
 				</div>
-				<div class="col-xs-5 col-xs-offset-2">
-					
+				<div class="col-sm-5 col-sm-offset-2">
+					<!-- <div style="height: 100px; background-color: gray;"></div> -->
 				</div>
 			</div>
 
