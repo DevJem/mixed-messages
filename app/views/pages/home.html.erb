@@ -36,9 +36,15 @@
 					<div align="center">
 						<h3 class="fix-link"><%= @blog.title.upcase %></h3>
 					</div>
-					<p class="fix-link"> 
+					<p class="fix-link hidden-xs"> 
 						<%= truncate(simple_format(@blog.content, sanitize: false), length: 400, escape: false) %>
-					</p><%= link_to "Read More", blog_path(@blog), class: "btn btn-lg btn-primary" %>
+					</p>
+					<p class="fix-link visible-xs"> 
+						<%= truncate(simple_format(@blog.content, sanitize: false), length: 200, escape: false) %>
+					</p>
+					<div align="right">
+						<%= link_to "Read More", blog_path(@blog), class: "btn btn-lg btn-primary" %>
+					</div>
 				</div>
 				<div class="comment-hr"></div>
 				<div class="col-xs-5 ">

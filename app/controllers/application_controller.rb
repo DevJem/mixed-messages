@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  # Get and set the url for the premium video
+  # Get and set the url for the premium video 
   def get_location
     last_known = String
     File.open("public/location", "r") { |io| last_known = io.gets  }
