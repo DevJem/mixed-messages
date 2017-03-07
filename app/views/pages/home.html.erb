@@ -37,10 +37,10 @@
 						<h3 class="fix-link"><%= @blog.title.upcase %></h3>
 					</div>
 					<p class="fix-link hidden-xs"> 
-						<%= truncate(simple_format(@blog.content, sanitize: false), length: 400, escape: false) %>
+						<%= truncate(simple_format(@blog.content, sanitize: false), length: 400, escape: false) %></p>
 					</p>
-					<p class="fix-link visible-xs"> 
-						<%= truncate(simple_format(@blog.content, sanitize: false), length: 200, escape: false) %>
+					<p class="fix-link visible-xs hidden-sm-up"> 
+						<%= truncate(simple_format(@blog.content, sanitize: false), length: 200, escape: false) %></p>
 					</p>
 					<div align="right">
 						<%= link_to "Read More", blog_path(@blog), class: "btn btn-lg btn-primary" %>
