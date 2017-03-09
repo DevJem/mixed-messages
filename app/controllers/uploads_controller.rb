@@ -36,18 +36,18 @@ class UploadsController < ApplicationController
 		end
 	end
 
-	def edit 
+	def edit
 	end
 
 	def update 
 		@comment = Comment.new(comment_params)
-		@comment.user_id = @upload.user_id
+		@comment.user_id = current_user.id
 		@comment.upload_id = @upload.id
 
 		if @comment.save
 			@upload.comments << @comment
 			upload_title = Upload.find(@comment.upload_id).title
-			mark_video :comment, @comment.user_id, upload_title, "member", @upload.id
+			mark_video :comment, @upload.user_id, upload_title, "member", @upload.id
 		else
 			flash[:danger] = "Did not work. #{@comment.errors.full_messages}"
 			render :show

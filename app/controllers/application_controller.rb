@@ -32,9 +32,12 @@ class ApplicationController < ActionController::Base
     File.open("public/location", "w") { |io| io.puts new_location }
   end
 
-
+  # mark_video :comment, @comment.user_id, upload_title, "member", @upload.id
   # Set up notifications mark video success, denied, or comment
-  def mark_video(result, user, source, location = nil, id = nil) # 
+  def mark_video(result, user, source, location = nil, id = nil, send_to = nil) # 
+    if send_to == nil
+      send_to = user
+    end
 
     if result == :success
       notice = "Your video \"#{source}\" has been approved."
@@ -50,7 +53,7 @@ class ApplicationController < ActionController::Base
       type = "danger"
     end
 
-      notification = {user_id: user, notice: notice, notice_type: type, source: source, source_location: location, source_id: id}
+      notification = {user_id: user, notice: notice, notice_type: type, source: source, source_location: location, source_id: id, send_to: send_to}
       redirect_to new_notification_path(notification)
   end
 

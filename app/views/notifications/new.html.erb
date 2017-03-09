@@ -26,6 +26,7 @@ window.onload = submitform;
 		<%= f.hidden_field :source, value: @params["source"] %>
 		<%= f.hidden_field :source_location, value: @params["source_location"] %>
 		<%= f.hidden_field :source_id, value: @params["source_id"] %>
+		<%= f.hidden_field :send_to, value: @params["send_to"] %>
 		<%= f.submit %>
 	<% end %>
 </div>

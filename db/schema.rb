@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20170307141031) do
     t.integer  "source"
     t.string   "source_location"
     t.integer  "source_id"
-  end
-
+  end 
+  
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "reports", force: :cascade do |t|

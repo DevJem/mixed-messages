@@ -10,7 +10,11 @@
 			<% end %>
 		</div>
 		<div class="col-md-2 col-xs-5" align="center">
-			<strong><%= comment.user.username %></strong> <br/>
+			<% if !comment.upload_id.nil? %>
+				<strong><%= comment.user.username %></strong> <br/>
+
+
+				<strong><%= comment.user.username %></strong> <br/>
 			<%= comment.created_at.localtime.strftime("%B %d, %Y") %> <br/>
 			<%= comment.created_at.localtime.strftime("%l:%M %P")  %> <br/>
 			<% if logged_in? && current_user.admin? %>
