@@ -23,6 +23,9 @@ $mm-color: #920202;
 		box-shadow: -2px 2px 12px -1px $mm-color;
 	}
 	opacity: 100%;
+	@media (max-width: 768px) {
+		padding: 10px;
+	}
 }
 
 .hide-img {
@@ -34,6 +37,10 @@ $mm-color: #920202;
 
 .blog-content {
 	margin-top: 20px;
+	padding: 50px;
+	@media (max-width: 768px) {
+		padding: 10px;
+	}
 }
 
 .blog-meta-details {

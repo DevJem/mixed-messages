@@ -17,12 +17,13 @@
 		color: blue;
 	}
 	@media (max-width: 768px) {
- 	.about-ads {
- 		display: none;
- 	}
- }
+	 	.about-ads {
+	 		display: none;
+		}
+	}
 }
 
 .responsive-ad {
 	margin-top: 40px;
+	margin-bottom: 20px;
 }

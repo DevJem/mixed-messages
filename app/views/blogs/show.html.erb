@@ -34,6 +34,8 @@ window.twttr = (function(d, s, id) {
 }(document, "script", "twitter-wjs"));
 </script>
 
+
+
 <% if logged_in? && current_user.admin %>
 	<div align="center">
 		<%= link_to "Edit this Blog", edit_blog_path(@blog), class: "btn btn-md btn-warning" %>
@@ -43,7 +45,22 @@ window.twttr = (function(d, s, id) {
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-8 col-sm-offset-2 ">
+		<div class="col-sm-2 responsive-ad">
+			<div align="center">
+				<h6>Advertisement</h6>
+			</div>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- blog 1 -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-2223843253438673"
+			     data-ad-slot="5041726941"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+		<div class="col-sm-8">
 			<div class="blog-body good-background">
 				<h1 class="blog-title"><%= @blog.title.upcase %></h1>
 				<div class="row">
@@ -79,11 +96,37 @@ window.twttr = (function(d, s, id) {
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-2 col-sm-offset-1">
-			<%= render 'layouts/ads' %>
+		<div class="col-sm-2 responsive-ad">
+			<div align="center">
+				<h6>Advertisement</h6>
+			</div>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- blog 2 -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-2223843253438673"
+			     data-ad-slot="7995193340"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 		</div>
 	</div>
 </div>
+
+<div align="center" class="responsive-ad">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- blog 3 -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-2223843253438673"
+	     data-ad-slot="1948659749"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+</div>
+
 <div class="container">
 	<%= render 'layouts/comments', obj: @blog %>
 </div>

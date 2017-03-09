@@ -1,27 +1,42 @@
-<div class="container-fluid">
-	<div class="row">
-		<div align="center">
-			<% if logged_in? && current_user.admin && !@user.admin %>
-				<div class="row">
-				<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl", rel: "nofollow" %>
-				<% if !@user.banned && !@user.admin %>
-					<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl", rel: "nofollow" %>
-				<% elsif !@user.admin %>
-					<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl", rel: "nofollow" %>
-				<% end %>
-				</div>
-				<div class="row">
-					<h3>Warn Level: <%= @user.warn_level %> </h3>
-			<% end %>
-			<h1 class="section-title"><%= @user.username.upcase %></h1>
-		</div>
-	</div>
 
-	<div id="profile" class="container good-background">
-	<!-- Left side -->
-		<div class="row">
-			<div class="col-sm-7 col-xs-12">	
-				<div id="info" class="row">
+<div align="center">
+	<% if logged_in? && current_user.admin && !@user.admin %>
+		<%= link_to "Delete this user", user_path(@user), method: :delete, data: {confirm: "Are you sure you want to delete #{@user.username}" }, class: "btn btn-danger btn-xl", rel: "nofollow" %>
+		<% if !@user.banned && !@user.admin %>
+			<%= link_to "Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to ban #{@user.username}" }, class: "btn btn-warning btn-xl", rel: "nofollow" %>
+		<% elsif !@user.admin %>
+			<%= link_to "Un-Ban this user", ban_path(@user), method: :patch, remote: :true, data: { confirm: "Are you sure you want to remove the ban on #{@user.username}" }, class: "btn btn-warning btn-xl", rel: "nofollow" %>
+		<% end %>
+		<div align="center">
+			<h3>Warn Level: <%= @user.warn_level %> </h3>
+		</div>
+	<% end %>
+	<h1 class="section-title"><%= @user.username.upcase %></h1>
+</div>
+
+<div id="profile" class="container-fluid">
+	<div class="row">
+		<div class="col-sm-2">
+			<div align="center">
+				<h6>Advertisement</h6>
+			</div>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- User 1 -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-2223843253438673"
+			     data-ad-slot="6378859342"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</div>
+
+	
+		<div class="col-sm-8 good-background">
+			<!-- Left side -->		
+			<div class="col-sm-7">	
+				<div id="info">
 					<div>
 						<h3>Member since:</h3>
 						<h4><%= @user.created_at.localtime.strftime("%B %d, %Y") %></h4><br/>
@@ -50,74 +65,103 @@
 					<% end %>
 					<br/>
 				</div>
-				<div class="row">
-					<div id="bio" class="col-sm-12">
-						<div>
-							<% if @user.bio && !@user.bio.empty? %>
-								<div>
-									<h3>Bio:</h3>
-								</div>
-								<h4><%= @user.bio %></h4>
-							<% elsif logged_in? && (current_user.admin || current_user == @user) %><br/>
-								<h4 class="fix-link">
-									<%= link_to "Edit your Bio", edit_user_path(@user) %>
-								</h4>
-							<% end %>
-						</div>
+				<div id="bio" class="col-sm-12">
+					<div>
+						<% if @user.bio && !@user.bio.empty? %>
+							<div>
+								<h3>Bio:</h3>
+							</div>
+							<h4><%= @user.bio %></h4>
+						<% elsif logged_in? && (current_user.admin || current_user == @user) %><br/>
+							<h4 class="fix-link">
+								<%= link_to "Edit your Bio", edit_user_path(@user) %>
+							</h4>
+						<% end %>
 					</div>
 				</div>
 			</div>
 
-		<!-- Right Side -->
-		<% @delete_notice = Array.new %>
-		<!-- User Notifications -->
-		<div id="user-notifications" class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-			<% if logged_in? && !@user.notifications.empty? && @user == current_user %>
+			<!-- Right Side -->
+			<% @delete_notice = Array.new %>
+			<!-- User Notifications -->
+			<div id="user-notifications" class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+				<% if logged_in? && !@user.notifications.empty? && @user == current_user %>
 
-				<!-- Delete all button -->
-				<div align="center">
-					<% @user.notifications.each do |notice| %>
-						<% @delete_notice.push(notice) %>
-					<% end %>
-					<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info", rel: "nofollow" %>
-				</div>
-
-				<!-- The list -->
-				<ul class="list-group">
-					<% @user.notifications.each do |notice| %>
-						<% if notice.notice_type == "success" %>
-							<li class="list-group-item list-group-item-success">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success", rel: "nofollow" %>
-								<%= notice.notice %>
-							</li>
-						<% elsif notice.notice_type == "warning" %>
-							<li class="list-group-item list-group-item-warning">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-warning", rel: "nofollow" %>
-								<%= notice.notice %>
-							</li>
-						<% elsif notice.notice_type == "danger" %>
-							<li class="list-group-item list-group-item-danger">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger", rel: "nofollow" %>
-								<%= notice.notice %>
-							</li>
-						<% elsif notice.notice_type == "info" %>
-							<li class="list-group-item list-group-item-info">
-								<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info", rel: "nofollow" %>
-								<%= notice.notice %>
-							</li>
+					<!-- Delete all button -->
+					<div align="center">
+						<% @user.notifications.each do |notice| %>
+							<% @delete_notice.push(notice) %>
 						<% end %>
-					<% end %>
-				</ul>
-			<% end %>
+						<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info", rel: "nofollow" %>
+					</div>
+
+					<!-- The list -->
+					<ul class="list-group">
+						<% @user.notifications.each do |notice| %>
+							<% if notice.notice_type == "success" %>
+								<li class="list-group-item list-group-item-success">
+									<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success", rel: "nofollow" %>
+									<%= notice.notice %>
+								</li>
+							<% elsif notice.notice_type == "warning" %>
+								<li class="list-group-item list-group-item-warning">
+									<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-warning", rel: "nofollow" %>
+									<%= notice.notice %>
+								</li>
+							<% elsif notice.notice_type == "danger" %>
+								<li class="list-group-item list-group-item-danger">
+									<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-danger", rel: "nofollow" %>
+									<%= notice.notice %>
+								</li>
+							<% elsif notice.notice_type == "info" %>
+								<li class="list-group-item list-group-item-info">
+									<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-info", rel: "nofollow" %>
+									<%= notice.notice %>
+								</li>
+							<% end %>
+						<% end %>
+					</ul>
+				<% end %>
+			</div>
 		</div>
+		<div class="col-sm-2">
+			<div align="center">
+				<h6>Advertisement</h6>
+			</div>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- User 2 -->
+			<ins class="adsbygoogle"
+			     style="display:block"
+			     data-ad-client="ca-pub-2223843253438673"
+			     data-ad-slot="6099657743"
+			     data-ad-format="auto"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
 		</div>
-	</div>
+		<div class="col-xs-12">
+			<div align="center" class="responsive-ad">
+				<h6>Advertisement</h6>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- User 3 -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2223843253438673"
+				     data-ad-slot="4483323748"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+
+		
 
 
-	<!-- User Uploads -->
-	<% if !@user_uploads.empty? %>
-		<div class="container good-background">
-			<div class="row">
+
+		<!-- User Uploads -->
+		<% if !@user_uploads.empty? %>
+			<div class="col-sm-8 col-sm-offset-2 good-background">
 				<div align="center">
 					<div class="col-xs-12">
 						<h3><strong><%= @user_uploads.count %> Uploads by <%= @user.username.upcase %>:</strong></h3>
@@ -148,5 +192,18 @@
 				</div> 
 			</div>
 		</div>
-	<% end %>
+	</div>
+<% end %>
+
+<div align="center" class="responsive-ad">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<!-- User 4 -->
+	<ins class="adsbygoogle"
+	     style="display:block"
+	     data-ad-client="ca-pub-2223843253438673"
+	     data-ad-slot="5960056943"
+	     data-ad-format="auto"></ins>
+	<script>
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
 </div>
