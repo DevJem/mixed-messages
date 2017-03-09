@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   		redirect_to root_path 
   	end
   end
-
+ 
   # Get and set the url for the premium video 
   def get_location
     last_known = String
