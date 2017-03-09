@@ -17,19 +17,21 @@
 <div id="profile" class="container-fluid">
 	<div class="row">
 		<div class="col-sm-2">
-			<div align="center">
-				<h6>Advertisement</h6>
+			<div class="responsive-ad">
+				<div align="center">
+					<h6>Advertisement</h6>
+				</div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- User 1 -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2223843253438673"
+				     data-ad-slot="6378859342"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- User 1 -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-2223843253438673"
-			     data-ad-slot="6378859342"
-			     data-ad-format="auto"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
 		</div>
 
 	
@@ -123,47 +125,28 @@
 					</ul>
 				<% end %>
 			</div>
-		</div>
-		<div class="col-sm-2">
-			<div align="center">
-				<h6>Advertisement</h6>
+			<div class="col-xs-12">
+				<div class="responsive-ad">
+					<div align="center">
+						<h6>Advertisement</h6>
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- User 3 -->
+						<ins class="adsbygoogle"
+						     style="display:block"
+						     data-ad-client="ca-pub-2223843253438673"
+						     data-ad-slot="4483323748"
+						     data-ad-format="auto"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
 			</div>
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- User 2 -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-2223843253438673"
-			     data-ad-slot="6099657743"
-			     data-ad-format="auto"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
-		<div class="col-xs-12">
-			<div align="center" class="responsive-ad">
-				<h6>Advertisement</h6>
-				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- User 3 -->
-				<ins class="adsbygoogle"
-				     style="display:block"
-				     data-ad-client="ca-pub-2223843253438673"
-				     data-ad-slot="4483323748"
-				     data-ad-format="auto"></ins>
-				<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-				</script>
-			</div>
-		</div>
 
-		
-
-
-
-		<!-- User Uploads -->
-		<% if !@user_uploads.empty? %>
-			<div class="col-sm-8 col-sm-offset-2 good-background">
-				<div align="center">
-					<div class="col-xs-12">
+			<!-- User Uploads -->
+			<% if !@user_uploads.empty? %>
+				<div class="col-xs-12">
+					<div align="center">
 						<h3><strong><%= @user_uploads.count %> Uploads by <%= @user.username.upcase %>:</strong></h3>
 						<% @user_uploads.each do |upload| %>
 							<% if (logged_in? && (current_user.admin || current_user == @user)) || upload.save_upload %>
@@ -187,13 +170,31 @@
 								</div>
 							<% end %>
 						<% end %>
+						<%= will_paginate @user_uploads %>
 					</div>
-					<%= will_paginate @user_uploads %>
-				</div> 
+				</div>
+			<% end %>
+		</div>
+
+		<div class="col-sm-2">
+			<div class="responsive-ad">
+				<div align="center">
+					<h6>Advertisement</h6>
+				</div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- User 2 -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2223843253438673"
+				     data-ad-slot="6099657743"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 		</div>
 	</div>
-<% end %>
+</div>
 
 <div align="center" class="responsive-ad">
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
