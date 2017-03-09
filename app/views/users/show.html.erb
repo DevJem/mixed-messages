@@ -26,18 +26,20 @@
 						<h3>Member since:</h3>
 						<h4><%= @user.created_at.localtime.strftime("%B %d, %Y") %></h4><br/>
 					</div>
-					<div>
-					<h3>info:</h3>
-						<% if @user.zipcode %>
-							
-							<h4><span class="glyphicon glyphicon-globe"></span> Zipcode: <%= @user.zipcode %></h4>
-						<% elsif logged_in? && current_user == @user %>
-							<h4 class="fix-link">
-								<span class="glyphicon glyphicon-globe"></span>
-								<%= link_to "Add a zipcode", edit_user_path(@user) %>
-							</h4>
-						<% end %>
-					</div>
+					<% if logged_in? and (current_user == @user or current_user.admin?) %>
+						<div>
+							<h3>info:</h3>
+							<% if @user.zipcode %>
+								
+								<h4><span class="glyphicon glyphicon-globe"></span> Zipcode: <%= @user.zipcode %></h4>
+							<% elsif logged_in? && current_user == @user %>
+								<h4 class="fix-link">
+									<span class="glyphicon glyphicon-globe"></span>
+									<%= link_to "Add a zipcode", edit_user_path(@user) %>
+								</h4>
+							<% end %>
+						</div>
+					<% end %>
 					<% if logged_in? && current_user == @user %>
 						<div>
 							<h4 class="fix-link">

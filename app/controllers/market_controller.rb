@@ -45,6 +45,3 @@ class MarketController < ApplicationController
 	end
 
 end
-
-# https://e4d4b13f4f5534fdf4b3e6827ad60839:83f0e25ab611c8a8fefceb09f09755d1@trial-for-mm.myshopify.com/admin/products.json?fields=id,images,title 
-# @trial-for-mm.myshopify.com/admin/products.json?fields=id,images,title 

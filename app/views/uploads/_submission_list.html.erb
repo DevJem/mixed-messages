@@ -4,8 +4,12 @@
 			<div align="center" class="single-upload">
 				<% user = "Submitted by: #{upload.user.username}" %>
 				<h4 class="fix-link"><%= link_to user, user_path(upload.user.id) %></h4><br/>
-				<%# "File is: public#{upload.file}" %>
-				<%= link_to (video_tag "http://mixed-messages.org/public#{upload.file}", height: "230px", preload: "metadata"), upload_path(upload) %>
+				<% if Rails.env.development? %>
+					<%= "File is: public#{upload.file}" %>
+					<%= link_to (video_tag upload.file, height: "230px", preload: "metadata"), upload_path(upload) %>
+				<% else %>
+					<%= link_to (video_tag "http://mixed-messages.org/public#{upload.file}", height: "230px", preload: "metadata"), upload_path(upload) %>
+				<% end %>
 				<br/>
 				<h4><%= upload.title %></h4><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
@@ -22,3 +26,4 @@
 		</div>
 	<% end %>
 </div>
+ 

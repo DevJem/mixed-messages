@@ -95,7 +95,7 @@ class UploadsController < ApplicationController
 
 	private
 		def upload_params
-			params.require(:upload).permit(:title, :note, :zipcode, :file, :upload_terms_and_conditions)
+			params.require(:upload).permit(:title, :note, :zipcode, :file, :thumb, :upload_terms_and_conditions)
 		end
 
 		def add_tags_params

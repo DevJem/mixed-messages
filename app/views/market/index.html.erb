@@ -11,8 +11,10 @@
 					<h3><%= product["title"] %></h3><br/>
 					<% link = product["handle"] %>
 					<% product["images"].as_json.each do |value| %>
-						<% image = value["src"] %>
-						<%= link_to (image_tag image, alt: "Item: #{product['title']} picture", class: "img-responsive", width: "80%"), "https://mixed-messages.myshopify.com/products/#{link}", target: "_blank" %>
+						<% if value["position"] == 1 %>
+							<% image = value["src"] %>
+							<%= link_to (image_tag image, alt: "Item: #{product['title']} picture", class: "img-responsive", width: "80%"), "https://mixed-messages.myshopify.com/products/#{link}", target: "_blank" %>
+						<% end %>
 					<% end %>
 					<% price = "" %>
 					<% product["variants"].as_json.each do |value| %>
