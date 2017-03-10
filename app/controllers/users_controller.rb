@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 	# end 
 
 	def index
-		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 9)
+		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 21)
 	end
 
 	def new
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
 	end
 
 	def elist
-		@users = Subscribe.all.paginate(page: params[:page], per_page: 12)
+		@users = Subscribe.all.paginate(page: params[:page], per_page: 21)
 	end
 
 	def send_mass_email

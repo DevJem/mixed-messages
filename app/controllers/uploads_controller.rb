@@ -5,13 +5,13 @@ class UploadsController < ApplicationController
  
 	def index
 		#@uploads = Upload.where(save_upload: true).order("id DESC")
-		@uploads = Upload.search(params[:search], params[:zip]).paginate(page: params[:page], per_page: 12).where(save_upload: true).order("id DESC")
+		@uploads = Upload.search(params[:search], params[:zip]).paginate(page: params[:page], per_page: 9).where(save_upload: true).order("id DESC")
 		
 		@tags = Tag.all
 	end
 
 	def review
-		@uploads = Upload.paginate(page: params[:page], per_page: 12).where(save_upload: false).order("id ASC")
+		@uploads = Upload.paginate(page: params[:page], per_page: 21).where(save_upload: false).order("id ASC")
 	end
  
 	def show
