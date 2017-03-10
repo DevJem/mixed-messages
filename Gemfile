@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass', '~> 3.3.5'
-gem 'carrierwave', '~> 1.0'
+# gem 'carrierwave', '~> 1.0'
 gem 'zip-code-info', '~> 0.2.1'
 gem 'google-api-client', '>0.7'
 gem 'shopify_api', '~> 4.3'
@@ -45,8 +45,9 @@ gem 'omniauth-shopify-oauth2'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'spring'
 
-gem 'carrierwave-video'
+gem 'carrierwave-video', '0.5.6.1', path: "/usr/local/bin/carrierwave-video-0.5.6.1"
 gem 'carrierwave-ffmpeg'
+ gem 'streamio-ffmpeg'
 
 # Use Unicorn as the app server
 gem 'unicorn'

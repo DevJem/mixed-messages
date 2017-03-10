@@ -10,12 +10,18 @@
 	visibility: hidden;
 }
 
+.clearfix {
+  overflow: auto;
+}
+
 .style-upload-index {
 	video {
 		max-width: 100%;
 	}
 	margin: 0;
 	.single-upload {
+		height: 460px;
+		max-height: 460px;
 		margin-bottom: 20px;
 		h4 {
 			font-family: 'Fjalla One', sans-serif;
