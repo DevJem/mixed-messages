@@ -1,6 +1,7 @@
 class FileUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::MiniMagick
+  include CarrierWave::Video::Thumbnailer
   # FFMPEG.ffmpeg_binary = '~/bin/ffmpeg'
 
   # Include RMagick or MiniMagick support:
@@ -27,6 +28,17 @@ class FileUploader < CarrierWave::Uploader::Base
     self.file.file[-current_extenstion.size..-1] = format.to_s
 
     File.delete(tmpfile)
+  end
+
+  # version :thumb do
+  #   process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
+  #   def full_filename for_file
+  #     png_name for_file, version_name
+  #   end
+  # end
+
+  def png_name for_file, version_name
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
   end
 
   # process :encode

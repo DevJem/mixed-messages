@@ -1,3 +1,5 @@
+<%= tinymce_assets %>
+<script src="/assets/tinymce.js"></script>
  
 <%= render 'layouts/errors', obj: @blog %>
 <div class="container">
@@ -18,7 +20,8 @@
 				<%= f.label :content %>
 			</div>
 			<div class="col-sm-12">
-				<%= f.cktext_area :content, ckeditor: {height: 550}, class: "form-control", placeholder: "Body of blog" %>
+				<%= f.text_area :content, class: "form-control tinymce", rows: "20", placeholder: "Body of blog" %>
+				<%= tinymce %>
 			</div>
 		</div>
 		<div class="form-group">

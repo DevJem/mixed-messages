@@ -1,24 +1,17 @@
 class ContactsController < ApplicationController
 
-	def new
-		@contact = Contact.new
-	end
-
 	def create
-		if logged_in?
-			@contact = Contact.new(contacts_params)
-			@contact.user = current_user.username
-			@contact.email = current_user.email
-			if @contact.valid?
-				ContactUs.contact(@contact).deliver_now
-				flash[:success] = "Email sent, we'll respond as soon as we can."
-				redirect_to root_path
-			else
-				flash[:danger] = "Failed to send email."
-				render :new
-			end
-			@contact.destroy
+		@contact = Contact.new(contacts_params)
+		@contact.user = current_user.username
+		@contact.email = current_user.email
+		if @contact.valid?
+			ContactUs.contact(@contact).deliver_now
+			flash[:success] = "Email sent, we'll respond as soon as we can."
+			redirect_to root_path
+		else
+			render 'pages/contact_us'
 		end
+		@contact.destroy
 	end
 
 	private

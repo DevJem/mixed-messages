@@ -1,0 +1,15 @@
+toolbar:
+  - styleselect code | bold italic underline strikethrough subscript superscript forecolor backcolor | undo redo | alignleft aligncenter alignright alignjustify alignnone
+  - image media | link charmap | preview | hr fontsizeselect bullist numlist blockquote | anchor | editimage imageoptions rotateleft rotateright | emoticons
+plugins:
+  - image
+  - link
+  - charmap
+  - preview
+  - hr
+  - code
+  - media
+  - anchor
+  - imagetools
+  - emoticons
+  - textcolor
