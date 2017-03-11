@@ -54,6 +54,7 @@ namespace :deploy do
   task :restart do
   	on "deployer@67.205.184.235" do
   		execute "sudo service unicorn restart"
+  		execute "source /etc/default/unicorn"
   	end
   end
 end
