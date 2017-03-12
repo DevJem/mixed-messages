@@ -68,7 +68,7 @@ Rails.application.routes.draw do
   
   root 'pages#home'
 
-  get 'googlefe18980250372b0b.html' => 'public/googlefe18980250372b0b.html'
-  get 'robots.txt'                  => 'public/robots.txt'
+  get 'googlefe18980250372b0b.html' => 'pages#googlefe18980250372b0b.html'
+  get 'robots.txt'                  => 'pages#robots.txt'
  
 end

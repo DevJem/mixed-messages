@@ -9,6 +9,12 @@ class PagesController < ApplicationController
   def logo
   end
 
+  def google
+  end
+
+  def robots
+  end
+
   def countdown
   end
 
