@@ -9,9 +9,6 @@ class PagesController < ApplicationController
   def logo
   end
 
-  def google
-  end
-
   def countdown
   end
 
