@@ -12,6 +12,9 @@ class PagesController < ApplicationController
   def google
   end
 
+  def countdown
+  end
+
   def unsubscribe
   end
 

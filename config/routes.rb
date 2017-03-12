@@ -61,9 +61,10 @@ Rails.application.routes.draw do
   get 'orders'          => 'market#orders'
   post 'mark_fulfilled' => 'market#mark_fulfilled'
 
-  get 'review' => 'uploads#review'
+  get 'review'    => 'uploads#review'
 
-  get 'logo'   => 'pages#logo'
+  get 'logo'      => 'pages#logo'
+  get 'countdown' => 'pages#countdown'
   
   root 'pages#home'
 

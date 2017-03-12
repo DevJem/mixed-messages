@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mixed Messages | Coming Soon!</title>
+
+	<style>
+		body {
+			background: url("http://mixed-messages.org/assets/bg6.jpg");
+		}
+		.good-background {
+			background-color: rgba(75, 2, 2, .12);
+			border-radius: 15px;
+			border-left: 2px solid rgba(142, 2, 2, .4);
+			border-right: 2px solid rgba(142, 2, 2, .4);
+			box-shadow: -2px 2px 12px -1px #920202;
+			margin: 150px 200px 0 200px;
+			padding-top: 100px;
+		}
+
+		.movie {
+			width: 60%;
+			height: 400px;
+			background: black;
+		}
+	</style>
+</head>
+<body>
+	<div class="good-background">
+		<div align="center">
+			<div class="movie">
+				<video width="320" height="240" controls>
+				  <source src="http://mixed-messages.org/assets/timer.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+				</video>
+			</div>
+		</div>
+		<div align="center" class="col-xs-12" style="margin-top: -150px;">
+			<iframe src="http://free.timeanddate.com/countdown/i5mljp1h/n171/cf12/cm0/cu4/ct1/cs1/ca0/cr0/ss0/cac920202/cpc000/pct/tcfff/fs200/szw1185/szh500/tac000/tpc000/mac000/mpc000/iso2017-04-01T07:00:00" allowTransparency="true" frameborder="0" width="811" height="285"></iframe>
+		</div>
+	</div>
+</body>
+</html>
