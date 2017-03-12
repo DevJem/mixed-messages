@@ -18,8 +18,8 @@
 		}
 
 		.movie {
-			width: 60%;
-			height: 400px;
+			width: 854px;
+			height: 480px;
 			background: black;
 		}
 	</style>
@@ -28,7 +28,7 @@
 	<div class="good-background">
 		<div align="center">
 			<div class="movie">
-				<video width="320" height="240" controls>
+				<video width="854" height="480" autoplay loop>
 				  <source src="http://mixed-messages.org/assets/timer.mp4" type="video/mp4">
 				Your browser does not support the video tag.
 				</video>
