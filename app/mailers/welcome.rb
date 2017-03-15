@@ -8,4 +8,3 @@ class Welcome < ApplicationMailer
 	end
 
 end
-# J75ImarP*^gno

@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
 		@contact.user = current_user.username
 		@contact.email = current_user.email
 		if @contact.valid?
+			@contact.save
 			ContactUs.contact(@contact).deliver_now
 			flash[:success] = "Email sent, we'll respond as soon as we can."
 			redirect_to root_path
