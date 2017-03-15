@@ -65,8 +65,9 @@ class UsersController < ApplicationController
 		if @user.admin
 			flash[:danger] = "You cannot delete another admin"
 		else
+			uname = @user.username
 			@user.delete
-			flash[:danger] = "User has been deleted."
+			flash[:danger] = "User #{uname} has been deleted."
 			redirect_to users_path
 		end
 	end
