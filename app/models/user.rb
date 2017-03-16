@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-	has_many :comments, dependent: :delete_all
-	has_many :uploads, dependent: :delete_all 
+	has_many :comments, dependent: :destroy
+	has_many :uploads, dependent: :destroy 
 	has_many :blogs
-	has_many :notifications, dependent: :delete_all
+	has_many :notifications, dependent: :destroy
 	has_and_belongs_to_many :reports
 	has_secure_password
 
