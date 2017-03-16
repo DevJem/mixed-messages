@@ -29,7 +29,7 @@ class NotificationsController < ApplicationController
 		end
 	end
 
-	def destroy notice
+	def destroy
 		@notification.destroy
 		redirect_to user_path(current_user.id)
 	end
