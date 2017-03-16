@@ -9,7 +9,7 @@ class NotificationsController < ApplicationController
 	def new
 		@notification = Notification.new
 		@params = params
-	end
+	end 
 
 	def create
 		@notification = Notification.new(notice_params)
@@ -29,7 +29,7 @@ class NotificationsController < ApplicationController
 		end
 	end
 
-	def destroy
+	def destroy notice
 		@notification.destroy
 		redirect_to user_path(current_user.id)
 	end

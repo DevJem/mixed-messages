@@ -60,15 +60,13 @@ ActiveRecord::Schema.define(version: 20170311035806) do
     t.integer  "user_id"
     t.string   "notice",                         null: false
     t.boolean  "active",          default: true
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
     t.string   "notice_type"
     t.integer  "source"
     t.string   "source_location"
     t.integer  "source_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
-
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "reports", force: :cascade do |t|
     t.integer  "user_id"

@@ -65,6 +65,8 @@ class UsersController < ApplicationController
 		if @user.admin
 			flash[:danger] = "You cannot delete another admin"
 		else
+			note = Notification.where(user_id: @user.id)
+			note.each {|x| x.destroy}
 			uname = @user.username
 			@user.delete
 			flash[:danger] = "User #{uname} has been deleted."
