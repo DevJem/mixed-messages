@@ -28,7 +28,10 @@ class UploadsController < ApplicationController
 		@upload = Upload.new(upload_params)
 		@upload.user = current_user
 
-		if @upload.save
+		if @upload.valid?
+			@upload.thumb = "thumb_#{upload_params[:file].to_s.chomp(File.extname(upload_params[:file].to_s))}.jpg"
+			@upload.save
+
 			flash[:success] = "Your upload has been submitted. You will be notified if it is accepted."
 			redirect_to upload_path(@upload)
 		else
@@ -95,7 +98,7 @@ class UploadsController < ApplicationController
 
 	private
 		def upload_params
-			params.require(:upload).permit(:title, :note, :zipcode, :file, :thumb, :upload_terms_and_conditions)
+			params.require(:upload).permit(:title, :note, :zipcode, :file, :thumb, :upload_terms_and_conditions, @original_filename)
 		end
 
 		def add_tags_params

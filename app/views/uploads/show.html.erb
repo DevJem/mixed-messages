@@ -1,3 +1,8 @@
+<% content_for :head do %>
+	<script async src="mediaelement.js"></script>
+<% end %>
+
+
 <%= render 'layouts/errors', obj: @upload %>
 <div class="container-fluid">
 	<div class="row">
@@ -7,16 +12,21 @@
 			</div>
 		</div>
 		<div align="center">
-			<div class="col-xs-12 col-md-6 col-md-offset-3 upload-video">
-				<% if Rails.env.development? %>
-					<%= "File is: public#{@upload.file}" %><br/>
-					<%= video_tag @upload.file, controls: true, autobuffer: true %>
-				<% else %>
-					<%= video_tag "http://mixed-messages.org/public#{@upload.file}", controls: true, autobuffer: true %>
-				<% end %>
-				<%# video_tag "http://mixed-messages.org/public#{@upload.file}", controls: true, autobuffer: true %><br/>
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+				<div class="upload-video">
+
+					<!-- Media Player -->
+					<% if Rails.env.development? %>
+						<%= "File is: public#{@upload.file}" %><br/>
+						<%= video_tag [@upload.file], controls: true, autobuffer: true, class: "mejs__player", id: "player", preload: "auto" %>
+					<% else %>
+						<%= video_tag "http://mixed-messages.org/public#{@upload.file}", controls: true, autobuffer: true, class: "mejs__player", id: "player", height: "350px", preload: "auto" %>
+					<% end %>
+					<br/>
+				</div>
 			</div>
 		</div>
+
 		<div class="hidden-sm hidden-xs col-md-3">
 			<!-- Tag system -->
 			<% if logged_in? and current_user.admin? %>
@@ -74,11 +84,6 @@
 					<% end %>
 				</div>	
 			</div>
-
-			
-
-		
-
 	</div>
 
 	<% if @upload.save_upload %>
@@ -87,3 +92,20 @@
 		</div>
 	<% end %>
 </div>
+
+
+<script>
+// normal JavaScript 
+var player;
+
+(function() {
+	player = new MediaElementPlayer('#player');
+})();
+
+window.onunload = function removePlayer() {
+	if (!player.paused) {
+		player.pause();
+	}
+	player.remove();
+}
+</script>

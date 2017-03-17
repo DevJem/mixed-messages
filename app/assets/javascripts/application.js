@@ -15,5 +15,6 @@
 //= require bootstrap-sprockets
 //= require tinymce
 //= require tinymce-jquery
+//= require mediaelement_rails
 //= require turbolinks
 //= require_tree .

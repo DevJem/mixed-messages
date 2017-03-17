@@ -8,7 +8,7 @@ class FileUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
-  process encode_video: [:webm]
+  process encode_video: [:mp4]
 
   def encode_video format
     directory = File.dirname(current_path)
@@ -30,15 +30,15 @@ class FileUploader < CarrierWave::Uploader::Base
     File.delete(tmpfile)
   end
 
-  # version :thumb do
-  #   process thumbnail: [{format: 'png', quality: 10, size: 192, strip: true, logger: Rails.logger}]
-  #   def full_filename for_file
-  #     png_name for_file, version_name
-  #   end
-  # end
+  version :thumb do
+    process thumbnail: [{format: 'jpg', quality: 7, size: 192, logger: Rails.logger}]
+    def full_filename for_file
+      png_name for_file, version_name
+    end
+  end
 
   def png_name for_file, version_name
-    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
+    %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
   end
 
   # process :encode
