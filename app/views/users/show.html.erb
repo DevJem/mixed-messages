@@ -163,7 +163,12 @@
 											</div>
 										<% end %>
 										<br/>
-										<%= link_to (video_tag "http://mixed-messages.org/public#{upload.file}", height: "200px"), upload_path(upload) %> <br/>
+										<% if Rails.env.development? %>
+											<%= link_to (image_tag upload.file.thumb, height: "200px"), upload_path(upload) %>
+										<% else %>
+											<%= link_to (image_tag "http://mixed-messages.org/public#{upload.file.thumb}", height: "200px"), upload_path(upload) %>
+										<% end %>
+										<br/>
 										<h4><%= upload.title.upcase %></h4><br/> 
 										<%= truncate(upload.note, length: 100) %><br/>
 										<%= time_ago_in_words(upload.created_at) %><br/>
