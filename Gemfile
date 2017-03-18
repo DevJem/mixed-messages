@@ -48,6 +48,7 @@ gem 'carrierwave-video', '0.5.6.1', path: "/usr/local/bin/carrierwave-video-0.5.
 gem 'carrierwave-ffmpeg'
 gem 'streamio-ffmpeg'
 gem 'carrierwave-video-thumbnailer'
+gem 'fog-aws'
 
 # Use Unicorn as the app server
 gem 'unicorn'

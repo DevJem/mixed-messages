@@ -17,11 +17,9 @@
 					<div align="center">
 						<!-- Media Player -->
 						<% if Rails.env.development? %>
-							<%= "File is: public#{@upload.file}" %><br/>
-							<%= video_tag [@upload.file], height: "100%", controls: true, autobuffer: true, class: "mejs__player", id: "player", preload: "auto" %>
-						<% else %>
-							<%= video_tag "http://mixed-messages.org/public#{@upload.file}", controls: true, autobuffer: true, class: "mejs__player", id: "player", height: "350px", preload: "auto" %>
+							<%= "File is: #{@upload.file}" %><br/>							
 						<% end %>
+						<%= video_tag @upload.file, controls: true, autobuffer: true, class: "mejs__player", id: "player", height: "350px", preload: "auto" %>
 						<br/>
 					</div>
 				</div>
