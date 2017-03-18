@@ -11,14 +11,7 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 21)
-		if logged_in? and current_user.admin?
-			File.open('http://mixed-messages.org/tmp/emails.csv', 'w') do |f|
-				Subscribe.select("email").copy_to do |line|
-					f.write line
-					f.write " testing "
-				end
-			end
-		end
+
 	end
 
 	def new
@@ -74,8 +67,13 @@ class UsersController < ApplicationController
 		if @user.admin
 			flash[:danger] = "You cannot delete another admin"
 		else
+			# Destroy notifications
 			note = Notification.where(user_id: @user.id)
 			note.each {|x| x.destroy}
+			# Remove from mail list
+			user_sub = Subscribe.where(email: @user.email)
+			Subscribe.destroy(user_sub.id)
+			
 			uname = @user.username
 			@user.delete
 			flash[:danger] = "User #{uname} has been deleted."
@@ -95,6 +93,14 @@ class UsersController < ApplicationController
 
 	def elist
 		@users = Subscribe.all.paginate(page: params[:page], per_page: 21)
+		if logged_in? and current_user.admin?
+			File.open('http://mixed-messages.org/tmp/emails.csv', 'w') do |f|
+				Subscribe.select("email").copy_to do |line|
+					f.write line
+					f.write " testing "
+				end
+			end
+		end
 	end
 
 	def send_mass_email

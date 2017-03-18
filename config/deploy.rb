@@ -39,7 +39,7 @@ set :group, "deployers"
 
 # set :use_sudo, false
 set :bundle_binstubs, nil
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'public/location')
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'public/location', 'tmp/emails.csv')
 
 desc "Symlink shared config files"
 task :symlink_config_files do

@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
 	has_many :notifications
 	has_and_belongs_to_many :reports
 	has_secure_password
-	acts_as_copy_target
+	if Rails.env.production?
+		acts_as_copy_target
+	end
 
 	before_save {self.email = email.downcase}
 	validates :username, presence: true, length: {minimum: 3, maximum: 40},
