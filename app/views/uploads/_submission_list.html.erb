@@ -7,7 +7,7 @@
 				<% if Rails.env.development? %>
 					<%= "File is: #{upload.file.thumb}" %><br/>
 				<% end %>
-					<%= link_to (image_tag upload.file.thumb, height: "175px"), upload_path(upload) %>
+					<%= link_to (image_tag upload.file.thumb, height: "150px"), upload_path(upload) %>
 				<br/>
 				<h4><%= upload.title %></h4><br/> 
 				<%= truncate(upload.note, length: 100) %><br/>
