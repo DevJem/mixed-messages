@@ -41,33 +41,6 @@ class FileUploader < CarrierWave::Uploader::Base
     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
   end
 
-  # process :encode
-  #  def encode
-  #    encode_video(:mp4, 
-  #      watermark: {
-  #     path: File.join(Rails.root, "public/", "favicon.ico"),
-  #     position: :bottom_left,
-  #     pixels_from_edge: 10
-  #   })
-  #  end
-
-  #  version :mp4 do
-  #    def full_filename(for_file)
-  #       super.chomp(File.extname(super)) + '.mp4'
-  #    end
-  #  end
-
-  # process encode_video: [
-    # watermark: {
-    #   path: File.join(Rails.root, "public/", "favicon.ico"),
-    #   position: :bottom_left,
-    #   pixels_from_edge: 10
-    # }
-  # ]
-  # def filename
-  #   result = [original_filename.gsub(/.\w+$/, ""), 'mp4'].join('.') if original_filename
-  #   result
-  # end
 
   # Choose what kind of storage to use for this uploader:
   storage :file
