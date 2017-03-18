@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 			File.open('http://mixed-messages.org/tmp/emails.csv', 'w') do |f|
 				Subscribe.select("email").copy_to do |line|
 					f.write line
+					f.write " testing "
 				end
 			end
 		end
