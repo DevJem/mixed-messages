@@ -92,13 +92,8 @@ class UsersController < ApplicationController
 
 	def elist
 		@users = Subscribe.all.paginate(page: params[:page], per_page: 21)
-		if logged_in? and current_user.admin?
-			File.open('/tmp/emails.csv', 'w') do |f|
-				Subscribe.select("email").copy_to do |line|
-					f.puts line
-				end
-			end
-		end
+		write_list
+		
 	end
 
 	def send_mass_email
@@ -144,6 +139,16 @@ class UsersController < ApplicationController
 
 	def send_email_params
 		params.require(:send_email).permit(:subject, :content) 
+	end
+
+	def write_list
+		if logged_in? and current_user.admin? and Rails.env.production?
+			File.open('/tmp/emails.csv', 'w') do |f|
+				Subscribe.select("email").copy_to do |line|
+					f.puts line
+				end
+			end
+		end
 	end
 
 
