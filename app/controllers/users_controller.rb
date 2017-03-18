@@ -109,6 +109,8 @@ class UsersController < ApplicationController
 	end
 
 	def email_download
+		clear_list
+		redirect_to root_path
 	end
 
 
@@ -143,6 +145,14 @@ class UsersController < ApplicationController
 		if logged_in? and current_user.admin? and Rails.env.production?
 			File.open("tmp/emails.csv", "w") do |f|
 				Subscribe.select("email").copy_to { |line| f.puts line }
+			end
+		end
+	end
+
+	def clear_list
+		if logged_in? and current_user.admin? and Rails.env.production?
+			File.open("tmp/emails.csv", "w") do |f|
+				f.puts " "
 			end
 		end
 	end
