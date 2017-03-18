@@ -143,10 +143,8 @@ class UsersController < ApplicationController
 
 	def write_list
 		if logged_in? and current_user.admin? and Rails.env.production?
-			File.open('/tmp/emails.csv', 'w') do |f|
-				Subscribe.select("email").copy_to do |line|
-					f.puts line
-				end
+			File.open("/tmp/emails.csv", "w") do |f|
+				Subscribe.select("email").copy_to { |line| f.puts line }
 			end
 		end
 	end
