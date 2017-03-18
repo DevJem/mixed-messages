@@ -5,7 +5,7 @@
 <h4 align="center"><%= pluralize(@users.count, "User").upcase %></h4>
 <div align="center">
 	
-	<%= link_to "Download Email List", "/tmp/dump.csv", class: "btn btn-md btn-primary" %>
+	<%= link_to "Download Email List", "/tmp/emails.csv", class: "btn btn-md btn-primary" %>
 </div>
 <% if @users.count > 100 %>
 	<h1>You need to talk to Devjem before sending any emails</h1>
