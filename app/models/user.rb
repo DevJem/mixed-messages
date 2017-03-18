@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :notifications
 	has_and_belongs_to_many :reports
 	has_secure_password
+	acts_as_copy_target
 
 	before_save {self.email = email.downcase}
 	validates :username, presence: true, length: {minimum: 3, maximum: 40},
@@ -34,9 +35,9 @@ class User < ActiveRecord::Base
 	  end
 	end
 
-	def self.list
-		copy(["SELECT email FROM subscribes TO '/tmp/dump.csv' WITH CSV HEADER"])
-	end
+	# def self.list
+	# 	copy(["SELECT email FROM subscribes TO '/tmp/dump.csv' WITH CSV HEADER"])
+	# end
 
 
 end

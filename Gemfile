@@ -77,4 +77,5 @@ end
 
 group :production do
 	gem 'pg'
+	gem 'postgres-copy'
 end

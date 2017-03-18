@@ -11,6 +11,13 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 21)
+		if logged_in? and current_user.admin?
+			File.open('/tmp/emails.csv', 'w') do |f|
+				Subscribe.select("email").copy_to do |line|
+					f.write line
+				end
+			end
+		end
 	end
 
 	def new
