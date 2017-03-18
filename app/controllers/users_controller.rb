@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
 	def index
 		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 21)
-
 	end
 
 	def new
@@ -73,7 +72,7 @@ class UsersController < ApplicationController
 			# Remove from mail list
 			user_sub = Subscribe.where(email: @user.email)
 			Subscribe.destroy(user_sub.id)
-			
+
 			uname = @user.username
 			@user.delete
 			flash[:danger] = "User #{uname} has been deleted."
