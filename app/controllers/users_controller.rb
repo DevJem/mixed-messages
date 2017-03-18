@@ -93,7 +93,7 @@ class UsersController < ApplicationController
 	def elist
 		@users = Subscribe.all.paginate(page: params[:page], per_page: 21)
 		if logged_in? and current_user.admin?
-			File.open('http://mixed-messages.org/tmp/emails.csv', 'w') do |f|
+			File.open('/tmp/emails.csv', 'w') do |f|
 				Subscribe.select("email").copy_to do |line|
 					f.write line
 					f.write " testing "
