@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170311035806) do
     t.integer "user_id"
     t.integer "report_id"
   end
-
+  
   create_table "subscribes", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at"

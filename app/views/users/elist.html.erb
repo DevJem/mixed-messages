@@ -1,8 +1,14 @@
 <%= tinymce_assets %>
-<script src="/assets/tinymce.js"></script>
+<script async src="/assets/tinymce.js"></script>
 
 <h3 align="center">Users that allow emails</h3>
 <h4 align="center"><%= pluralize(@users.count, "User").upcase %></h4>
+<div align="center">
+	<% if Rails.env.production? %>
+		<% Subscribe.connection.select_all("COPY (SELECT email FROM subscribes) TO '/tmp/dump.csv' WITH CSV HEADER") %>
+	<% end %>
+	<%= link_to "Download Email List", "/tmp/dump.csv", class: "btn btn-md btn-primary" %>
+</div>
 <% if @users.count > 100 %>
 	<h1>You need to talk to Devjem before sending any emails</h1>
 <% end %>

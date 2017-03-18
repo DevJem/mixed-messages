@@ -58,6 +58,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user_uploads = @user.uploads.order("id DESC").paginate(page: params[:page], per_page: 6)
+		@user_notes = @user.notifications.paginate(page: params[:page], per_page: 8)
 	end
 
 	def destroy 
@@ -99,6 +100,10 @@ class UsersController < ApplicationController
 		end
 		flash[:success] = "Email sent!"
 		redirect_to :back
+	end
+
+	def email_download
+		Subscribe.list
 	end
 
 

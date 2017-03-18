@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   patch '/users/:id/ban(.:format)' => 'users#ban', as: :ban
   patch '/users/:id/make-admin(.:format)' => 'users#make_admin', as: :make_admin
   get 'elist'     => 'users#elist'
+  get 'download-emails' => 'users#email_download'
 
   get 'terms'     => 'uploads#terms'
   get 'privacy'   => 'uploads#privacy_policy'

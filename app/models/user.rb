@@ -34,4 +34,9 @@ class User < ActiveRecord::Base
 	  end
 	end
 
+	def self.list
+		copy(["SELECT email FROM subscribes TO '/tmp/dump.csv' WITH CSV HEADER"])
+	end
+
+
 end

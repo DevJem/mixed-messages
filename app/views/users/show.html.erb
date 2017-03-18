@@ -88,11 +88,11 @@
 			<% @delete_notice = Array.new %>
 			<!-- User Notifications -->
 			<div id="user-notifications" class="col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-				<% if logged_in? && !@user.notifications.empty? && @user == current_user %>
+				<% if logged_in? && !@user_notes.empty? && @user == current_user %>
 
 					<!-- Delete all button -->
 					<div align="center">
-						<% @user.notifications.each do |notice| %>
+						<% @user_notes.each do |notice| %>
 							<% @delete_notice.push(notice) %>
 						<% end %>
 						<%= link_to "Delete all notifications", delete_notices_path(@delete_notice), method: :post, class: "btn btn-sm btn-info", rel: "nofollow" %>
@@ -100,7 +100,7 @@
 
 					<!-- The list -->
 					<ul class="list-group">
-						<% @user.notifications.each do |notice| %>
+						<% @user_notes.each do |notice| %>
 							<% if notice.notice_type == "success" %>
 								<li class="list-group-item list-group-item-success">
 									<%= link_to "X", notification_path(notice), method: :delete, class: "btn btn-xs btn-success", rel: "nofollow" %>
@@ -123,6 +123,9 @@
 								</li>
 							<% end %>
 						<% end %>
+						<div align="center">
+							<%= will_paginate (@user_notes) %>
+						</div>
 					</ul>
 				<% end %>
 			</div>
