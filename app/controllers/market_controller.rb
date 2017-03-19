@@ -30,7 +30,7 @@ class MarketController < ApplicationController
 			render :orders
 		end
 	end	
-
+ 
 
 	private
 

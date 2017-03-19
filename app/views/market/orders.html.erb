@@ -6,7 +6,7 @@
 		</div>
 		<div class="comment-hr"></div>
 
-		<% @orders.as_json.each do |order| %>
+		<% @orders.as_json.each do |order| %> 
 			<% address1 = "" %>
 			<% address2 = "" %>
 			<% city = "" %>
@@ -17,15 +17,28 @@
 			<% last_name = "" %>
 			<% line_items = Array.new %>
 			<div class="row order-item">
-				<% [order["shipping_address"]].as_json.each do |addr| %>
-					<% address1 = addr["address1"] %>
-					<% address2 = addr["address2"] %>
-					<% city = addr["city"] %>
-					<% province_code = addr["province_code"] %>
-					<% zip = addr["zip"] %>
-					<% country = addr["country"] %>
-					<% first_name = addr["first_name"] %>
-					<% last_name = addr["last_name"] %>
+				<% if ![order["shipping_address"]].first.nil? %>
+					<% [order["shipping_address"]].as_json.each do |addr| %>
+						<% address1 = addr["address1"] %>
+						<% address2 = addr["address2"] %>
+						<% city = addr["city"] %>
+						<% province_code = addr["province_code"] %>
+						<% zip = addr["zip"] %>
+						<% country = addr["country"] %>
+						<% first_name = addr["first_name"] %>
+						<% last_name = addr["last_name"] %>
+					<% end %>
+				<% elsif ![order["billing_address"]].first.nil? %>
+					<% [order["billing_address"]].as_json.each do |addr| %>
+						<% address1 = addr["address1"] %>
+						<% address2 = addr["address2"] %>
+						<% city = addr["city"] %>
+						<% province_code = addr["province_code"] %>
+						<% zip = addr["zip"] %>
+						<% country = addr["country"] %>
+						<% first_name = addr["first_name"] %>
+						<% last_name = addr["last_name"] %>
+					<% end %>
 				<% end %>
 				<div class="col-sm-4 col-md-3">
 					<%= "#{last_name}, #{first_name}" %><br/>
