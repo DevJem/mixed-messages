@@ -59,25 +59,25 @@
 }
 
 .upload-video {
-	width: 100%
-	video {
-		min-height: 350px;
-	}
+	// width: 100%
+	// video {
+	// 	min-height: 350px;
+	// }
 
 } 
-.mejs-container { width: 80% !important; }
-.mejs-mediaelement { 
-	text-align: center; 
-	video {
-		max-height: 350px !important;
-		min-height: 350px !important;
-	}
-}
-.me-plugin { position: relative !important; }
-.mejs-overlay-play { width: 100% !important; position: static; }
-.mejs-overlay-loading { width: 100% !important; position: static; }
-.mejs-poster { width: 100% !important; position: static; }
-.mejs-fullscreen-button { visibility: hidden !important;}
+// .mejs-container { width: 80% !important; }
+// .mejs-mediaelement { 
+// 	text-align: center; 
+// 	video {
+// 		max-height: 350px !important;
+// 		min-height: 350px !important;
+// 	}
+// }
+// .me-plugin { position: relative !important; }
+// .mejs-overlay-play { width: 100% !important; position: static; }
+// .mejs-overlay-loading { width: 100% !important; position: static; }
+// .mejs-poster { width: 100% !important; position: static; }
+// .mejs-fullscreen-button { visibility: hidden !important;}
 
 .upload-info {
 	margin-top: 20px;
@@ -98,9 +98,9 @@
  
  @media (min-width: 993px) {
  	.upload-video {
-		video {
-			max-height: 500px;
-		}
+		// video {
+		// 	max-height: 500px;
+		// }
 	}
 
  	.tags {
@@ -156,9 +156,9 @@
  		}
  	}
  	.upload-video {
-		video {
-			max-height: 300px;
-			margin-bottom: 20px;
-		}
+	// 	video {
+	// 		max-height: 300px;
+	// 		margin-bottom: 20px;
+	// 	}
 	}
  }

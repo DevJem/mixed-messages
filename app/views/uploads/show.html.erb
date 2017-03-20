@@ -1,5 +1,9 @@
 <% content_for :head do %>
-	<script async src="mediaelement.js"></script>
+	<!-- <script async src="mediaelement.js"></script> -->
+	<link rel="stylesheet" href="//releases.flowplayer.org/7.0.2/skin/skin.css">
+
+	<script src="//releases.flowplayer.org/7.0.2/flowplayer.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
 <% end %>
 
 
@@ -16,11 +20,21 @@
 				<div class="upload-video">
 					<div align="center">
 						<!-- Media Player -->
+						<!-- 	
+						<%# if Rails.env.development? %>
+							<%# "File is: #{@upload.file}" %><br/>							
+						<%# end %>
+						<%# video_tag @upload.file, controls: true, autobuffer: true, class: "mejs__player", id: "player", height: "350px", preload: "auto" %>
+						<br/> -->
+
+						<!-- Flowplayer -->
 						<% if Rails.env.development? %>
 							<%= "File is: #{@upload.file}" %><br/>							
 						<% end %>
-						<%= video_tag @upload.file, controls: true, autobuffer: true, class: "mejs__player", id: "player", height: "350px", preload: "auto" %>
-						<br/>
+						<div class="flowplayer fp-edgy">
+							<%= video_tag @upload.file, height: "300px", type: "video/mp4" %>
+							<br/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -93,7 +107,7 @@
 </div>
 
 
-<script>
+<!-- <script>
 // normal JavaScript 
 var player;
 
@@ -107,4 +121,4 @@ window.onunload = function removePlayer() {
 	}
 	player.remove();
 }
-</script>
+</script> -->

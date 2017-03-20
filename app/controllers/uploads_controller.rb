@@ -12,6 +12,7 @@ class UploadsController < ApplicationController
 
 	def review
 		@uploads = Upload.paginate(page: params[:page], per_page: 21).where(save_upload: false).order("id ASC")
+
 	end
  
 	def show
@@ -62,7 +63,7 @@ class UploadsController < ApplicationController
 		if @upload.save_upload
 			mark_video :success, @upload.user_id, @upload.title, "admin"
 		else
-			mark_video :denied, @upload.user_id, @upload.title, "admin"
+			mark_video :denied, @upload.user_id, @upload.title, "admin" 
 		end
 	end
 
@@ -94,6 +95,12 @@ class UploadsController < ApplicationController
 		redirect_to :back
 	end
 
+	def flowplayer_login
+		request = format.json{username = flowplayer_login_params[:username],
+			password = flowplayer_login_params[:password]}
+		post "https://drive.api.flowplayer.org/login" 
+
+	end
 
 
 	private
@@ -127,6 +134,9 @@ class UploadsController < ApplicationController
 			end
 		end
 
-# submit_playlist_id = "PLDEgt5YKZjd7gLN4iUFnDm9xX6GGAWD0k"
+		def flowplayer_login_params
+			params.require(:flowplayer_login).permit(:username, :password)
+		end
+
 
 end
