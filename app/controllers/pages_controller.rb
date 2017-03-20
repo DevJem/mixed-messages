@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def home
     # @blog = Blog.last
-    redirect_to 'public/index.html'
+    redirect_to '/public/index.html'
   end
 
   def logo
