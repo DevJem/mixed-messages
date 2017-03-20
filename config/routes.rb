@@ -40,9 +40,10 @@ Rails.application.routes.draw do
   get 'elist'     => 'users#elist'
   get 'download-emails' => 'users#email_download', as: :email_download
 
-  get 'terms'     => 'uploads#terms'
-  get 'privacy'   => 'uploads#privacy_policy'
-  post 'add_tags' => 'uploads#add_tags'
+  get 'terms'             => 'uploads#terms'
+  get 'privacy'           => 'uploads#privacy_policy'
+  post 'add_tags'         => 'uploads#add_tags'
+  post 'flowplayer_login' => 'uploads#flowplayer_login'
 
   post 'uploads/:id' => 'uploads#update'
   resources :comments
@@ -67,7 +68,7 @@ Rails.application.routes.draw do
   get 'logo'      => 'pages#logo'
   get 'countdown' => 'pages#countdown'
   
-  root 'pages#home'
+  # root 'pages#home'
 
   get 'googlefe18980250372b0b.html' => 'pages#googlefe18980250372b0b.html'
   get 'robots.txt'                  => 'pages#robots.txt'
