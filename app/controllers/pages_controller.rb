@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @blog = Blog.last
+    render 'public/index.html'
   end
 
   def logo
