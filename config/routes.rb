@@ -68,8 +68,7 @@ Rails.application.routes.draw do
   get 'logo'      => 'pages#logo'
   get 'countdown' => 'pages#countdown'
   
-  # root 'pages#home'
-  root to: 'public/index.html.timer'
+  root 'pages#home'
 
   get 'googlefe18980250372b0b.html' => 'pages#googlefe18980250372b0b.html'
   get 'robots.txt'                  => 'pages#robots.txt'
