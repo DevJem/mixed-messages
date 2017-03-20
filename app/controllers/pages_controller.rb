@@ -3,8 +3,7 @@ class PagesController < ApplicationController
    
 
   def home
-    # @blog = Blog.last
-    render file: 'public/index.html'
+    @blog = Blog.last
   end
 
   def logo
