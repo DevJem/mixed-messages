@@ -2,8 +2,9 @@ class FileUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::MiniMagick
   include CarrierWave::Video::Thumbnailer
+  # require ApplicationController
   # include Delayed::Job
-  include ::CarrierWave::Backgrounder::Delay
+  # include ::CarrierWave::Backgrounder::Delay
 
 
   # process encode_video: [:mp4]
@@ -27,9 +28,9 @@ class FileUploader < CarrierWave::Uploader::Base
 
   #   File.delete(tmpfile)
   # end
-
   version :thumb do
     process thumbnail: [{format: 'jpg', quality: 7, size: 192, logger: Rails.logger}]
+    
     def full_filename for_file
       png_name for_file, version_name
     end
@@ -39,10 +40,15 @@ class FileUploader < CarrierWave::Uploader::Base
     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
   end
 
+  # def proceed file
+  #   proceed_after_upload(file)
+  # end
+  # after :store, :proceed
+
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :fog
+  storage :file
+  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

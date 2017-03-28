@@ -30,6 +30,8 @@
 			<div class="movie">
 				<video width="854" height="480" autoplay loop>
 				  <source src="http://mixed-messages.org/assets/timer.mp4" type="video/mp4">
+				  <source src="http://mixed-messages.org/assets/timer.webm" type="video/webm">
+				  <source src="http://mixed-messages.org/assets/timer.ogg" type="video/ogg">
 				Your browser does not support the video tag.
 				</video>
 			</div>
