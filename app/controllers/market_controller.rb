@@ -1,5 +1,5 @@
 class MarketController < ApplicationController
-
+ 
 	def index
 		get_shop
 		@products = ShopifyAPI::Product.all

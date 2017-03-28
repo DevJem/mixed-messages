@@ -49,6 +49,9 @@ gem 'carrierwave-ffmpeg'
 gem 'streamio-ffmpeg'
 gem 'carrierwave-video-thumbnailer'
 gem 'fog-aws'
+gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 # Use Unicorn as the app server
 gem 'unicorn'

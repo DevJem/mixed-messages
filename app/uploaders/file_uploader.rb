@@ -2,36 +2,35 @@ class FileUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::MiniMagick
   include CarrierWave::Video::Thumbnailer
-  # FFMPEG.ffmpeg_binary = '~/bin/ffmpeg'
+  # require ApplicationController
+  # include Delayed::Job
+  # include ::CarrierWave::Backgrounder::Delay
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
 
-  process encode_video: [:mp4]
+  # process encode_video: [:mp4]
 
-  def encode_video format
-    directory = File.dirname(current_path)
-    tmpfile = File.join(directory, 'tmpfile')
-    File.rename(current_path, tmpfile)
+  # def encode_video format
+  #   directory = File.dirname(current_path)
+  #   tmpfile = File.join(directory, 'tmpfile')
+  #   File.rename(current_path, tmpfile)
 
-    file = ::FFMPEG::Movie.new(tmpfile)
-    new_name = File.basename(current_path, '.*') + '.' + format.to_s
-    current_extenstion = File.extname(current_path).gsub('.', '')
-    encoded_file = File.join(directory, new_name)
-    file.transcode(encoded_file)
+  #   file = ::FFMPEG::Movie.new(tmpfile)
+  #   new_name = File.basename(current_path, '.*') + '.' + format.to_s
+  #   current_extenstion = File.extname(current_path).gsub('.', '')
+  #   encoded_file = File.join(directory, new_name)
+  #   file.transcode(encoded_file)
 
-    # warning: magic! 
-    # change format for uploaded file name and store file format
-    # without this lines processed video files will remain in cache folder
-    self.filename[-current_extenstion.size..-1] = format.to_s
-    self.file.file[-current_extenstion.size..-1] = format.to_s
+  #   # warning: magic! 
+  #   # change format for uploaded file name and store file format
+  #   # without this lines processed video files will remain in cache folder
+  #   self.filename[-current_extenstion.size..-1] = format.to_s
+  #   self.file.file[-current_extenstion.size..-1] = format.to_s
 
-    File.delete(tmpfile)
-  end
-
+  #   File.delete(tmpfile)
+  # end
   version :thumb do
     process thumbnail: [{format: 'jpg', quality: 7, size: 192, logger: Rails.logger}]
+    
     def full_filename for_file
       png_name for_file, version_name
     end
@@ -41,10 +40,15 @@ class FileUploader < CarrierWave::Uploader::Base
     %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.jpg}
   end
 
+  # def proceed file
+  #   proceed_after_upload(file)
+  # end
+  # after :store, :proceed
+
 
   # Choose what kind of storage to use for this uploader:
-  # storage :file
-  storage :fog
+  storage :file
+  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -93,3 +97,10 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
 end
+
+# class ThumbWorker < ::CarrierWave::Workers::ProcessAsset
+
+#   def thumbProcess
+#     process FileUploader :thumb
+#   end
+# end

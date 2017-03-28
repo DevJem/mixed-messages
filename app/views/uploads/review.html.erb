@@ -9,7 +9,13 @@
 
 		<% else %>
 			<div align="center">
-				<h1>Videos in Que: <%= @uploads.count %></h1>
+				<h1>Videos in Que: <%= @uploads.count %></h1><br/>
+				<%= form_for :flowplayer_login, url: flowplayer_login_path do |f| %>
+					<%= f.hidden_field :username, value: "mattsmixedmessages@gmail.com" %>
+					<%= f.hidden_field :password, value: "$trAng3W0R1D#" %>
+					<%= f.submit "Log In To Flowplayer", class: "btn btn-lg btn-primary" %>
+				<% end %>
+				<%# button_tag "Log in to Flowplayer", class: "btn btn-lg btn-primary", id: "fp-login" %>
 			</div>
 			<%= render 'submission_list', obj: @uploads %>
 			<div align="center">
@@ -18,3 +24,40 @@
 		<% end %>
 	</div>
 </div>
+
+<!-- <script>
+	document.getElementById('fp-login').onclick = function() {
+	
+		var request = new XMLHttpRequest();
+		request.onload = callback;
+		request.open("post", "https://drive.api.flowplayer.org/login");
+		request.setRequestHeader("Content-Type", "application/json");
+		request.setRequestHeader("Accept", "application/json");
+		request.send('{"username":"mattsmixedmessages@gmail.com", "password":"$trAng3W0R1D#"} ');
+	};
+</script> -->
+
+<!-- <script>
+window.onload = function login() {
+    method = "post"; // Set method to post by default if not specified.
+    path = "https://drive.api.flowplayer.org/login"
+
+    // The rest of this code assumes you are not using a library.
+    // It can be made less wordy if you use one.
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    
+    var hiddenField = document.createElement("input");
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("username", "mattsmixedmessages@gmail.com");
+    hiddenField.setAttribute("password", "$trAng3W0R1D#");
+    hiddenField.setAttribute("ttl", "36000");
+    form.appendChild(hiddenField);
+
+
+    document.body.appendChild(form);
+    form.submit();
+}
+</script> -->

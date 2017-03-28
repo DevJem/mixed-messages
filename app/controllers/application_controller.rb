@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?, :get_location, :set_location, :mark_video, :flags
+  helper_method :current_user, :logged_in?, :get_location, :set_location, :mark_video, :flags, :proceed_after_upload
 
   def current_user
   	@current_user ||= User.find session[:user_id] if session[:user_id]
@@ -65,6 +65,12 @@ class ApplicationController < ActionController::Base
     elsif type == "video-comment"
       @flags = Report.where(video_id: id)
     end
+  end
+
+  def proceed_after_upload file
+    flash[:success] = "Your upload has been submitted. You will be notified if it is accepted."
+    redirect_to upload_path(file)
+
   end
 
 end
