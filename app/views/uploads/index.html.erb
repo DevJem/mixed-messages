@@ -37,9 +37,9 @@
 			     data-ad-client="ca-pub-2223843253438673"
 			     data-ad-slot="6878386940"
 			     data-ad-format="auto"></ins>
-			<script>
+			<!-- <script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
+			</script> -->
 		</div>
 
 	</div>
@@ -51,7 +51,15 @@
 				<%= will_paginate %>
 
 			</div>
+
+			<% if @uploads.empty? %>
+				<div align="center" class="fix-link">
+					<h3>No submissions yet!<br/><br/><%= link_to "Submit one yourself!", submit_path %></h3>
+				</div>
+			<% end %>
 			<%= render 'submission_list', obj: @uploads %>
+
+
 			<div align="center">
 				<%= will_paginate %>
 			</div>
@@ -69,9 +77,9 @@
 			     data-ad-client="ca-pub-2223843253438673"
 			     data-ad-slot="8355120140"
 			     data-ad-format="auto"></ins>
-			<script>
+			<!-- <script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
+			</script> -->
 		</div>
 	</div>
 </div>
@@ -85,6 +93,8 @@
 		     data-ad-slot="9831853345"
 		     data-ad-format="auto"></ins>
 		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		(adsbygoogle = window.adsbygoogle || []).push({});
 		(adsbygoogle = window.adsbygoogle || []).push({});
 		</script>
 	</div>
