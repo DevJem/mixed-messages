@@ -4,44 +4,12 @@
 	<meta property="og:title" content="<%= @blog.title %>" />
 	<meta property="og:image" content="http://mixed-messages.org/assets/stage.jpg" />
 <% end %>
- 
-<!-- Load Facebook SDK and twitter for JavaScript -->
-<div id="fb-root"></div>
-<script async>
- 
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
-  return t;
-}(document, "script", "twitter-wjs"));
-</script>
-
-
 
 <% if logged_in? && current_user.admin %>
 	<div align="center">
 		<%= link_to "Edit this Blog", edit_blog_path(@blog), class: "btn btn-md btn-warning" %>
 	</div>
 <% end %>
-	
 
 <div class="container-fluid">
 	<div class="row">
@@ -56,6 +24,21 @@ window.twttr = (function(d, s, id) {
 				     style="display:block"
 				     data-ad-client="ca-pub-2223843253438673"
 				     data-ad-slot="5041726941"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+			<div class="responsive-ad">
+				<div align="center">
+					<h6>Advertisement</h6>
+				</div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- blog 4 -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2223843253438673"
+				     data-ad-slot="7073092942"
 				     data-ad-format="auto"></ins>
 				<script>
 				(adsbygoogle = window.adsbygoogle || []).push({});
@@ -114,6 +97,21 @@ window.twttr = (function(d, s, id) {
 				(adsbygoogle = window.adsbygoogle || []).push({});
 				</script>
 			</div>
+			<div class="responsive-ad">
+				<div align="center">
+					<h6>Advertisement</h6>
+				</div>
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- blog 5 -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-2223843253438673"
+				     data-ad-slot="8549826145"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
 		</div>
 	</div>
 </div>
@@ -134,3 +132,33 @@ window.twttr = (function(d, s, id) {
 <div class="container">
 	<%= render 'layouts/comments', obj: @blog %>
 </div>
+
+<!-- Load Facebook SDK and twitter for JavaScript -->
+<div id="fb-root"></div>
+<script async>
+ 
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+  return t;
+}(document, "script", "twitter-wjs"));
+</script>
+

@@ -4,11 +4,6 @@ class UsersController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :destroy]
 	before_action :require_admin, only: [:destroy, :ban, :make_admin, :index, :elist]
 
-	# def index
-	# 	@users = User.paginate(page: params[:page], per_page: 10)
-	# 	@results = User.where(username: ["username LIKE ?", "%#{search}"])
-	# end 
-
 	def index
 		@users = User.search(params[:search]).paginate(page: params[:page], per_page: 21)
 	end
@@ -91,7 +86,7 @@ class UsersController < ApplicationController
 	end
 
 	def elist
-		@users = Subscribe.all.paginate(page: params[:page], per_page: 21)
+		@users = Subscribe.all.paginate(page: params[:page], per_page: 21).order('id ASC')
 		write_list
 	end
 

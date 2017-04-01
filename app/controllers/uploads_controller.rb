@@ -22,6 +22,8 @@ class UploadsController < ApplicationController
 
 	def new 
 		@upload = Upload.new
+		# @uploader = Upload.new.file
+		# @uploader.success_action_redirect = upload_path(@upload)
 	end
 
 	def create
@@ -32,7 +34,7 @@ class UploadsController < ApplicationController
 		if @upload.valid?
 			@upload.thumb = "thumb_#{upload_params[:file].to_s.chomp(File.extname(upload_params[:file].to_s))}.jpg"
 			@upload.save
-
+			
 			flash[:success] = "Your upload has been submitted. You will be notified if it is accepted."
 			redirect_to upload_path(@upload)
 		else

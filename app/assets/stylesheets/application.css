@@ -11,7 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require jquery.fileupload
+ *= require jquery.fileupload-ui
  *= require_self
- *= require mediaelement_rails
- *= require mediaelement_rails/mejs-skins
  */

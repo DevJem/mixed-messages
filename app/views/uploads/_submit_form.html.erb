@@ -1,11 +1,6 @@
-<script type="text/javascript">
-	$(function () {
-		$('[data-toggle="popover"]').popover()
-})
+<% content_for :head do |head| %>
 
-	$('#submit_upload').onclick(document.getElementById('submit_upload').disabled = false);
-
-</script>
+<% end %>
 
 <% if logged_in? %>
 	<div class="col-lg-12">
@@ -13,7 +8,7 @@
 			<h3>Submit your content here!</h3>
 		</div>
 	</div>
-	<%= form_for(@upload, :html => {class: "form-horizontal", role: "form", rel: "nofollow", enctype: "multipart/form-data"}) do |f| %>
+	<%= form_for(@upload, :html => {class: "form-horizontal", role: "form", enctype: "multipart/form-data", id: "fileupload"}) do |f| %>
 		<div class="form-group">
 			<div class="control-label col-sm-2">
 				
@@ -44,32 +39,132 @@
 			</div>
 		</div>
 
-		
+		 
 		<div class="form-group">
 			<div class="control-label col-sm-2">
 				
 					<%= f.label "#{:file} (<100mb)" %>
 			</div>
-			<div class="col-sm-2">
+			<div class="col-sm-5">
 					<%= f.file_field :file %>
 			</div>
-			<div id="loading" class="col-sm-3">
-				<%= image_tag "loading.gif" %>
-			</div> 
+
 			<div class="col-sm-8 tos">
-				<%= f.check_box :upload_terms_and_conditions %> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
+				<%= f.check_box :upload_terms_and_conditions, id: "tos-check" %> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
 			</div>
 		</div>
 		<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-8">
-				<%= f.submit( "Submit", class: "btn btn-primary btn-lg", id: "submit_upload", onclick: "document.getElementById('loading').hidden = false") %>
+			<div class="col-sm-offset-2 col-sm-2">
+				<%= f.submit( "Submit", class: "btn btn-primary btn-lg start", id: "submit_upload") %>
+			</div>
+
+			<!-- Upload Progress Bar -->
+			<div class="col-sm-offset-1 col-sm-5">
+				<div class="fileupload-loading"></div>
+				<div id="bar" class="progress progress-success progress-striped active">
+				    <div class="progress-bar" style="width:0%;" role="progressbar"></div>
+				</div>
 			</div>
 		</div>
 	<% end %>
+
 <% else %>
+
+	<!-- Prompt for log in -->
 	<div class="col-lg-8 col-lg-offset-2">
 		<div align="center">
 			<h3 class="fix-link"><%= link_to raw("Log in to submit<br/>your own!"), login_path, rel: "nofollow" %></h3>
 		</div>
 	</div>
 <% end %>
+
+
+<!-- Popup for Zipcode info -->
+<script type="text/javascript">
+	$(function () {
+		$('[data-toggle="popover"]').popover()
+})
+
+	$('#tos-check').click(document.getElementById('submit_upload').disabled = false);
+	$('#submit_upload').click(document.getElementById('bar').hidden = false);
+
+</script>
+
+<script>
+  var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+  };
+</script>
+
+<!-- The template to display files available for upload -->
+ <script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload">
+        <td class="preview"><span class="fade"></span></td>
+        <td class="name"><span>{%=file.name%}</span></td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        {% if (file.error) { %}
+            <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else if (o.files.valid && !i) { %}
+            <td>
+                <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+            </td>
+            <td class="start">{% if (!o.options.autoUpload) { %}
+                <button class="btn btn-primary">
+                    <i class="icon-upload icon-white"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            {% } %}</td>
+        {% } else { %}
+            <td colspan="2"></td>
+        {% } %}
+        <td class="cancel">{% if (!i) { %}
+            <button class="btn btn-warning">
+                <i class="icon-ban-circle icon-white"></i>
+                <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+        {% } %}</td>
+    </tr>
+{% } %} 
+</script> 
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<%# javascript_include_tag 'jquery.ui.widget.js' %>
+<!-- The Templates and Load Image plugins are included for the FileUpload user interface -->
+<!-- <script src="https://blueimp.github.com/JavaScript-Templates/js/tmpl.js"></script>
+<script src="https://blueimp.github.com/JavaScript-Load-Image/js/load-image.js"></script>
+<script src="https://blueimp.github.com/JavaScript-Load-Image/js/load-image-scale.js"></script>
+<script src="https://blueimp.github.com/JavaScript-Load-Image/js/load-image-meta.js"></script>
+<script src="https://blueimp.github.com/JavaScript-Load-Image/js/load-image-fetch.js"></script>
+<script src="https://blueimp.github.com/JavaScript-Load-Image/js/load-image-orientation.js"></script> -->
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<%# javascript_include_tag 'jquery.iframe-transport.js' %>
+<%# javascript_include_tag 'jquery.fileupload.js' %>
+<%# javascript_include_tag 'jquery.fileupload-ui.js' %>
+<!-- add include_tag js files to config.assets.precompile in ...environments/production.rb if you have it in vendor/ assets -->
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        // Initialize the jQuery File Upload widget:
+        $('#fileupload').fileupload();
+        // 
+        // Load existing files:
+        $.getJSON($('#fileupload').prop('action'), function (files) {
+          var fu = $('#fileupload').data('blueimp-fileupload'), 
+            template;
+          fu._adjustMaxNumberOfFiles(-files.length);
+          template = fu._renderDownload(files)
+            .appendTo($('#fileupload .files'));
+          // Force reflow:
+          fu._reflow = fu._transition && template.length &&
+            template[0].offsetWidth;
+          template.addClass('in');
+          $('#loading').remove();
+        });
+
+    });
+</script>

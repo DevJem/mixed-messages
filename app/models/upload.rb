@@ -1,5 +1,6 @@
 class Upload < ActiveRecord::Base
 	include ActiveModel::Validations
+	include Rails.application.routes.url_helpers
 
   belongs_to :user
   has_and_belongs_to_many :comments
@@ -34,4 +35,13 @@ class Upload < ActiveRecord::Base
 	    all
 	  end
 	end
+
+	def to_jq_upload
+    { "name" => read_attribute(:file),
+    "size" => file.size,
+    "url" => file.url,
+    "thumbnail_url" => file.thumb.url,
+    "delete_url" => upload_path(:id => id),
+    "delete_type" => "DELETE" }
+  end
 end
