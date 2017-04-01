@@ -1,3 +1,37 @@
+<% @video.each do |k, v| %>
+<% content_for :head do %>
+  <meta property="og:url" content=<%= "http://mixed-messages.org/videos/#{v}" %> />
+  <meta property="og:type" content="video" />
+  <meta property="og:image" content=<%= "http://img.youtube.com/vi/#{v}/maxresdefault.jpg" %> />
+<% end %>
+
+  <% src = "https://www.youtube.com/embed/#{v}?rel=0" %>
+  <div class="container">
+  	<div class="col-xs-10 col-xs-offset-1">
+  		<div align="center" class="embed-responsive embed-responsive-16by9">
+  			<iframe class="embed-responsive-item" src=<%= src %> frameborder="0" allowfullscreen></iframe>
+  		</div>
+  	</div>
+  </div>
+
+  <div class="container">
+  	<div class="col-xs-10 col-xs-offset-1 share">
+  		<div>
+  		<div class="fb-share-button" data-href=<%= "http://mixed-messages.org/videos/#{v}" %> data-layout="button" data-size="small" data-mobile-iframe="	true"><a class="fb-xfbml-parse-ignore" target="_blank" href=<%="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmixed-messages.org%2Fvideos%2F#{v}&amp;src=sdkpreparse" %> >Share</a>
+  		</div>
+
+  			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Mixed-Messages&hashtags=mixedmessagesmovement">
+  				Tweet</a>
+  		</div>
+
+  	</div>
+
+  	<div align="center">
+  		<%= render 'layouts/comments', obj: v %>
+  	</div>
+  </div>
+<% end %>
+
 <!-- Load Facebook SDK and Twitter for JavaScript -->
 <div id="fb-root"></div>
 <script> 
@@ -26,38 +60,3 @@ window.twttr = (function(d, s, id) {
   return t;
 }(document, "script", "twitter-wjs"));
 </script>
-
-<% @video.each do |k, v| %>
-<% content_for :head do %>
-  <meta property="og:url" content=<%= "http://mixed-messages.herokuapp.com/videos/#{v}" %> />
-  <meta property="og:type" content="video" />
-  <meta property="og:image" content=<%= "http://img.youtube.com/vi/#{v}/maxresdefault.jpg" %> />
-<% end %>
-
-  <% src = "https://www.youtube.com/embed/#{v}?rel=0" %>
-  <div class="container">
-  	<div class="col-xs-10 col-xs-offset-1">
-  		<div align="center" class="embed-responsive embed-responsive-16by9">
-  			<iframe class="embed-responsive-item" src=<%= src %> frameborder="0" allowfullscreen></iframe>
-  		</div>
-  	</div>
-  </div>
-
-  <div class="container">
-  	<div class="col-xs-10 col-xs-offset-1 share">
-  		<div>
-  		<div class="fb-share-button" data-href=<%= "http://mixed-messages.herokuapp.com/videos/#{v}" %> data-layout="button" data-size="small" data-mobile-iframe="	true"><a class="fb-xfbml-parse-ignore" target="_blank" href=<%="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmixed-messages.herokuapp.com%2Fvideos%2F#{v}&amp;src=sdkpreparse" %> >Share</a>
-  		</div>
-
-  			<a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Mixed-Messages&hashtags=mixedmessagesmovement">
-  				Tweet</a>
-  		</div>
-
-  	</div>
-
-  	<div align="center">
-  		<%= render 'layouts/comments', obj: v %>
-  	</div>
-  </div>
-<% end %>
-

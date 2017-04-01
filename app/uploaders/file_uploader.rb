@@ -2,7 +2,7 @@ class FileUploader < CarrierWave::Uploader::Base
   include CarrierWave::Video
   include CarrierWave::MiniMagick
   include CarrierWave::Video::Thumbnailer
-  # require ApplicationController
+  # include CarrierWaveDirect::Uploader
   # include Delayed::Job
   # include ::CarrierWave::Backgrounder::Delay
 
@@ -47,8 +47,8 @@ class FileUploader < CarrierWave::Uploader::Base
 
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -79,7 +79,7 @@ class FileUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(3gp avi flv mp4 mov wmv mpg ogg m4v webm)
+    %w(3gp avi flv mp4 mov wmv mpg ogg m4v webm mkv)
     #%w(mp4 ogg webm)
   end
 
@@ -97,10 +97,3 @@ class FileUploader < CarrierWave::Uploader::Base
   end
 
 end
-
-# class ThumbWorker < ::CarrierWave::Workers::ProcessAsset
-
-#   def thumbProcess
-#     process FileUploader :thumb
-#   end
-# end

@@ -48,10 +48,14 @@ gem 'carrierwave-video', '0.5.6.1', path: "/usr/local/bin/carrierwave-video-0.5.
 gem 'carrierwave-ffmpeg'
 gem 'streamio-ffmpeg'
 gem 'carrierwave-video-thumbnailer'
+gem "jquery-fileupload-rails"
 gem 'fog-aws'
-gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
-gem 'delayed_job'
-gem 'delayed_job_active_record'
+# gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
+# gem 'delayed_job'
+# gem 'delayed_job_active_record'
+# gem 'carrierwave_direct'
+
+# gem 'dropzonejs-rails'
 
 # Use Unicorn as the app server
 gem 'unicorn'
@@ -62,7 +66,7 @@ gem 'capistrano3-unicorn'
 gem 'capistrano-bundler'
 gem 'capistrano-rvm'
 
-gem 'mediaelement_rails'
+# gem 'mediaelement_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

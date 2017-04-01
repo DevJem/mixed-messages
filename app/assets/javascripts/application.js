@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic-plus
 //= require bootstrap-sprockets
 //= require tinymce
 //= require tinymce-jquery
-//= require mediaelement_rails
 //= require turbolinks
 //= require_tree .
