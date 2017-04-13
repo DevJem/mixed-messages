@@ -4,26 +4,48 @@
 		<h1><%= logged_in? ? "Edit your account information" : "Sign up for Mixed Messages" %></h1><br/>
 	</div>
 	<div class="row">
+	<div align="center">
+		<div id="required"><strong>* Required</strong></div>
+	</div>
 		<div class="col-xs-12">
 			<%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 				<div class="form-group">
 					<div class="control-label col-sm-2">
-							<%= f.label :username %>
+							<%= f.label "#{:username} *" %>
 					</div>
 					<div class="col-sm-8">
-							<%= f.text_field :username, class: "form-control", placeholder: "Enter Username", autofocus: true %>
+							<%= f.text_field :username, class: "form-control", placeholder: "Enter Username", autofocus: true, required: true %>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="control-label col-sm-2">
-						<%= f.label :email %>
+						<%= f.label "#{:email} *" %>
 					</div>
 					<div class="col-sm-8">
-						<%= f.email_field :email, class: "form-control", placeholder: "Enter Email" %>
+						<%= f.email_field :email, class: "form-control", placeholder: "Enter Email", required: true %>
 					</div>
 				</div>
 
+				<% if !logged_in? %>
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label "#{:password} *" %>
+						</div>
+						<div class="col-sm-8">
+							<%= f.password_field :password, class: "form-control", placeholder: "Enter Password", required: true %>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="control-label col-sm-2">
+							<%= f.label "#{:password_confirmation} *" %>
+						</div>
+						<div class="col-sm-8">
+							<%= f.password_field :password_confirmation, class: "form-control", placeholder: "Enter Password", required: true %>
+						</div>
+					</div>
+				<% end %>
 				<div class="form-group">
 					<div class="control-label col-sm-2">
 						<%= f.label :zipcode %>
@@ -32,25 +54,6 @@
 						<%= f.text_field :zipcode, class: "form-control", placeholder: "Enter zipcode" %>
 					</div>
 				</div>
-				<% if !logged_in? %>
-					<div class="form-group">
-						<div class="control-label col-sm-2">
-							<%= f.label :password %>
-						</div>
-						<div class="col-sm-8">
-							<%= f.password_field :password, class: "form-control", placeholder: "Enter Password" %>
-						</div>
-					</div>
-					
-					<div class="form-group">
-						<div class="control-label col-sm-2">
-							<%= f.label :password_confirmation %>
-						</div>
-						<div class="col-sm-8">
-							<%= f.password_field :password_confirmation, class: "form-control", placeholder: "Enter Password" %>
-						</div>
-					</div>
-				<% end %>
 				<div class="form-group">
 					<div class="control-label col-sm-2">
 						<%= f.label :bio %>
@@ -72,7 +75,7 @@
 						<div>
 							<% if !logged_in? %>
 								<div class="col-md-3 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 tos fix-link">
-									<%= f.check_box :terms_and_conditions, {checked: false, onclick: "document.getElementById('terms').disabled = false" }%> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
+									<%= f.check_box :terms_and_conditions, {checked: false, required: true } %> You agree to the <%= link_to "Terms and Conditions", terms_path, target: "_blank" %> and <%= link_to "Privacy Policy", privacy_path, target: "_blank" %>.
 								</div>
 								<div class="col-md-3 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 tos">
 									<%= f.check_box :allow_emails, {checked: true} %> Would you like to recieve email announcements?

@@ -2,7 +2,20 @@
 <html>
 <head>
   <!-- Designed by DevJem 2017 -->
-  <%# ad code %>
+ 
+  <title>MixedMessages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href='https://fonts.googleapis.com/css?family=Doppio+One|Fjalla+One|Dancing+Script|Passion+One:400,700' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="http://mixed-messages.org/public/favicon.ico?" type="image/x-icon">
+ 
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%# Pull content from views to put into head %>
+  <% if content_for? :head %>
+    <%= yield :head %>
+  <% end %>
+
+   <%# ad code %>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
     (adsbygoogle = window.adsbygoogle || []).push({
@@ -20,19 +33,11 @@
 
     ga('create', 'UA-93353213-1', 'auto');
     ga('send', 'pageview');
-
   </script>
-  <title>MixedMessages</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href='https://fonts.googleapis.com/css?family=Doppio+One|Fjalla+One|Dancing+Script|Passion+One:400,700' rel='stylesheet' type='text/css'>
- 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <% if content_for? :head %>
-    <%= yield :head %>
-  <% end %>
-  <link rel="icon" href="http://mixed-messages.org/public/favicon.ico?" type="image/x-icon">
+  
 </head>
 <body>
 	<div id='page'>
