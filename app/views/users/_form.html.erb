@@ -94,7 +94,7 @@
 						<% if logged_in? %>
 							<%= f.submit("Update Account", class: "btn btn-primary btn-lg") %>
 						<% else %>
-							<%= f.submit("Sign Up", class: "btn btn-primary btn-lg", id: "terms",disabled: true) %>
+							<%= f.submit("Sign Up", class: "btn btn-primary btn-lg", id: "terms") %>
 						<% end %>
 					</div>
 					<% if !logged_in? %>
