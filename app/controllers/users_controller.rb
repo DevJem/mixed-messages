@@ -41,7 +41,8 @@ class UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params)
-			if @user.allow_emails
+			checkSub = Subscribe.where(email: @user.email)
+			if @user.allow_emails && checkSub == nil
 				Subscribe.create(email: @user.email)
 			end
 			flash[:success] = "Your account was successfully updated."
@@ -63,10 +64,15 @@ class UsersController < ApplicationController
 		else
 			# Destroy notifications
 			note = Notification.where(user_id: @user.id)
-			note.each {|x| x.destroy}
+			if note != nil
+				note.each {|x| x.destroy}
+			end
 			# Remove from mail list
 			user_sub = Subscribe.where(email: @user.email)
-			Subscribe.destroy(user_sub.id)
+
+			if !user_sub.empty?
+				Subscribe.destroy(user_sub.id)
+			end
 
 			uname = @user.username
 			@user.delete
@@ -139,8 +145,8 @@ class UsersController < ApplicationController
 	def write_list users
 		if logged_in? and current_user.admin? and Rails.env.production?
 			File.open("tmp/emails.csv", "w") do |f|
-				users.email.each do email
-					f.puts email
+				users.each do user
+					f.puts user.email
 				end
 			end
 		end
