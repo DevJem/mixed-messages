@@ -145,7 +145,7 @@ class UsersController < ApplicationController
 	def write_list users
 		if logged_in? and current_user.admin? and Rails.env.production?
 			File.open("tmp/emails.csv", "w") do |f|
-				users.each do user
+				users.each do |user|
 					f.puts user.email
 				end
 			end
