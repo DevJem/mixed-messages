@@ -71,7 +71,7 @@ class UsersController < ApplicationController
 			user_sub = Subscribe.where(email: @user.email)
 
 			if !user_sub.empty?
-				Subscribe.destroy(user_sub.id)
+				Subscribe.destroy(user_sub.first.id)
 			end
 
 			uname = @user.username
