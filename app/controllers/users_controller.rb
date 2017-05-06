@@ -59,9 +59,11 @@ class UsersController < ApplicationController
 
 	def destroy 
 		@user = User.find(params[:id])
+
 		if @user.admin
 			flash[:danger] = "You cannot delete another admin"
 		else
+			session[@user.id] = nil
 			# Destroy notifications
 			note = Notification.where(user_id: @user.id)
 			if note != nil

@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery-fileupload/basic-plus
 //= require bootstrap-sprockets
-//= require tinymce
-//= require tinymce-jquery
 //= require turbolinks
+//= require tinymce
 //= require_tree .

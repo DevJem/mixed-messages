@@ -57,7 +57,7 @@
 
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-2">
-				<%= f.submit( "Submit", class: "btn btn-primary btn-lg start", id: "submit-upload", data: {confirm: "This might take a couple minutes. Please wait."} ) %>
+				<%= f.submit( "Submit", class: "btn btn-primary btn-lg start", id: "submit-upload", onclick: "showDiv()", data: {confirm: "This might take a couple minutes. Please wait."} ) %>
 			</div>
 
 			<!-- Upload Progress Bar -->
@@ -94,10 +94,11 @@
 <!-- Popup for Zipcode info -->
 
 <script>
+// document.getElementById('submit-upload').onclick=document.getElementById('loading-gif').style.display = "block";
 
-	document.getElementById('submit-upload').onclick=function() {
+	function showDiv() {
 		document.getElementById('loading-gif').style.display = "block";
-	};
+	}
 	
 	$(document).ready(function() {
 		$(function () {
