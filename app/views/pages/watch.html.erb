@@ -94,7 +94,7 @@
 		<% end %>
 	</div>
 
-	<% if !@nextPageToken.empty? %>
+	<% if !@nextPageToken.empty? or !@prevPageToken.empty? %>
 		<div align="center" class="row">
 			<!-- Previous page button -->
 			<div class="col-xs-6 video-nav">
