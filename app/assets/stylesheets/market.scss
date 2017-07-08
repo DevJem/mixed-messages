@@ -7,9 +7,13 @@
 	padding-right: 14px;
 }
 
-#market {
+#market-list {
 	list-style-type: none;
+	padding: 0;
 	li {
-		min-height: 500px;
+		min-height: 540px;
+		@media (max-width: 768px) {
+			min-height: 0px;
+		}
 	}
 }

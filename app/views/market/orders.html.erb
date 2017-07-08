@@ -26,7 +26,7 @@
 						<% zip = addr["zip"] %>
 						<% country = addr["country"] %>
 						<% first_name = addr["first_name"] %>
-						<% last_name = addr["last_name"] %>
+						<% last_name = addr["last_name"] %> 
 					<% end %>
 				<% elsif ![order["billing_address"]].first.nil? %>
 					<% [order["billing_address"]].as_json.each do |addr| %>

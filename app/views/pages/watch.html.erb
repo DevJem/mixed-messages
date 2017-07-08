@@ -3,7 +3,7 @@
 <div class="container good-background"> 
 	<div class="row">
 		<div align="center" class="section-title">
-			<h1>New Episode</h1>
+			<h1>Member Episode</h1>
 			<div id="main-episode">
 				<% if !logged_in? %>
 					<%= link_to (image_tag "members-only.jpg", width: "100%", class: "img-responsive good-background"), signup_path, rel: "nofollow" %>
@@ -21,7 +21,7 @@
 	<div class="col-xs-12 videos">
 		<div align="center">
 			<div class="section_title col-sm-12">
-				<h1>Past Episodes</h1>
+				<h1>Public Episodes</h1>
 			</div>
 		</div>
 		<% @prevPageToken = "" %>
@@ -35,7 +35,7 @@
 			<% end %>
 		<% end %>
 
-		<% if !@nextPageToken.empty? %>
+		<% if !@nextPageToken.empty? or !@prevPageToken.empty? %>
 			<div align="center" class="row">
 				<!-- Previous page button -->
 				<div class="col-xs-6 video-nav">
@@ -51,14 +51,18 @@
 				<!-- next page button -->
 				<div class="col-xs-6 video-nav">
 					<div align="left">
-						<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
+            <% if !@nextPageToken.empty? %>
+                <%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
+            <% else %>
+                <%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary disabled" %>
+            <% end %>
 					</div>
 				</div>
 			</div>
 		<% end %>
 		<% @videos.each do |key, value| %>
 
-			<!-- 			Loop to display episodes -->
+			<!-- 		Loop to display episodes -->
 			<% if key == "items" %>
 				<% value.each do |block| %>
 					<% block.each do |key, value| %>
@@ -106,7 +110,11 @@
 			<!-- next page button -->
 			<div class="col-xs-6 video-nav">
 				<div align="left">
-					<%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
+          <% if !@nextPageToken.empty? %>
+              <%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary" %>
+          <% else %>
+              <%= link_to "Next Page", watch_path(@nextPageToken), method: :patch, class: "btn btn-grand btn-primary disabled" %>
+          <% end %>
 				</div>
 			</div>
 		</div>

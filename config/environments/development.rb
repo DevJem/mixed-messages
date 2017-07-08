@@ -42,12 +42,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # SMTP settings
   config.action_mailer.smtp_settings = {
-    :address              => "sub5.mail.dreamhost.com",
-    :port                 => 587,
-    :user_name            => "producers@mixed-messages.org",
-    :password             => ENV['PRODUCERS_PW'],
-    :authentication       => "login",
-    :enable_starttls_auto => true
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "gmail.com",
+      :user_name            => "producers@mixed-messages.org",
+      :password             => ENV['PRODUCERS_PW'],
+      :authentication       => "login",
+      :enable_starttls_auto => true
   }
    
 end
