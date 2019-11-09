@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 
@@ -44,7 +43,7 @@ gem 'omniauth-shopify-oauth2'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'spring'
 
-gem 'carrierwave-video', '0.5.6.1', path: "/usr/local/bin/carrierwave-video-0.5.6.1"
+# gem 'carrierwave-video', '0.5.6.1', path: "/usr/local/bin/carrierwave-video-0.5.6.1"
 gem 'carrierwave-ffmpeg'
 gem 'streamio-ffmpeg'
 gem 'carrierwave-video-thumbnailer'

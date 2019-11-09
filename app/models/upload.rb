@@ -17,7 +17,7 @@ class Upload < ActiveRecord::Base
 	validates :user_id, presence: true, on: :create
 	#validates :note, presence: true, length: {minimum: 10, maximum: 1000}
 
-	mount_uploader :file, FileUploader
+	## mount_uploader :file, FileUploader
   # process_in_background :file, :thumb#, ThumbWorker
 
 	validates :file, presence: true, on: :create

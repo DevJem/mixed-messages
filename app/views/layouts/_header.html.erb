@@ -97,10 +97,10 @@
 		            <li>
 			        		<a href="<%= review_path %>">
 			        			Review List
-			        			<% uploads = Upload.where(save_upload: false).count %>
-			        			<% if uploads > 0 %>
-			        				<span class="badge"><%= uploads %></span>
-			        		<% end %>
+			        			<%# uploads = Upload.where(save_upload: false).count %>
+			        			<%# if uploads > 0 %>
+			        				<span class="badge"><%# uploads %></span>
+			        		<%# end %>
 			        		</a>
 			          </li>
 		          </ul>

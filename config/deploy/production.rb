@@ -91,4 +91,3 @@ set :conditionally_migrate, true
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
- # cat ~/.ssh/id_rsa.pub | ssh -p 22 dehay@67.205.184.235 'cat >> ~/.ssh/authorized_keys'

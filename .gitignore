@@ -22,6 +22,9 @@
 # Ignore my todo list
 /to\ do\ list.txt
 
+# Ignore private info
+/PRIVATE.txt
+
 # Ignore recaptcha
 /.env
 

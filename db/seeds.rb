@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.create(username: "DevJem", email: "android.devjem@gmail.com", admin: true, password: "password", password_confirmation: "password", require_password_reset: true)
-user2 = User.create(username: "Matt", email: "mattd@mixed-messages.org", admin: true, password: "password", password_confirmation: "password", require_password_reset: true)
-user3 = User.create(username: "Kevin", email: "kevin@mixed-messages.org", admin: true, password: "password", password_confirmation: "password", require_password_reset: true)
+user1 = User.create(username: "DevJem", email: "android.devjem@gmail.com", admin: true, password: "password", password_confirmation: "password", require_password_reset: false)
+user1 = User.create(username: "guest", email: "test@mailinator.com", admin: true, password: "password", password_confirmation: "password", require_password_reset: false)
 blog = Blog.create(user_id: 1, title: "Temporary first blog", content: "Temporary first blog")
+comment = Comment.create(title: "comment", comment: "You put the comments here", user_id: 1, blog_id: 1)

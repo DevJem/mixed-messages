@@ -147,13 +147,11 @@ ActiveRecord::Schema.define(version: 20170319112956) do
     t.boolean  "banned",                 default: false
     t.text     "bio"
     t.string   "password_confirmation"
-    t.integer  "uploads_id"
+    t.boolean  "allow_emails"
     t.integer  "warn_level",             default: 0
-    t.boolean  "allow_emails",           default: true
     t.boolean  "require_password_reset", default: false
   end
 
   add_index "users", ["id"], name: "index_users_on_id", unique: true
-  add_index "users", ["uploads_id"], name: "index_users_on_uploads_id"
 
 end

@@ -1,28 +1,73 @@
-== README
+Welcome to Mixed Messages!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mixed Messages was an attempt by a few people in the Middle Tennessee area to highlight the distracted driving
+epidemic by capturing perpetrators on film and making humourous episodes about them. While the content was great the
+marketing was not, thus the project failed after a couple of years. You can check out an example of their great work
+here: https://youtu.be/5OCak-CvKKA.
 
-Things you may want to cover:
+I volunteered to write the website for my friends in Mixed Messages because I was interested in learning and working
+with Ruby on Rails. Even though all the content on the site belonges to them, as the sole developer/webmaster I ended
+up learning much more than I thought I would. Not only did I integrate several common APIs such as YouTube and Shopify,
+but I chose to create several commonly outsourced tasks from scratch (e.g. secure user profiles, user notifications,
+and a comment system). I included email service both to and from an email group that I set up through the DNS provider.
+Speaking of DNS providers, I learned how to navigate through layers of the Internet I hadn't thought much about before.
+I dealt with hosting services, passed through Cloudflare, bounced data through AWS, and auto-encoded user submitted
+videos. Oh, I also integrated user submissions of videos along with admin-managed content tagging system.
 
-* Ruby version
+Overall, I'm very proud of the work we accomplished through this journey. Unfortunately, everything must come to an end and the
+website is no longer supported. It is not hosted anywhere and most of the functionality is now defunct. With no Shopify
+cart, no S3 bucket, no carrierwave for user submissions, no active email accounts, and very few YouTube videos remaining,
+you will get some errors as you try to navigate the site. This is not expected to change. But if you happen to come
+across this repo at some point and you either love it or hate it that much, feel free to let me know either on github
+or by emailing me at thedevjem@gmail.com.
 
-* System dependencies
+Here to play around with it? This product is covered by the MIT License, so feel free.
 
-* Configuration
+You'll need Ruby 2.2 and the bundler gem
+Clone the code > use Ruby 2.2 and do bundle install > use 'rake db:migrate' > use 'rake db:seed' > 'rails s' >
+navigate to the provided localhost page. You can log in with a default user of 'guest' and password 'password' to
+check out the available site administration options.
+Check out the super-fun Easter egg by clicking on the copyright notice at the bottom!
 
-* Database creation
+Have fun!
 
-* Database initialization
+Mixed Messages was a website devloped solely by DevJem and featured:
 
-* How to run the test suite
+* Custom blog CRUD operations with WYSIWYG editor
+* Custom Site Administrator actions
+* Custom user-comment CRUD operations on blogs and videos that can be flagged and deleted
+* Custom user profiles with warnings and bans
+* Searchable user database
+* Accepted user video submissions
+* Auto-encoded user submitted videos
+* Custom user-notifications system
+* Gmail API integration
+* YouTube API integration
+* Shopify API integration
+* AWS S3 storage
+* Content tagging system
+* Automated deployment using Capistrano
+* And more!
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+MIT License
 
-* ...
+Copyright (c) 2019 DevJem
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
